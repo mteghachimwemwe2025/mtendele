@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Ministries - Mtendele Baptist Church</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-purple: #6A0DAD; /* Deep purple */
+            --secondary-navy: #000066; /* Dark navy */
+            --accent-gold: #FFD700;
+            --light-purple: #F5F0FF;
+            --dark-purple: #4B0082;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --dark-gray: #343A40;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        /* Enhanced Social Bar with Professional Gradient Blend */
+        .social-bar {
+            background: linear-gradient(135deg, 
+                rgba(180, 140, 255, 0.9) 0%, 
+                rgba(106, 13, 173, 0.8) 30%, 
+                rgba(70, 30, 180, 0.8) 60%, 
+                rgba(0, 0, 102, 0.7) 100%);
+            padding: 5px 0;
+            height: 40px;
+            border-bottom: 1px solid rgba(106,13,173,0.2);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 15px rgba(106,13,173,0.15);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .social-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255,255,255,0.4) 50%, 
+                transparent 100%);
+        }
+
+        .social-icons-top {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        .social-icon-top {
+            color: var(--white);
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.15);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .social-icon-top::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255,255,255,0.2) 0%, 
+                rgba(255,255,255,0.1) 100%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .social-icon-top:hover {
+            color: var(--accent-gold);
+            transform: translateY(-2px) scale(1.1);
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 4px 12px rgba(106,13,173,0.3);
+        }
+
+        .social-icon-top:hover::after {
+            opacity: 1;
+        }
+        
+        /* Logo styling */
+        .navbar-brand img {
+            height: 50px;
+            margin-right: 12px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        .navbar-brand:hover img {
+            transform: scale(1.05);
+        }
+        .footer-logo img {
+            height: 80px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        .footer-logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: var(--light-purple);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+            padding: 5px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            padding: 6px 12px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--white);
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: calc(100% - 24px);
+        }
+        
+        .nav-divider {
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Ministries Section */
+        .ministries-hero {
+            background: linear-gradient(rgba(106, 13, 173, 0.8), rgba(0, 0, 102, 0.8)), 
+                        url('uploads/chibavi 9.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title {
+            color: var(--primary-purple);
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-gold);
+        }
+        
+        .ministry-card {
+            border: none;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border-radius: 1rem;
+            overflow: hidden;
+            background-color: white;
+            border-top: 4px solid var(--primary-purple);
+        }
+        
+        .ministry-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 1rem 2rem rgba(0,0,0,0.15);
+            border-top-color: var(--accent-gold);
+        }
+        
+        .ministry-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .ministry-card:hover .ministry-img {
+            transform: scale(1.05);
+        }
+        
+        .ministry-icon {
+            font-size: 2rem;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+        
+        .ministry-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--light-purple);
+            color: var(--secondary-navy);
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .btn-custom {
+            background-color: var(--accent-gold);
+            color: var(--secondary-navy);
+            border: none;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-custom:hover {
+            background-color: #FFC107;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-outline-light {
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-light:hover {
+            background-color: var(--white);
+            color: var(--primary-purple);
+            transform: translateY(-3px);
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-gold);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(106, 13, 173, 0.9), rgba(0, 0, 102, 0.9)), 
+                        url('uploads/chibavi 2.jpg') center/cover no-repeat;
+            padding: 80px 0;
+            color: white;
+        }
+        
+        /* Enhanced Footer Styles */
+        footer {
+            background: linear-gradient(135deg, var(--secondary-navy) 0%, var(--dark-purple) 100%);
+            color: var(--white);
+            padding: 60px 0 20px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('uploads/bible opened.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(0, 0, 102, 0.9);
+        }
+        
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--primary-purple) 0%, var(--accent-gold) 50%, var(--primary-purple) 100%);
+        }
+        
+        .footer-links h4 {
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+        
+        .footer-links i {
+            margin-right: 8px;
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            color: var(--white);
+            background-color: rgba(255, 255, 255, 0.15);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--accent-gold);
+            color: var(--secondary-navy);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent-gold);
+            color: var(--secondary-navy);
+            transform: translateY(-3px);
+        }
+        
+        /* New Ministries Grid Styles */
+        .ministries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .ministry-image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ministry-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .ministry-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .ministry-time, .ministry-days {
+            display: flex;
+            align-items: center;
+        }
+        
+        .ministry-description {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        .debug {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        /* New Testimony Styles */
+        .testimony-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+            border-top: 4px solid var(--primary-purple);
+        }
+
+        .testimony-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            border-top-color: var(--accent-gold);
+        }
+
+        .testimony-image-container {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .testimony-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .testimony-card:hover .testimony-image {
+            transform: scale(1.05);
+        }
+
+        .testimony-content {
+            padding: 15px;
+        }
+
+        .testimony-email {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary-purple);
+        }
+
+        .testimony-date {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .testimony-preview {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 10px;
+        }
+
+        .testimony-modal .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+
+        .testimony-modal .modal-header {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .testimony-modal .modal-body {
+            padding-top: 0;
+        }
+
+        .full-testimony {
+            white-space: pre-line;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-brand img {
+                height: 40px;
+                width: 40px;
+            }
+            
+            .ministries-hero {
+                padding: 60px 0;
+            }
+            
+            .ministries-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-bar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Social Media Bar with Professional Gradient -->
+    <div class="social-bar">
+        <div class="container">
+            <div class="social-icons-top">
+                <a href="#" class="social-icon-top"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon-top"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-icon-top"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon-top"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="uploads/images_13.jpeg" alt="Mtendele Baptist Church Logo">
+                Mtendele Baptist Church
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/ministries">Ministries</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/sermons">Sermons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/program">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/church_articles">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- White Divider Line -->
+    <div class="nav-divider"></div>
+
+    <!-- Hero Section -->
+    <section class="ministries-hero animate__animated animate__fadeIn">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Our Ministries</h1>
+            <p class="lead mb-4">Discover how you can get involved and grow in your faith journey</p>
+            <a href="#ministries" class="btn btn-custom btn-lg px-4 me-2">Explore</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg px-4">Join a Ministry</a>
+        </div>
+    </section>
+
+    <!-- Ministries Section -->
+    <section id="ministries" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Serving Together in Christ</h2>
+                <p class="lead text-muted">Each ministry is designed to help you grow spiritually and connect with others</p>
+            </div>
+            
+            <div id="ministries-container">
+                <div class="loading-spinner">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div id="debug-panel" class="debug"></div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Ministry Impact Stories</h2>
+                <p class="lead text-muted">Hear from members whose lives have been transformed through our ministries</p>
+            </div>
+            
+            <div id="approved-testimonies" class="row g-4">
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading testimonies...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimony Modal -->
+    <div class="modal fade testimony-modal" id="testimonyModal" tabindex="-1" aria-labelledby="testimonyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <img id="modalTestimonyImage" src="" alt="Testimony Image" class="testimonial-img mb-3">
+                        <h5 class="modal-title" id="modalTestimonyEmail"></h5>
+                        <small class="text-muted" id="modalTestimonyDate"></small>
+                    </div>
+                    <p class="full-testimony" id="modalTestimonyContent"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section text-center py-5">
+        <div class="container" data-aos="fade-up">
+            <h2 class="display-5 fw-bold text-white mb-4">Ready to Get Involved?</h2>
+            <p class="lead text-white mb-5">Join one of our ministries and discover how you can serve and grow in your faith journey.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="/contact" class="btn btn-light btn-lg px-4">Contact Us</a>
+                <a href="/program" class="btn btn-outline-light btn-lg px-4">Ministry Interest Form</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="footer-logo">
+                        <img src="uploads/images_13.jpeg" alt="Mtendele Baptist Church Logo" id="footerLogo">
+                    </div>
+                    <p class="mt-3">A vibrant Baptist church in Lilongwe, Malawi, committed to biblical truth, spiritual growth, and serving our community with Christ's love.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="/ministries"><i class="fas fa-chevron-right"></i> Ministries</a></li>
+                            <li><a href="/sermons"><i class="fas fa-chevron-right"></i> Sermons</a></li>
+                            <li><a href="/news"><i class="fas fa-chevron-right"></i> News</a></li>
+                            <li><a href="/program"><i class="fas fa-chevron-right"></i> Programs</a></li>
+                            <li><a href="/church_articles"><i class="fas fa-chevron-right"></i> Articles</a></li>
+                            <li><a href="/about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                            <li><a href="/contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h4>Ministries</h4>
+                        <ul>
+                            <li><a href="/ministries#children"><i class="fas fa-chevron-right"></i> Children</a></li>
+                            <li><a href="/ministries#youth"><i class="fas fa-chevron-right"></i> Youth</a></li>
+                            <li><a href="/ministries#women"><i class="fas fa-chevron-right"></i> Women</a></li>
+                            <li><a href="/ministries#men"><i class="fas fa-chevron-right"></i> Men</a></li>
+                            <li><a href="/ministries#missions"><i class="fas fa-chevron-right"></i> Missions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="footer-links">
+                        <h4>Contact Info</h4>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i> Box 4000, Lilongwe, Malawi</li>
+                            <li><i class="fas fa-phone"></i> 0995128815</li>
+                            <li><i class="fas fa-envelope"></i> info@mtendelebaptist.church</li>
+                            <li><i class="fas fa-clock"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                <p class="mb-0">&copy; <span id="current-year">2025</span> Mtendele Baptist Church. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Bootstrap & Font Awesome JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Back to top button
+        window.addEventListener('scroll', function() {
+            var backToTop = document.querySelector('.back-to-top');
+            backToTop.classList.toggle('active', window.pageYOffset > 300);
+        });
+
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        
+        // Sample ministries data - will be replaced with actual API call
+        const sampleMinistries = [
+            {
+                id: 1,
+                name: "Youth Ministry",
+                description: "Our vibrant youth group meets weekly for fellowship, Bible study, and fun activities designed to strengthen their faith.",
+                days: "Every Friday",
+                time: "4:00 PM - 6:00 PM",
+                image_path: "uploads/youth-ministry.jpg"
+            },
+            {
+                id: 2,
+                name: "Women's Fellowship",
+                description: "A supportive community for women of all ages to grow spiritually through prayer, Bible study, and mutual encouragement.",
+                days: "1st & 3rd Wednesdays",
+                time: "10:00 AM - 12:00 PM",
+                image_path: "uploads/womens-fellowship.jpg"
+            },
+            {
+                id: 3,
+                name: "Men's Bible Study",
+                description: "Men gathering to study God's Word and apply biblical principles to their daily lives as husbands, fathers, and leaders.",
+                days: "Every Saturday",
+                time: "7:00 AM - 8:30 AM",
+                image_path: "uploads/mens-bible-study.jpg"
+            },
+            {
+                id: 4,
+                name: "Sunday School",
+                description: "Age-appropriate Bible teaching for children from toddlers to teenagers during our Sunday services.",
+                days: "Every Sunday",
+                time: "9:00 AM - 10:30 AM",
+                image_path: "uploads/sunday-school.jpg"
+            },
+            {
+                id: 5,
+                name: "Prayer Ministry",
+                description: "Join our intercessory prayer team that meets to pray for the needs of our church, community, and world.",
+                days: "Every Tuesday",
+                time: "6:00 PM - 7:30 PM",
+                image_path: "uploads/prayer-ministry.jpg"
+            },
+            {
+                id: 6,
+                name: "Worship Team",
+                description: "For those gifted in music who want to use their talents to lead the congregation in worship.",
+                days: "Thursdays & Sundays",
+                time: "Varies",
+                image_path: "uploads/worship-team.jpg"
+            }
+        ];
+
+        // Sample testimonies data - will be replaced with actual API call
+        const sampleTestimonies = [
+            {
+                id: 1,
+                email: "John D.",
+                date: "2025-03-15",
+                description: "The men's Bible study has transformed my spiritual life. The fellowship and accountability have helped me grow in ways I never imagined. I'm so grateful for this ministry!",
+                image: "uploads/testimony1.jpg"
+            },
+            {
+                id: 2,
+                email: "Mary K.",
+                date: "2025-04-22",
+                description: "Being part of the women's fellowship has been a lifeline for me. The prayers and support I've received during difficult times have shown me God's love in action.",
+                image: "uploads/testimony2.jpg"
+            },
+            {
+                id: 3,
+                email: "Thomas & Grace M.",
+                date: "2025-05-10",
+                description: "Our children have flourished in the Sunday School program. They come home excited about what they've learned and can't wait to go back each week!",
+                image: "uploads/testimony3.jpg"
+            }
+        ];
+
+        // Fetch ministries with the new structure
+        function fetchMinistries() {
+            // First try to fetch from API
+            fetch('/fetch_ministries')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    displayMinistries(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching ministries from API:', error);
+                    // If API fails, use sample data
+                    displayMinistries(sampleMinistries);
+                });
+        }
+
+        function displayMinistries(ministriesData) {
+            const container = document.getElementById("ministries-container");
+            const debugPanel = document.getElementById("debug-panel");
+            container.innerHTML = "";
+            debugPanel.style.display = "none";
+
+            if (!Array.isArray(ministriesData)) {
+                throw new Error("Unexpected data format received.");
+            }
+
+            if (ministriesData.length === 0) {
+                container.innerHTML = `<div class="alert alert-warning text-center">No ministries found.</div>`;
+                return;
+            }
+
+            const grid = document.createElement("div");
+            grid.className = "ministries-grid";
+            container.appendChild(grid);
+
+            ministriesData.forEach(ministry => {
+                const card = document.createElement("div");
+                card.className = "ministry-card";
+                card.setAttribute('data-aos', 'fade-up');
+                
+                const imgContainer = document.createElement("div");
+                imgContainer.className = "ministry-image-container";
+                
+                const img = document.createElement("img");
+                img.className = "ministry-image";
+                img.alt = ministry.name;
+                
+                // Handle image paths - try multiple locations if needed
+                if (ministry.image_path) {
+                    img.src = ministry.image_path;
+                    
+                    img.onerror = function() {
+                        this.src = ministry.image_path.replace(/^.*\/\/[^\/]+/, '');
+                        
+                        this.onerror = function() {
+                            this.src = 'uploads/' + ministry.image_path.split('/').pop();
+                            
+                            this.onerror = function() {
+                                this.src = 'https://via.placeholder.com/300x200?text=Ministry+Image';
+                            };
+                        };
+                    };
+                } else {
+                    img.src = 'https://via.placeholder.com/300x200?text=No+Image';
+                }
+                
+                imgContainer.appendChild(img);
+                
+                const contentDiv = document.createElement("div");
+                contentDiv.className = "ministry-content";
+                contentDiv.innerHTML = `
+                    <h3 class="ministry-name">${escapeHtml(ministry.name)}</h3>
+                    <div class="ministry-meta">
+                        <span class="ministry-time">
+                            <i class="fas fa-clock me-1 text-purple"></i>
+                            ${escapeHtml(ministry.time || 'Not specified')}
+                        </span>
+                        <span class="ministry-days">
+                            <i class="fas fa-calendar-day me-1 text-purple"></i>
+                            ${escapeHtml(ministry.days || 'Not specified')}
+                        </span>
+                    </div>
+                    <p class="ministry-description">${escapeHtml(ministry.description || 'No description available')}</p>
+                    <div class="text-center mt-3">
+                        <a href="ministry_details.html?id=${escapeHtml(ministry.id)}" class="btn btn-custom me-2">Learn More</a>
+                        <a href="#contact" class="btn btn-outline-purple">Join Us</a>
+                    </div>
+                `;
+                
+                card.appendChild(imgContainer);
+                card.appendChild(contentDiv);
+                grid.appendChild(card);
+            });
+            
+            AOS.refresh();
+        }
+
+        // Fetch approved testimonies
+        function fetchApprovedTestimonies() {
+            // Show loading state
+            const container = document.getElementById('approved-testimonies');
+            container.innerHTML = `
+                <div class="col-12 text-center py-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Loading testimonies...</p>
+                </div>
+            `;
+
+            // First try to fetch from API
+            fetch('/get_approved_testmonies')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    displayTestimonies(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching testimonies from API:', error);
+                    // If API fails, use sample data
+                    displayTestimonies(sampleTestimonies);
+                });
+        }
+
+        function displayTestimonies(testimoniesData) {
+            const container = document.getElementById('approved-testimonies');
+            container.innerHTML = '';
+            
+            if (!testimoniesData || testimoniesData.length === 0) {
+                container.innerHTML = `
+                    <div class="col-12 text-center py-4">
+                        <i class="fas fa-info-circle fa-2x text-muted mb-3"></i>
+                        <p>No approved testimonies to display yet.</p>
+                        <button onclick="fetchApprovedTestimonies()" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-sync-alt me-1"></i> Refresh
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            // Process and display testimonies
+            testimoniesData.forEach(testimony => {
+                const testimonyDate = testimony.date ? new Date(testimony.date).toLocaleDateString() : '';
+                
+                let testimonyImage = 'https://via.placeholder.com/300x200?text=No+Image';
+                if (testimony.image) {
+                    testimonyImage = testimony.image.startsWith('uploads/') ? 
+                        testimony.image : 
+                        `uploads/${testimony.image}`;
+                }
+                
+                const col = document.createElement('div');
+                col.className = 'col-md-4 mb-4';
+                col.setAttribute('data-aos', 'fade-up');
+                
+                col.innerHTML = `
+                    <div class="testimony-card h-100" onclick="showTestimonyModal(
+                        '${escapeHtml(testimonyImage)}',
+                        '${escapeHtml(testimony.email || 'Anonymous')}',
+                        '${escapeHtml(testimonyDate)}',
+                        '${escapeHtml(testimony.description || 'No content provided')}'
+                    )">
+                        <div class="testimony-image-container">
+                            <img src="${escapeHtml(testimonyImage)}" 
+                                 alt="Testimony Image" class="testimony-image"
+                                 onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Available'">
+                        </div>
+                        <div class="testimony-content p-3">
+                            <div class="testimony-email">${escapeHtml(testimony.email || 'Anonymous')}</div>
+                            <div class="testimony-date mb-2">${testimonyDate ? 'Submitted on ' + escapeHtml(testimonyDate) : ''}</div>
+                            <div class="testimony-preview">
+                                ${testimony.description ? 
+                                 escapeHtml(testimony.description.substring(0, 100)) + 
+                                 (testimony.description.length > 100 ? '...' : '') : 
+                                 'No content provided'}
+                            </div>
+                            <button class="btn btn-sm btn-custom w-100 mt-3">Read More</button>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(col);
+            });
+            
+            AOS.refresh();
+        }
+
+        // Show testimony modal
+        function showTestimonyModal(image, email, date, content) {
+            const modal = new bootstrap.Modal(document.getElementById('testimonyModal'));
+            document.getElementById('modalTestimonyImage').src = image || 'https://via.placeholder.com/300x200?text=No+Image';
+            document.getElementById('modalTestimonyEmail').textContent = email;
+            document.getElementById('modalTestimonyDate').textContent = date ? 'Submitted on ' + date : '';
+            document.getElementById('modalTestimonyContent').textContent = content;
+            modal.show();
+        }
+
+        // Helper functions
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function nl2br(text) {
+            if (!text) return '';
+            return text.replace(/\n/g, '<br>');
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            fetchMinistries();
+            fetchApprovedTestimonies();
+        });
+    </script>
+</body>
+</html>

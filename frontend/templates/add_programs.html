@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Program Management | YICCALP Admin</title>
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <style> 
+    :root {
+      --primary-color: #3D2C91;
+      --secondary-color: #2A1D66;
+      --accent-color: #40B64D;
+      --highlight-color: #FFA726;
+      --text-color: #333333;
+      --background-color: #FFFFFF;
+      --light-gray: #f8f9fa;
+      --border-color: #e0e0e0;
+      --shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Header Styles */
+    .admin-header {
+      background-color: var(--primary-color);
+      color: white;
+      height: 60px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .admin-header h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Footer Styles */
+    .admin-footer {
+      background-color: var(--primary-color);
+      color: white;
+      height: 50px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-content {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .copyright {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.8);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Main Content Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--light-gray);
+      margin: 0;
+      padding: 80px 20px 70px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .main-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: var(--background-color);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+
+    h2, h3 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    form {
+      background: var(--background-color);
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      border: 1px solid var(--border-color);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      transition: all 0.3s;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: var(--accent-color);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(64, 182, 77, 0.1);
+    }
+
+    button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    #message {
+      padding: 12px;
+      border-radius: 4px;
+      margin: 20px 0;
+      display: none;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .program-description {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    ul#programList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul#programList li {
+      border: 1px solid var(--border-color);
+      padding: 15px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    ul#programList li:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .program-details {
+      flex: 1;
+      padding-left: 15px;
+    }
+
+    .program-image img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 70px 15px 60px;
+      }
+
+      .main-container {
+        padding: 20px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 5px;
+        padding: 10px;
+      }
+
+      .footer-links {
+        gap: 10px;
+      }
+
+      ul#programList li {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .program-details {
+        padding-left: 0;
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      .program-image img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+    }
+   </style>
+</head>
+<body>
+  <!-- Header and Footer remain unchanged -->
+
+  <div class="main-container">
+    <a href="/admin_program" class="back-button">
+      <i class="fas fa-arrow-left"></i> Back to Programs
+    </a>
+
+    <h2>Program Management</h2>
+    <form method="POST" enctype="multipart/form-data" id="programForm">
+      <input type="hidden" id="program_id" name="program_id" value="">
+      <div class="form-group">
+        <label for="name">Program Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Program Description:</label>
+        <div id="description" style="height: 200px;"></div>
+        <input type="hidden" name="description" id="hiddenDescription">
+      </div>
+      <div class="form-group">
+        <label for="image">Program Image:</label>
+        <input type="file" id="image" name="image" accept="image/*">
+      </div>
+      <button type="submit" id="submitBtn">Add Program</button>
+      <button type="button" id="cancelEdit" style="display: none; background-color: #ccc; margin-left: 10px;" onclick="cancelEdit()">Cancel Edit</button>
+    </form>
+
+    <div id="message"></div>
+    <h3>Existing Programs</h3>
+    <ul id="programList"></ul>
+  </div>
+
+  <footer class="admin-footer">
+    <!-- Footer remains unchanged -->
+  </footer>
+
+  <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+  <script>
+    let quill;
+    document.addEventListener("DOMContentLoaded", function () {
+      quill = new Quill('#description', {
+        theme: 'snow',
+        modules: {
+          toolbar: [
+            ['bold', 'italic', 'underline'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ['link', 'image'],
+            ['clean']
+          ]
+        }
+      });
+      loadPrograms();
+
+      const form = document.getElementById("programForm");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        document.getElementById("hiddenDescription").value = quill.root.innerHTML;
+
+        const formData = new FormData(form);
+        const url = form.program_id.value ? "/update_programs" : "/add_program_handler";
+
+        fetch(url, {
+          method: "POST",
+          body: formData
+        })
+        .then(res => res.text())
+        .then(msg => {
+          showMessage(msg, msg.includes("Error"));
+          resetForm();
+          loadPrograms();
+        });
+      });
+    });
+
+   function loadPrograms() {
+  fetch("/get_programs")
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById("programList");
+      list.innerHTML = "";
+      data.forEach(prog => {
+        const imagePath = prog.image_path
+          ? (prog.image_path.startsWith('/uploads/')
+              ? prog.image_path
+              : '/uploads/' + prog.image_path.split(/[/\\]+/).pop())
+          : null;
+
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <div class="program-image">
+            ${imagePath
+              ? `<img src="${imagePath}" alt="Program Image">`
+              : '<div style="width:80px;height:80px;background:#eee;display:flex;align-items:center;justify-content:center;border-radius:4px;"><i class="fas fa-image" style="color:#aaa;"></i></div>'}
+          </div>
+          <div class="program-details">
+            <strong>${prog.name}</strong><br>
+            <div class="program-description">${prog.description}</div>
+          </div>
+          <div>
+            <button onclick="editProgram(${prog.id}, '${prog.name.replace(/'/g, "\\'")}', \`${prog.description.replace(/`/g, '\\`')}\`)"><i class="fas fa-edit"></i> Edit</button>
+            <button onclick="deleteProgram(${prog.id})" style="background-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button>
+          </div>
+        `;
+        list.appendChild(li);
+      });
+    });
+}
+    function editProgram(id, name, description) {
+      document.getElementById("name").value = name;
+      quill.root.innerHTML = description;
+      document.getElementById("program_id").value = id;
+      document.getElementById("submitBtn").textContent = "Update Program";
+      document.getElementById("cancelEdit").style.display = "inline-block";
+      document.getElementById("name").focus();
+    }
+
+    function cancelEdit() {
+      resetForm();
+    }
+
+    function resetForm() {
+      document.getElementById("programForm").reset();
+      quill.setText('');
+      document.getElementById("program_id").value = '';
+      document.getElementById("submitBtn").textContent = "Add Program";
+      document.getElementById("cancelEdit").style.display = "none";
+    }
+
+    function deleteProgram(id) {
+      if (!confirm("Are you sure you want to delete this program?")) return;
+      fetch("/delete_program", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `id=${id}`
+      })
+      .then(res => res.text())
+      .then(msg => {
+        showMessage(msg, msg.includes("Error"));
+        loadPrograms();
+      });
+    }
+
+    function showMessage(message, isError = false) {
+      const msgDiv = document.getElementById("message");
+      msgDiv.textContent = message;
+      msgDiv.style.background = isError ? "#FFEBEE" : "#E8F5E9";
+      msgDiv.style.color = isError ? "#C62828" : "#2E7D32";
+      msgDiv.style.border = isError ? "1px solid #EF9A9A" : "1px solid #A5D6A7";
+      msgDiv.style.display = "block";
+      setTimeout(() => msgDiv.style.display = "none", 4000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Manage Ministries</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+        .ministry-card {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: white;
+        }
+        .ministry-image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .ministry-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Manage Ministries</h2>
+        <div id="ministries-container">
+            <div class="text-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Ministry Modal -->
+    <div class="modal fade" id="editMinistryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Ministry</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="editMinistryForm" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <input type="hidden" id="edit_id" name="id" />
+                        <div class="mb-3">
+                            <label for="edit_name" class="form-label">Ministry Name</label>
+                            <input type="text" class="form-control" id="edit_name" name="ministry_name" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit_description" class="form-label">Description</label>
+                            <textarea class="form-control" id="edit_description" name="description" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit_time" class="form-label">Meeting Time</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="edit_time"
+                                name="meeting_time"
+                                placeholder="e.g., 07:00 PM to 08:00 PM"
+                                required
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit_days" class="form-label">Meeting Days</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="edit_days"
+                                name="meeting_days"
+                                placeholder="e.g., Monday & Thursday"
+                                required
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit_image" class="form-label">Update Image (Leave blank to keep current)</label>
+                            <input class="form-control" type="file" id="edit_image" name="image" accept="image/*" />
+                            <div class="mt-2">
+                                <small>Current Image:</small>
+                                <div class="ministry-image-container mt-1">
+                                    <img id="current_image" src="" class="ministry-image" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadMinistries();
+
+            document.getElementById('editMinistryForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+
+                fetch('/delete_edit_ministries', {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.success) {
+                            alert('Ministry updated successfully');
+                            const modal = bootstrap.Modal.getInstance(document.getElementById('editMinistryModal'));
+                            modal.hide();
+                            loadMinistries();
+                        } else {
+                            alert('Error: ' + data.message);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+
+        function loadMinistries() {
+            fetch('/fetch_ministries')
+                .then((response) => response.json())
+                .then((data) => {
+                    const container = document.getElementById('ministries-container');
+                    container.innerHTML = '';
+
+                    if (data.length === 0) {
+                        container.innerHTML = '<div class="alert alert-info">No ministries found</div>';
+                        return;
+                    }
+
+                    data.forEach((ministry) => {
+                        const card = document.createElement('div');
+                        card.className = 'ministry-card';
+
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'ministry-image-container';
+
+                        const img = document.createElement('img');
+                        img.className = 'ministry-image';
+                        img.alt = ministry.name;
+
+                        if (ministry.image_path) {
+                            img.src = ministry.image_path;
+
+                            img.onerror = function () {
+                                this.src = ministry.image_path.replace(/^.*\/\/[^\/]+/, '');
+
+                                this.onerror = function () {
+                                    this.src = 'static/uploads/' + ministry.image_path.split('/').pop();
+
+                                    this.onerror = function () {
+                                        this.src = 'https://via.placeholder.com/300x200?text=Ministry+Image';
+                                    };
+                                };
+                            };
+                        } else {
+                            img.src = 'https://via.placeholder.com/300x200?text=No+Image';
+                        }
+
+                        imgContainer.appendChild(img);
+
+                        const contentDiv = document.createElement('div');
+                        contentDiv.innerHTML = `
+                            <h4>${ministry.name}</h4>
+                            <p>${ministry.description}</p>
+                            <p><strong>Time:</strong> ${ministry.time}</p>
+                            <p><strong>Days:</strong> ${ministry.days}</p>
+                            <div class="text-end mt-3">
+                                <button class="btn btn-primary btn-sm me-2" onclick="editMinistry(${ministry.id}, '${ministry.name.replace(/'/g, "\\'")}', '${ministry.description.replace(/'/g, "\\'")}', '${ministry.time.replace(/'/g, "\\'")}', '${ministry.days.replace(/'/g, "\\'")}', '${ministry.image_path.replace(/'/g, "\\'")}')">Edit</button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteMinistry(${ministry.id})">Delete</button>
+                            </div>
+                        `;
+
+                        card.appendChild(imgContainer);
+                        card.appendChild(contentDiv);
+                        container.appendChild(card);
+                    });
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    document.getElementById('ministries-container').innerHTML =
+                        '<div class="alert alert-danger">Error loading ministries</div>';
+                });
+        }
+
+        function editMinistry(id, name, description, time, days, imagePath) {
+            document.getElementById('edit_id').value = id;
+            document.getElementById('edit_name').value = name;
+            document.getElementById('edit_description').value = description;
+            document.getElementById('edit_time').value = time;
+            document.getElementById('edit_days').value = days;
+
+            const imgElement = document.getElementById('current_image');
+            imgElement.src = imagePath;
+            imgElement.onerror = function () {
+                this.src = 'https://via.placeholder.com/300x200?text=Ministry+Image';
+            };
+
+            const modal = new bootstrap.Modal(document.getElementById('editMinistryModal'));
+            modal.show();
+        }
+
+        function deleteMinistry(id) {
+            if (confirm('Are you sure you want to delete this ministry?')) {
+                fetch(`/delete_ministry?id=${id}`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.success) {
+                            alert('Ministry deleted successfully');
+                            loadMinistries();
+                        } else {
+                            alert('Error deleting ministry: ' + data.message);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+        }
+    </script>
+</body>
+</html>

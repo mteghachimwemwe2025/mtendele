@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage News | Christian Universal Church Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #1a3a6e;  /* Professional dark blue */
+      --secondary-color: #d4af37; /* Muted gold accent */
+      --accent-color: #c8102e;   /* Deep red accent */
+      --white: #FFFFFF;
+      --black: #222222;
+      --gray-light: #f8f9fa;
+      --gray-medium: #e9ecef;
+      --gray-dark: #6c757d;
+      --sidebar-width: 250px;
+      --sidebar-collapsed-width: 70px;
+      --transition-speed: 0.3s;
+      --sidebar-bg: #0d2b4e; /* Dark sidebar background */
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--gray-light);
+      color: var(--black);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Header */
+    .top-header {
+      background-color: var(--sidebar-bg);
+      color: var(--white);
+      padding: 10px 0;
+      text-align: center;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.15);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0 20px;
+    }
+    
+    .top-header h1 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 40px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 70%;
+    }
+    
+    /* User Profile */
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .profile-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--white);
+    }
+    
+    .profile-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--secondary-color);
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: var(--white);
+      min-width: 140px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      z-index: 1;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    .dropdown-content a {
+      color: var(--black);
+      padding: 10px 12px;
+      text-decoration: none;
+      display: block;
+      font-size: 13px;
+      transition: background-color 0.3s;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: var(--gray-light);
+    }
+    
+    .profile-dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    /* Dashboard Container */
+    .dashboard-container {
+      display: flex;
+      flex: 1;
+      position: relative;
+      margin-top: 60px;
+      min-height: calc(100vh - 120px);
+    }
+    
+    /* Sidebar Styles */
+    .sidebar {
+      width: var(--sidebar-width);
+      background-color: var(--sidebar-bg);
+      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.15);
+      padding: 20px 0;
+      position: fixed;
+      height: calc(100% - 120px);
+      z-index: 100;
+      transition: width var(--transition-speed) ease;
+      overflow: hidden;
+      top: 60px;
+    }
+    
+    .logo-container {
+      text-align: center;
+      padding: 15px 15px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+      transition: all var(--transition-speed) ease;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .logo-container img {
+      max-height: 50px;
+      width: auto;
+      object-fit: contain;
+      transition: all var(--transition-speed) ease;
+    }
+    
+    .logo-container.collapsed img {
+      max-height: 35px;
+    }
+    
+    .nav-menu {
+      list-style: none;
+      padding: 0 10px;
+    }
+    
+    .nav-item {
+      margin-bottom: 5px;
+      white-space: nowrap;
+    }
+    
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 12px 15px;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: all var(--transition-speed) ease;
+      font-weight: 500;
+      border-radius: 6px;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+    }
+    
+    .nav-link.active {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-left: 4px solid var(--secondary-color);
+    }
+    
+    .nav-link i {
+      margin-right: 12px;
+      font-size: 16px;
+      min-width: 24px;
+      text-align: center;
+      color: var(--secondary-color);
+    }
+    
+    .nav-text {
+      transition: opacity var(--transition-speed) ease;
+    }
+    
+    /* Toggle Button */
+    .sidebar-toggle {
+      position: absolute;
+      top: 15px;
+      right: -15px;
+      width: 30px;
+      height: 30px;
+      background-color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 101;
+      border: none;
+      color: var(--sidebar-bg);
+      transition: transform var(--transition-speed) ease;
+      padding: 0;
+    }
+    
+    .sidebar-toggle i {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .sidebar-toggle:hover {
+      transform: scale(1.1);
+    }
+    
+    /* Collapsed Sidebar */
+    .sidebar.collapsed {
+      width: var(--sidebar-collapsed-width);
+    }
+    
+    .sidebar.collapsed .logo-container {
+      padding: 20px 5px;
+      height: 60px;
+    }
+    
+    .sidebar.collapsed .nav-text {
+      opacity: 0;
+      width: 0;
+    }
+    
+    .sidebar.collapsed .nav-link {
+      justify-content: center;
+      padding: 12px 5px;
+    }
+    
+    .sidebar.collapsed .nav-link i {
+      margin-right: 0;
+    }
+    
+    /* Main Content Styles */
+    .main-content {
+      flex: 1;
+      margin-left: var(--sidebar-width);
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 120px);
+      transition: margin-left var(--transition-speed) ease;
+      background-color: #f5f7fa;
+    }
+    
+    .main-content.expanded {
+      margin-left: var(--sidebar-collapsed-width);
+    }
+    
+    .content-wrapper {
+      flex: 1;
+      padding: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+    }
+    
+    /* Card Button Styles */
+    .card-btn-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .card-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 280px;
+      height: 200px;
+      padding: 25px;
+      background-color: var(--white);
+      color: var(--primary-color);
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .card-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+    
+    .card-btn i {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: var(--secondary-color);
+    }
+    
+    .card-btn:hover i {
+      color: var(--white);
+    }
+    
+    .page-title {
+      color: var(--primary-color);
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .page-subtitle {
+      color: var(--gray-dark);
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+    
+    /* Footer Styles */
+    .footer {
+      background-color: var(--sidebar-bg);
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 15px;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      z-index: 1000;
+      font-size: 14px;
+    }
+    
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      z-index: 1001;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border: none;
+      color: white;
+      padding: 0;
+    }
+    
+    .mobile-menu-toggle .hamburger {
+      width: 24px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: auto;
+    }
+    
+    .mobile-menu-toggle .hamburger span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-toggle.active .hamburger span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    
+    .mobile-menu-toggle.active .hamburger span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active .hamburger span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Mobile Dropdown Menu */
+    .mobile-dropdown-menu {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background-color: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      z-index: 1002;
+      overflow: hidden;
+      width: 200px;
+    }
+    
+    .mobile-dropdown-menu.active {
+      display: block;
+    }
+    
+    .mobile-dropdown-item {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--gray-medium);
+    }
+    
+    .mobile-dropdown-item:last-child {
+      border-bottom: none;
+    }
+    
+    .mobile-dropdown-link {
+      display: flex;
+      align-items: center;
+      color: var(--black);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+    .mobile-dropdown-link i {
+      margin-right: 10px;
+      color: var(--secondary-color);
+      width: 20px;
+      text-align: center;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .sidebar {
+        width: var(--sidebar-collapsed-width);
+      }
+      
+      .sidebar.collapsed {
+        width: 0;
+      }
+      
+      .main-content {
+        margin-left: var(--sidebar-collapsed-width);
+      }
+      
+      .main-content.expanded {
+        margin-left: 0;
+      }
+      
+      .logo-container img {
+        max-height: 35px;
+      }
+      
+      .card-btn-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .content-wrapper {
+        padding: 20px;
+      }
+      
+      .top-header h1 {
+        font-size: 1.2rem;
+        max-width: 60%;
+      }
+      
+      .card-btn {
+        width: 100%;
+        max-width: 300px;
+        height: 160px;
+      }
+      
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      
+      .sidebar {
+        display: none;
+      }
+      
+      .main-content {
+        margin-left: 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .top-header h1 {
+        font-size: 1rem;
+        max-width: 50%;
+      }
+      
+      .mobile-menu-toggle {
+        width: 45px;
+        height: 45px;
+      }
+      
+      .mobile-menu-toggle .hamburger {
+        width: 20px;
+      }
+      
+      .mobile-dropdown-menu {
+        width: 180px;
+        bottom: 70px;
+        right: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Profile -->
+  <header class="top-header">
+    <h1>CHRISTIAN UNIVERSAL CHURCH ADMIN</h1>
+    <div class="user-profile">
+      <div class="profile-dropdown">
+        <button class="profile-btn">
+          <img src="/uploads/church logo.jpg" alt="Profile" class="profile-img">
+          <i class="fas fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#"><i class="fas fa-user me-2"></i>Profile</a>
+          <a href="/logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="logo-container" id="logoContainer">
+        <img src="/uploads/church logo.jpg" alt="Christian Universal Church Logo">
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="/admin_dashboard" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span class="nav-text">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/manage_news" class="nav-link active">
+            <i class="fas fa-newspaper"></i>
+            <span class="nav-text">News</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/manage_programs" class="nav-link">
+            <i class="fas fa-project-diagram"></i>
+            <span class="nav-text">Programs</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/view_message_handle" class="nav-link">
+            <i class="fas fa-envelope"></i>
+            <span class="nav-text">Messages</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+      <div class="content-wrapper">
+        <h2 class="page-title">Manage News</h2>
+        <p class="page-subtitle">Select an action to manage news content</p>
+        
+        <div class="card-btn-container">
+          <a href="/add_category_uploader" class="card-btn">
+            <i class="fas fa-tags"></i>
+            Add News Category
+          </a>
+          
+          <a href="/add_news_handle" class="card-btn">
+            <i class="fas fa-newspaper"></i>
+            Add News Post
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="copyright">
+        <i class="far fa-copyright"></i>
+        <span>2024 Christian Universal Church. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <!-- Mobile Dropdown Menu -->
+  <div class="mobile-dropdown-menu" id="mobileDropdownMenu">
+    <div class="mobile-dropdown-item">
+      <a href="/admin_dashboard" class="mobile-dropdown-link">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/manage_news" class="mobile-dropdown-link">
+        <i class="fas fa-newspaper"></i>
+        <span>News</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/manage_programs" class="mobile-dropdown-link">
+        <i class="fas fa-project-diagram"></i>
+        <span>Programs</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/view_message_handle" class="mobile-dropdown-link">
+        <i class="fas fa-envelope"></i>
+        <span>Messages</span>
+      </a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.getElementById('sidebar');
+      const sidebarToggle = document.getElementById('sidebarToggle');
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const mobileDropdownMenu = document.getElementById('mobileDropdownMenu');
+      const mainContent = document.getElementById('mainContent');
+      const logoContainer = document.getElementById('logoContainer');
+
+      // Toggle sidebar
+      function toggleSidebar() {
+        sidebar.classList.toggle('collapsed');
+        mainContent.classList.toggle('expanded');
+        logoContainer.classList.toggle('collapsed');
+        sidebarToggle.innerHTML = sidebar.classList.contains('collapsed')
+          ? '<i class="fas fa-chevron-right"></i>'
+          : '<i class="fas fa-chevron-left"></i>';
+      }
+
+      sidebarToggle.addEventListener('click', toggleSidebar);
+      
+      // Toggle mobile dropdown menu
+      mobileMenuToggle.addEventListener('click', function() {
+        mobileMenuToggle.classList.toggle('active');
+        mobileDropdownMenu.classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!mobileMenuToggle.contains(event.target)) {
+          mobileMenuToggle.classList.remove('active');
+          mobileDropdownMenu.classList.remove('active');
+        }
+      });
+
+      // Handle responsive behavior
+      function handleResize() {
+        if (window.innerWidth <= 768) {
+          sidebar.style.display = 'none';
+          mainContent.style.marginLeft = '0';
+          mobileMenuToggle.style.display = 'flex';
+        } else {
+          sidebar.style.display = 'block';
+          mobileMenuToggle.style.display = 'none';
+          mobileMenuToggle.classList.remove('active');
+          mobileDropdownMenu.classList.remove('active');
+          
+          if (window.innerWidth <= 992) {
+            sidebar.classList.add('collapsed');
+            mainContent.classList.add('expanded');
+            logoContainer.classList.add('collapsed');
+            sidebarToggle.innerHTML = '<i class="fas fa-chevron-right"></i>';
+          } else {
+            sidebar.classList.remove('collapsed');
+            mainContent.classList.remove('expanded');
+            logoContainer.classList.remove('collapsed');
+            sidebarToggle.innerHTML = '<i class="fas fa-chevron-left"></i>';
+          }
+        }
+      }
+
+      window.addEventListener('resize', handleResize);
+      handleResize(); // Initialize
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.mobile-dropdown-link').forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenuToggle.classList.remove('active');
+          mobileDropdownMenu.classList.remove('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mtendele Baptist Church Programs & Activities</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-purple: #6A0DAD; /* Deep purple */
+      --secondary-navy: #000066; /* Dark navy */
+      --accent-gold: #FFD700;
+      --light-purple: #F5F0FF;
+      --dark-purple: #4B0082;
+      --white: #FFFFFF;
+      --light-gray: #F8F9FA;
+      --dark-gray: #343A40;
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background-color: var(--light-purple);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    /* Enhanced Social Bar with Professional Gradient Blend */
+    .social-bar {
+      background: linear-gradient(135deg, 
+        rgba(180, 140, 255, 0.9) 0%, 
+        rgba(106, 13, 173, 0.8) 30%, 
+        rgba(70, 30, 180, 0.8) 60%, 
+        rgba(0, 0, 102, 0.7) 100%);
+      padding: 5px 0;
+      height: 40px;
+      border-bottom: 1px solid rgba(106,13,173,0.2);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 15px rgba(106,13,173,0.15);
+      position: relative;
+      z-index: 1000;
+    }
+
+    .social-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255,255,255,0.4) 50%, 
+        transparent 100%);
+    }
+
+    .social-icons-top {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+    }
+
+    .social-icon-top {
+      color: var(--white);
+      font-size: 14px;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.15);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .social-icon-top::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(255,255,255,0.1) 100%);
+      border-radius: 50%;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .social-icon-top:hover {
+      color: var(--accent-gold);
+      transform: translateY(-2px) scale(1.1);
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 4px 12px rgba(106,13,173,0.3);
+    }
+
+    .social-icon-top:hover::after {
+      opacity: 1;
+    }
+
+    /* Updated Navbar - More Compact */
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      padding: 5px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand img {
+      height: 50px;
+      margin-right: 12px;
+      background-color: white;
+      padding: 5px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .navbar-brand:hover img {
+      transform: scale(1.05);
+    }
+
+    .nav-divider {
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
+      padding: 6px 12px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--white);
+    }
+
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 12px;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover:after, .nav-link.active:after {
+      width: calc(100% - 24px);
+    }
+
+    /* Programs Page Specific Styles */
+    .programs-header {
+      background: linear-gradient(rgba(106, 13, 173, 0.8), rgba(0, 0, 102, 0.8)), url('/uploads/church who we are.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+    }
+    .programs-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+    .programs-header p {
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .programs-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .program-card, .activity-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: var(--transition);
+      margin-bottom: 30px;
+      background: white;
+      cursor: pointer;
+      height: 100%;
+      border: none;
+      border-top: 4px solid var(--primary-purple);
+    }
+    .program-card:hover, .activity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      border-top-color: var(--accent-gold);
+    }
+
+    .program-img, .activity-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .program-card:hover .program-img, 
+    .activity-card:hover .activity-img {
+      transform: scale(1.05);
+    }
+
+    .card-body {
+      padding: 25px;
+    }
+
+    .card-date {
+      color: var(--accent-gold);
+      font-weight: 500;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+    .card-date i {
+      margin-right: 8px;
+    }
+
+    .card-title {
+      color: var(--dark-purple);
+      font-weight: 700;
+      margin-bottom: 15px;
+      transition: var(--transition);
+    }
+    .program-card:hover .card-title,
+    .activity-card:hover .card-title {
+      color: var(--primary-purple);
+    }
+
+    .card-excerpt {
+      color: var(--dark-gray);
+      margin-bottom: 20px;
+    }
+
+    .card-category {
+      display: inline-block;
+      background-color: var(--primary-purple);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      margin-bottom: 15px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+    }
+    .program-card:hover .card-category,
+    .activity-card:hover .card-category {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+    }
+
+    .read-more-btn {
+      color: var(--primary-purple);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    .read-more-btn i {
+      margin-left: 8px;
+      transition: var(--transition);
+    }
+    .read-more-btn:hover {
+      color: var(--accent-gold);
+    }
+    .read-more-btn:hover i {
+      transform: translateX(5px);
+    }
+
+    .programs-sidebar {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 100px;
+      border-top: 4px solid var(--primary-purple);
+    }
+
+    .sidebar-title {
+      color: var(--primary-purple);
+      border-bottom: 3px solid var(--accent-gold);
+      padding-bottom: 12px;
+      margin-bottom: 25px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      position: relative;
+    }
+    .sidebar-title::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent-gold);
+    }
+
+    .recent-item {
+      display: flex;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .recent-item:hover {
+      transform: translateX(5px);
+    }
+
+    .recent-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 15px;
+      transition: var(--transition);
+    }
+    .recent-item:hover .recent-img {
+      transform: scale(1.1);
+    }
+
+    .recent-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      transition: var(--transition);
+    }
+    .recent-item:hover .recent-title {
+      color: var(--primary-purple);
+    }
+
+    .recent-date {
+      font-size: 0.8rem;
+      color: var(--dark-gray);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1050;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 60px auto;
+      padding: 40px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 800px;
+      position: relative;
+      animation: modalFadeIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+      border-top: 6px solid var(--primary-purple);
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 450px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--dark-gray);
+      cursor: pointer;
+      transition: var(--transition);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .close-btn:hover {
+      color: var(--accent-gold);
+      background-color: rgba(0,0,0,0.05);
+      transform: rotate(90deg);
+    }
+
+    .sidebar-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .featured-badge {
+      background-color: var(--primary-purple);
+      color: white;
+      font-weight: 600;
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-left: 10px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .trending-badge {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      font-weight: 600;
+      margin-left: 10px;
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      vertical-align: middle;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Enhanced Footer Styles */
+    footer {
+      background: linear-gradient(135deg, var(--secondary-navy) 0%, var(--dark-purple) 100%);
+      color: white;
+      padding: 80px 0 30px;
+      position: relative;
+      margin-top: 80px;
+      background-image: url('/uploads/bible opened.jpg');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      background-color: rgba(0, 0, 102, 0.9);
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--primary-purple) 0%, var(--accent-gold) 50%, var(--primary-purple) 100%);
+    }
+    .footer-logo {
+      margin-bottom: 25px;
+    }
+    .footer-logo img {
+      height: 80px;
+      background-color: white;
+      padding: 5px;
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+    .footer-logo:hover img {
+      transform: scale(1.05);
+    }
+    footer p {
+      color: #bbb;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .footer-links h4 {
+      color: var(--accent-gold);
+      margin-bottom: 25px;
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      position: relative;
+      display: inline-block;
+    }
+    .footer-links h4::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent-gold);
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links li {
+      margin-bottom: 12px;
+      transition: var(--transition);
+    }
+    .footer-links a {
+      color: #bbb;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+    }
+    .footer-links a i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+      color: var(--accent-gold);
+      font-size: 0.9rem;
+    }
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      padding-left: 5px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+    }
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.1);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    .footer-social a:hover {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      transform: translateY(-5px);
+    }
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 25px;
+      margin-top: 60px;
+      text-align: center;
+      color: #999;
+      font-size: 0.9rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+      border: none;
+    }
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .back-to-top:hover {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .programs-header {
+        padding: 80px 0;
+      }
+      .social-bar {
+        display: none;
+      }
+      .programs-sidebar {
+        position: relative;
+        top: 0;
+        margin-top: 40px;
+      }
+      .recent-item {
+        flex-direction: column;
+      }
+      .recent-img {
+        width: 100%;
+        height: 120px;
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .programs-header {
+        padding: 60px 0;
+      }
+      .footer-logo img {
+        height: 60px;
+      }
+      .footer-links h4 {
+        font-size: 1.1rem;
+      }
+      .navbar-brand {
+        font-size: 18px;
+      }
+      .navbar-brand img {
+        height: 40px;
+      }
+      .programs-sidebar {
+        padding: 20px;
+      }
+      .sidebar-title {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Enhanced Social Media Bar with Professional Gradient -->
+<div class="social-bar">
+  <div class="container">
+    <div class="social-icons-top">
+      <a href="#" class="social-icon-top"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <img src="uploads/images (13).jpeg" alt="Mtendele Baptist Church Logo">
+      Mtendele Baptist Church
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/ministries">Ministries</a></li>
+        <li class="nav-item"><a class="nav-link" href="/sermons">Sermons</a></li>
+        <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="/program">Programs</a></li>
+         <li class="nav-item"><a class="nav-link" href="/church_articles">Articles</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- White Divider Line -->
+<div class="nav-divider"></div>
+
+<!-- Programs Header -->
+<header class="programs-header">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Church Programs & Activities</h1>
+    <p class="lead">Explore our spiritual programs and stay updated with our latest church activities</p>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="programs-container">
+  <div class="row">
+    <div class="col-lg-8">
+      <h2 class="mb-4">Our Featured Programs</h2>
+      <div class="row" id="programContainer"></div>
+
+      <h3 class="mt-5 mb-3">Church Activities</h3>
+      <div class="row" id="activityContainer"></div>
+      <div class="text-center mt-3">
+        <button class="btn btn-outline-primary" id="loadMoreActivitiesBtn">View More Activities</button>
+      </div>
+    </div>
+    
+    <!-- Sidebar -->
+    <div class="col-lg-4">
+      <div class="programs-sidebar">
+        <h3 class="sidebar-title">Featured Programs</h3>
+        <div id="sidebarPrograms"></div>
+        <div class="sidebar-buttons">
+          <button class="btn btn-outline-secondary btn-sm" id="backBtn">← Back</button>
+          <button class="btn btn-outline-primary btn-sm" id="loadMoreBtn">Next →</button>
+        </div>
+
+        <h3 class="sidebar-title mt-4">Recent Activities</h3>
+        <div id="sidebarActivities"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Program Modal -->
+<div id="programModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('programModal')">&times;</span>
+    <h3 id="programTitle"></h3>
+    <img id="programImage" src="" alt="Program Image" class="mb-4">
+    <div id="programDescription"></div>
+  </div>
+</div>
+
+<!-- Activity Modal -->
+<div id="activityModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('activityModal')">&times;</span>
+    <h3 id="activityTitle"></h3>
+    <p id="activityMeta"></p>
+    <img id="activityImage" src="" alt="Activity Image" class="mb-4">
+    <div id="activityContent"></div>
+  </div>
+</div>
+
+<!-- Enhanced Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="footer-logo">
+          <img src="uploads/images (13).jpeg" alt="Mtendele Baptist Church Logo" id="footerLogo">
+        </div>
+        <p>A vibrant community of believers dedicated to spreading the Gospel of Jesus Christ and serving our community with love and compassion.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+             <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="/ministries"><i class="fas fa-chevron-right"></i> Ministries</a></li>
+            <li><a href="/sermons"><i class="fas fa-chevron-right"></i> Sermons</a></li>
+            <li><a href="/about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="/contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+            <li><a href="/news"><i class="fas fa-chevron-right"></i> News</a></li>
+            <li><a href="/programs"><i class="fas fa-chevron-right"></i> programs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+        <div class="footer-links">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Sunday Worship</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Bible Study</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Youth Ministry</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Prayer Meetings</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Mission Outreach</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <div class="footer-links">
+          <h4>Contact Info</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Mtendele Township, Dar es Salaam, Tanzania</a></li>
+            <li><a href="mailto:info@mtendelebaptist.org"><i class="fas fa-envelope"></i> info@mtendelebaptist.org</a></li>
+            <li><a href="tel:+255123456789"><i class="fas fa-phone"></i> +255 123 456 789</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright text-center">
+      <p class="mb-0">&copy; 2025 Mtendele Baptist Church. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function htmlToPlainText(html) {
+  return html.replace(/<[^>]+>/g, '').trim();
+}
+function htmlToFormattedText(html) {
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  return div.innerText;
+}
+
+let sidebarIndex = 0;
+const sidebarBatchSize = 6;
+let allPrograms = [];
+let allActivities = [];
+let activityViewCount = 6;
+
+function renderSidebarPrograms() {
+  const sidebar = document.getElementById('sidebarPrograms');
+  sidebar.innerHTML = '';
+  const slice = allPrograms.slice(sidebarIndex, sidebarIndex + sidebarBatchSize);
+  slice.forEach(program => {
+    const cleanDescription = htmlToPlainText(program.description);
+    const miniCard = document.createElement('div');
+    miniCard.className = 'recent-item';
+    miniCard.innerHTML = `<img src="${program.image_path}" class="recent-img" alt=""><div><h4 class="recent-title">${program.name}</h4><div class="recent-date">${program.date_posted || 'Featured Program'}</div></div>`;
+    miniCard.addEventListener('click', () => {
+      document.getElementById('programTitle').textContent = program.name;
+      document.getElementById('programDescription').innerHTML = cleanDescription;
+      document.getElementById('programImage').src = program.image_path;
+      document.getElementById('programModal').style.display = 'block';
+    });
+    sidebar.appendChild(miniCard);
+  });
+
+  document.getElementById('backBtn').disabled = sidebarIndex === 0;
+  document.getElementById('loadMoreBtn').disabled = sidebarIndex + sidebarBatchSize >= allPrograms.length;
+}
+
+function renderSidebarActivities() {
+  const sidebar = document.getElementById('sidebarActivities');
+  sidebar.innerHTML = '';
+  allActivities.slice(0, 6).forEach(activity => {
+    const miniCard = document.createElement('div');
+    miniCard.className = 'recent-item';
+    miniCard.innerHTML = `<img src="${activity.image_path}" class="recent-img" alt=""><div><h4 class="recent-title">${activity.title}</h4><div class="recent-date">${activity.date_posted}</div></div>`;
+    miniCard.addEventListener('click', () => {
+      document.getElementById('activityTitle').textContent = activity.title;
+      document.getElementById('activityImage').src = activity.image_path;
+      document.getElementById('activityMeta').textContent = `Program: ${activity.program_name} | Date: ${activity.date_posted}`;
+      document.getElementById('activityContent').innerHTML = activity.content;
+      document.getElementById('activityModal').style.display = 'block';
+    });
+    sidebar.appendChild(miniCard);
+  });
+}
+
+function renderActivities() {
+  const activityContainer = document.getElementById('activityContainer');
+  activityContainer.innerHTML = '';
+  allActivities.slice(0, activityViewCount).forEach((activity, index) => {
+    const col = document.createElement('div');
+    col.className = 'col-md-6 col-lg-4 mb-4';
+    
+    let badges = '';
+    if (index < 3) badges += `<span class="featured-badge">⭐ Featured</span>`;
+    if (index === 0) badges += `<span class="trending-badge">🔥 Trending</span>`;
+    
+    col.innerHTML = `
+      <div class="card activity-card h-100">
+        <img src="${activity.image_path}" class="activity-img" alt="">
+        <div class="card-body">
+          <span class="card-category">${activity.program_name}</span>
+          <div class="card-date"><i class="far fa-calendar-alt"></i> Posted on ${activity.date_posted}</div>
+          <h5 class="card-title">${activity.title}${badges}</h5>
+          <p class="card-excerpt">${htmlToPlainText(activity.content).substring(0, 100)}...</p>
+          <a href="#" class="read-more-btn">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>`;
+    col.querySelector('.activity-card').addEventListener('click', () => {
+      document.getElementById('activityTitle').textContent = activity.title;
+      document.getElementById('activityImage').src = activity.image_path;
+      document.getElementById('activityMeta').textContent = `Program: ${activity.program_name} | Date: ${activity.date_posted}`;
+      document.getElementById('activityContent').innerHTML = activity.content;
+      document.getElementById('activityModal').style.display = 'block';
+    });
+    activityContainer.appendChild(col);
+  });
+}
+
+// DOM READY
+document.addEventListener('DOMContentLoaded', function() {
+  window.addEventListener('scroll', function() {
+    var backToTop = document.querySelector('.back-to-top');
+    backToTop.classList.toggle('active', window.pageYOffset > 300);
+  });
+
+  document.querySelector('.back-to-top').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+
+  fetch('/load_program_list')
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === 'success') {
+        allPrograms = data.programs;
+        const container = document.getElementById('programContainer');
+        allPrograms.slice(0, 3).forEach((program, index) => {
+          const cleanDescription = htmlToPlainText(program.description);
+          const col = document.createElement('div');
+          col.className = 'col-md-6 col-lg-4 mb-4';
+          
+          let badges = '';
+          if (index === 0) badges += `<span class="trending-badge">🔥 Trending</span>`;
+          
+          col.innerHTML = `
+            <div class="card program-card h-100" data-name="${program.name}" data-description="${cleanDescription}" data-image="${program.image_path}">
+              <img src="${program.image_path}" class="program-img" alt="">
+              <div class="card-body">
+                <h5 class="card-title">${program.name}${badges}</h5>
+                <p class="card-excerpt">${cleanDescription.substring(0, 100)}...</p>
+                <a href="#" class="read-more-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>`;
+          col.querySelector('.program-card').addEventListener('click', function () {
+            document.getElementById('programTitle').textContent = this.dataset.name;
+            document.getElementById('programDescription').innerHTML = this.dataset.description;
+            document.getElementById('programImage').src = this.dataset.image;
+            document.getElementById('programModal').style.display = 'block';
+          });
+          container.appendChild(col);
+        });
+        renderSidebarPrograms();
+      }
+    });
+
+  fetch('/load_activity_full')
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === 'success') {
+        allActivities = data.activities;
+        renderActivities();
+        renderSidebarActivities();
+      }
+    });
+
+  document.getElementById('loadMoreBtn').addEventListener('click', () => {
+    sidebarIndex += sidebarBatchSize;
+    renderSidebarPrograms();
+  });
+
+  document.getElementById('backBtn').addEventListener('click', () => {
+    if (sidebarIndex >= sidebarBatchSize) {
+      sidebarIndex -= sidebarBatchSize;
+      renderSidebarPrograms();
+    }
+  });
+
+  document.getElementById('loadMoreActivitiesBtn').addEventListener('click', () => {
+    activityViewCount += 6;
+    renderActivities();
+  });
+});
+
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = 'none';
+}
+
+window.onclick = function(event) {
+  if (event.target.className === 'modal') {
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.style.display = 'none';
+    });
+  }
+}
+
+// Handle logo error fallback
+document.querySelectorAll('img[alt="Mtendele Baptist Church Logo"]').forEach(img => {
+  img.onerror = function() {
+    this.onerror = null;
+    this.src = 'https://i.ibb.co/0jQJ9yJ/church-logo.png';
+  };
+});
+
+// Double click footer logo to redirect to login
+document.getElementById('footerLogo').addEventListener('dblclick', function() {
+  window.location.href = '/login';
+});
+</script>
+
+</body>
+</html>

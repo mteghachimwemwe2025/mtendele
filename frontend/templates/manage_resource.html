@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload Resource</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container mt-5">
+  <h2>Upload New Resource</h2>
+  <!-- IMPORTANT: action matches your route '/upload_resource' exactly -->
+  <form action="/resource_routes" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label class="form-label">Resource Title</label>
+      <input type="text" name="title" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea name="description" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <select name="category_id" class="form-select" required id="categorySelect"></select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Upload File</label>
+      <input type="file" name="file" class="form-control" required />
+      <div class="form-text">Supported: PDF, MP3, DOCX, ZIP, etc.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Upload Resource</button>
+  </form>
+
+  <hr class="my-5" />
+  <h4>All Resources</h4>
+  <div id="resourceTableContainer"></div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="editForm" enctype="multipart/form-data">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Resource</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="editId" name="id" />
+          <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" id="editTitle" name="title" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea id="editDescription" name="description" class="form-control" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select id="editCategory" name="category_id" class="form-select" required></select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Change Media File (optional)</label>
+            <input type="file" id="editFile" name="file" class="form-control" />
+            <div class="form-text">Leave blank to keep existing file</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const categorySelect = document.getElementById('categorySelect');
+  const editCategory = document.getElementById('editCategory');
+
+  // Load categories for both select inputs
+  function loadCategories() {
+    fetch('/get_categories')
+      .then(res => res.json())
+      .then(data => {
+        categorySelect.innerHTML = '';
+        editCategory.innerHTML = '';
+        data.forEach(cat => {
+          const opt1 = document.createElement('option');
+          opt1.value = cat.id;
+          opt1.textContent = cat.name;
+          categorySelect.appendChild(opt1);
+
+          const opt2 = document.createElement('option');
+          opt2.value = cat.id;
+          opt2.textContent = cat.name;
+          editCategory.appendChild(opt2);
+        });
+      });
+  }
+  loadCategories();
+
+  // Load and display all resources
+  function loadResources() {
+    fetch('/get_all_resources')
+      .then(res => res.json())
+      .then(data => {
+        let html = `<table class="table table-bordered table-striped">
+                      <thead><tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>File</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                      </tr></thead><tbody>`;
+        data.forEach(res => {
+          html += `<tr>
+                    <td>${res.title}</td>
+                    <td>${res.description}</td>
+                    <td><a href="/${res.file}" download>Download</a></td>
+                    <td>${res.date}</td>
+                    <td>
+                      <button class="btn btn-sm btn-warning" onclick='openEdit(${JSON.stringify(res)})'>Edit</button>
+                      <button class="btn btn-sm btn-danger" onclick="deleteResource(${res.id})">Delete</button>
+                    </td>
+                  </tr>`;
+        });
+        html += '</tbody></table>';
+        document.getElementById('resourceTableContainer').innerHTML = html;
+      });
+  }
+  loadResources();
+
+  // Open modal with resource data for editing
+  function openEdit(resource) {
+    document.getElementById('editId').value = resource.id;
+    document.getElementById('editTitle').value = resource.title;
+    document.getElementById('editDescription').value = resource.description;
+    document.getElementById('editCategory').value = resource.category_id;
+
+    const modal = new bootstrap.Modal(document.getElementById('editModal'));
+    modal.show();
+  }
+
+  // Handle edit form submit
+  document.getElementById('editForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+
+    fetch('/edit_resource', {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
+        loadResources();
+      });
+  });
+
+  // Delete resource by ID
+  function deleteResource(id) {
+    if (!confirm('Are you sure you want to delete this resource?')) return;
+    fetch('/delete_resource', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id })
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        loadResources();
+      });
+  }
+</script>
+</body>
+</html>

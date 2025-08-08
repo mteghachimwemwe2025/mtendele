@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mtendele Baptist Church | Lilongwe, Malawi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- Glightbox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  
+  <style>
+    :root {
+      --primary-purple: #6A0DAD; /* Deep purple */
+      --secondary-navy: #000066; /* Dark navy */
+      --accent-gold: #FFD700;
+      --light-purple: #F5F0FF;
+      --dark-purple: #4B0082;
+      --white: #FFFFFF;
+      --light-gray: #F8F9FA;
+      --dark-gray: #343A40;
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    /* Enhanced Social Bar with Professional Gradient Blend */
+    .social-bar {
+      background: linear-gradient(135deg, 
+        rgba(180, 140, 255, 0.9) 0%, 
+        rgba(106, 13, 173, 0.8) 30%, 
+        rgba(70, 30, 180, 0.8) 60%, 
+        rgba(0, 0, 102, 0.7) 100%);
+      padding: 5px 0;
+      height: 40px;
+      border-bottom: 1px solid rgba(106,13,173,0.2);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 15px rgba(106,13,173,0.15);
+      position: relative;
+      z-index: 1000;
+    }
+
+    .social-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255,255,255,0.4) 50%, 
+        transparent 100%);
+    }
+
+    .social-icons-top {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+    }
+
+    .social-icon-top {
+      color: var(--white);
+      font-size: 14px;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.15);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .social-icon-top::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(255,255,255,0.1) 100%);
+      border-radius: 50%;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .social-icon-top:hover {
+      color: var(--accent-gold);
+      transform: translateY(-2px) scale(1.1);
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 4px 12px rgba(106,13,173,0.3);
+    }
+
+    .social-icon-top:hover::after {
+      opacity: 1;
+    }
+    
+    /* Logo styling with improved effects */
+    .navbar-brand img {
+      height: 50px;
+      margin-right: 12px;
+      background-color: white;
+      padding: 5px;
+      border-radius: 8px;
+      transition: var(--transition);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      object-fit: contain;
+    }
+    .navbar-brand:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    .footer-logo img {
+      height: 80px;
+      background-color: white;
+      padding: 5px;
+      border-radius: 10px;
+      transition: var(--transition);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      object-fit: contain;
+    }
+    .footer-logo:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background-color: var(--light-purple);
+      scroll-behavior: smooth;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+    
+    /* Navbar with improved effects */
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      padding: 5px 0;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled {
+      padding: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      padding: 6px 12px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: var(--white);
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 12px;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-gold);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover:after, .nav-link.active:after {
+      width: calc(100% - 24px);
+    }
+    
+    .nav-divider {
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Hero Section with parallax effect */
+    .header-hero-container {
+      position: relative;
+      height: 80vh;
+      min-height: 500px;
+      overflow: hidden;
+      perspective: 1px;
+      transform-style: preserve-3d;
+    }
+    
+    .header-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      animation: zoomInOut 15s infinite alternate;
+      transform: translateZ(-1px) scale(2);
+    }
+    
+    @keyframes zoomInOut {
+      0% {
+        transform: translateZ(-1px) scale(2);
+      }
+      100% {
+        transform: translateZ(-1px) scale(2.1);
+      }
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(106, 13, 173, 0.85) 0%, rgba(0, 0, 102, 0.9) 100%);
+    }
+    
+    .hero {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      padding: 0 20px;
+      transform: translateZ(0);
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      z-index: 1;
+      animation: fadeInUp 1.5s ease;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    .btn-custom {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      border: none;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-custom:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn-custom:hover {
+      background-color: #FFC107;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .btn-custom:hover:before {
+      left: 100%;
+    }
+    
+    .btn-outline-light {
+      border: 2px solid var(--white);
+      color: var(--white);
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-outline-light:hover {
+      background-color: var(--white);
+      color: var(--primary-purple);
+      transform: translateY(-3px);
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 30px;
+      color: var(--primary-purple);
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent-gold);
+    }
+    
+    /* ==================== */
+    /* UPDATED: Enhanced Stripe and Wave Background Elements */
+    /* ==================== */
+    
+    /* Curved stripe base */
+    .curve-stripe {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 100% 0 0 0;
+      transform: rotate(45deg);
+      z-index: 0;
+      background: linear-gradient(135deg, 
+        rgba(106, 13, 173, 0.15) 0%, 
+        rgba(106, 13, 173, 0.1) 50%, 
+        rgba(106, 13, 173, 0.05) 100%);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+
+    /* Colors and positions */
+    .stripe1 {
+      top: -100px;
+      left: -100px;
+      background: linear-gradient(135deg, 
+        rgba(106, 13, 173, 0.2) 0%, 
+        rgba(106, 13, 173, 0.15) 50%, 
+        rgba(106, 13, 173, 0.1) 100%);
+      width: 400px;
+      height: 400px;
+    }
+
+    .stripe2 {
+      top: -70px;
+      left: 30px;
+      background: linear-gradient(135deg, 
+        rgba(0, 0, 102, 0.15) 0%, 
+        rgba(0, 0, 102, 0.1) 50%, 
+        rgba(0, 0, 102, 0.05) 100%);
+      width: 350px;
+      height: 350px;
+    }
+
+    .stripe3 {
+      top: -40px;
+      left: 90px;
+      background: linear-gradient(135deg, 
+        rgba(75, 0, 130, 0.1) 0%, 
+        rgba(75, 0, 130, 0.07) 50%, 
+        rgba(75, 0, 130, 0.03) 100%);
+      width: 300px;
+      height: 300px;
+    }
+
+    /* Optional: Bottom-right corner swoosh */
+    .curve-stripe-right {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 0 0 100% 0;
+      transform: rotate(-45deg);
+      z-index: 0;
+      background: linear-gradient(135deg, 
+        rgba(106, 13, 173, 0.15) 0%, 
+        rgba(106, 13, 173, 0.1) 50%, 
+        rgba(106, 13, 173, 0.05) 100%);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+
+    .stripe4 {
+      bottom: -100px;
+      right: -100px;
+      background: linear-gradient(135deg, 
+        rgba(106, 13, 173, 0.2) 0%, 
+        rgba(106, 13, 173, 0.15) 50%, 
+        rgba(106, 13, 173, 0.1) 100%);
+      width: 400px;
+      height: 400px;
+    }
+
+    .stripe5 {
+      bottom: -70px;
+      right: 30px;
+      background: linear-gradient(135deg, 
+        rgba(0, 0, 102, 0.15) 0%, 
+        rgba(0, 0, 102, 0.1) 50%, 
+        rgba(0, 0, 102, 0.05) 100%);
+      width: 350px;
+      height: 350px;
+    }
+    
+    /* Wave patterns */
+    .wave-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      z-index: 0;
+    }
+    
+    .wave-container svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 100px;
+    }
+    
+    .wave-container .shape-fill {
+      fill: var(--light-purple);
+    }
+    
+    .wave-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      z-index: 0;
+    }
+    
+    .wave-top svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 100px;
+    }
+    
+    .wave-top .shape-fill {
+      fill: var(--white);
+    }
+    
+    /* Section with stripe backgrounds */
+    .stripe-bg-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* ==================== */
+    /* END OF UPDATED ELEMENTS */
+    /* ==================== */
+    
+    .about-section {
+      padding: 80px 0;
+      background-color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .about-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      opacity: 0.05;
+      z-index: 0;
+    }
+    
+    /* Improved image styling with hover effects */
+    .about-image {
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      max-height: 400px;
+    }
+    
+    .about-image:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .feature-box {
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: 10px;
+      height: 100%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      border-top: 4px solid var(--primary-purple);
+    }
+    
+    .feature-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary-purple);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-box:hover .feature-icon {
+      transform: rotate(10deg) scale(1.1);
+    }
+    
+    /* UPDATED Gallery Section with Carousel */
+    .gallery-section {
+      padding: 60px 0;
+      background-color: var(--light-purple);
+    }
+    
+    .gallery-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--primary-purple);
+    }
+    
+    .carousel-item img {
+      object-fit: cover;
+      width: 100%;
+      height: 400px;
+      border-radius: 12px;
+    }
+    
+    .carousel-inner {
+      padding: 20px 0;
+    }
+    
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: black;
+      border-radius: 50%;
+    }
+    
+    .carousel-control-prev, .carousel-control-next {
+      width: 5%;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: var(--transition);
+      aspect-ratio: 1 / 1;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+      filter: brightness(0.95);
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 50px;
+    }
+    
+    .image-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      filter: brightness(0.95);
+    }
+    
+    .image-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      filter: brightness(1);
+    }
+    
+    .card {
+      border: none;
+      transition: all 0.3s ease;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: var(--white);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    .card:hover .card-img-top {
+      transform: scale(1.05);
+    }
+    
+    .card-body {
+      padding: 20px;
+    }
+    
+    .card-title {
+      color: var(--primary-purple);
+      font-weight: 600;
+    }
+    
+    /* Enhanced Footer Styles */
+    footer {
+      background: linear-gradient(135deg, var(--secondary-navy) 0%, var(--dark-purple) 100%);
+      color: var(--white);
+      padding: 60px 0 20px;
+      position: relative;
+      overflow: hidden;
+      background-image: url('uploads/bible opened.jpg');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      background-color: rgba(0, 0, 102, 0.9);
+    }
+    
+    footer:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--primary-purple) 0%, var(--accent-gold) 50%, var(--primary-purple) 100%);
+    }
+    
+    .footer-links h4 {
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-links h4:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--accent-gold);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      padding-left: 5px;
+    }
+    
+    .footer-links i {
+      margin-right: 8px;
+      color: var(--accent-gold);
+      font-size: 0.8rem;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .footer-social a {
+      color: var(--white);
+      background-color: rgba(255, 255, 255, 0.15);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-social a:hover {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      transform: translateY(-3px);
+    }
+    
+    /* Other sections */
+    .pillars-section {
+      padding: 80px 0;
+      background-color: var(--light-purple);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .pillars-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      opacity: 0.05;
+      z-index: 0;
+    }
+    
+    .pillar-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      height: 100%;
+      border-left: 5px solid var(--primary-purple);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .pillar-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-left: 5px solid var(--accent-gold);
+    }
+    
+    .pillar-number {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      color: var(--white);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .pillar-card:hover .pillar-number {
+      transform: rotate(360deg);
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+    }
+    
+    /* Why Join Us Section */
+    .why-join-section {
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--white);
+    }
+    
+    .why-join-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      opacity: 0.05;
+      z-index: 0;
+    }
+    
+    .house-of-god-section {
+      padding: 80px 0;
+      background-color: var(--light-purple);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .house-of-god-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      opacity: 0.05;
+      z-index: 0;
+    }
+    
+    .mtendele-intro-section {
+      padding: 80px 0;
+      background-color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .mtendele-intro-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      opacity: 0.05;
+      z-index: 0;
+    }
+    
+    .box-style {
+      background-color: var(--white);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+    
+    .box-style:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    
+    .box-style:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+    }
+    
+    .box-style h3 {
+      color: var(--primary-purple);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .box-style h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+    }
+    
+    .scripture-reference {
+      font-style: italic;
+      color: var(--primary-purple);
+      margin-top: 20px;
+      text-align: right;
+    }
+    
+    /* Value Icons */
+    .value-icon {
+      font-size: 2rem;
+      color: var(--primary-purple);
+      margin-right: 15px;
+      vertical-align: middle;
+      transition: all 0.3s ease;
+    }
+    
+    .value-item:hover .value-icon {
+      transform: scale(1.1);
+      color: var(--accent-gold);
+    }
+    
+    .value-item {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      transition: all 0.3s ease;
+    }
+    
+    .value-item:hover {
+      transform: translateX(5px);
+    }
+    
+    .value-content {
+      flex: 1;
+    }
+    
+    /* Loading Spinner */
+    .spinner-border {
+      display: none;
+      width: 3rem;
+      height: 3rem;
+      color: var(--primary-purple);
+    }
+    
+    /* Parallax effect for sections */
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    /* Responsive adjustments with improved mobile experience */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .navbar-brand img {
+        height: 45px;
+        width: 45px;
+      }
+      
+      .nav-link {
+        padding: 6px 10px;
+        font-size: 13px;
+      }
+      
+      /* Disable parallax on mobile */
+      .parallax {
+        background-attachment: scroll;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .navbar-brand {
+        font-size: 18px;
+      }
+      
+      .navbar-brand img {
+        height: 40px;
+        width: 40px;
+      }
+      
+      .navbar {
+        padding: 5px 0;
+      }
+      
+      .nav-link {
+        padding: 5px 8px;
+        font-size: 12px;
+      }
+      
+      .footer-logo img {
+        height: 80px;
+        width: 80px;
+      }
+      
+      .header-hero-container {
+        height: 70vh;
+      }
+      
+      .box-style {
+        padding: 25px;
+      }
+      
+      .carousel-item img {
+        height: 300px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .navbar-brand {
+        font-size: 16px;
+      }
+      
+      .navbar-brand img {
+        height: 35px;
+        width: 35px;
+        margin-right: 8px;
+      }
+      
+      .nav-link {
+        padding: 4px 6px;
+        font-size: 11px;
+      }
+      
+      .footer-logo img {
+        height: 70px;
+        width: 70px;
+      }
+      
+      .header-hero-container {
+        height: 60vh;
+        min-height: 400px;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .btn-custom, .btn-outline-light {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .feature-box, .pillar-card {
+        padding: 20px;
+      }
+      
+      .carousel-item img {
+        height: 250px;
+      }
+    }
+    
+    /* Animation classes */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+<!-- Enhanced Social Media Bar with Professional Gradient -->
+<div class="social-bar">
+  <div class="container">
+    <div class="social-icons-top">
+      <a href="#" class="social-icon-top"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar with scroll effect -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+     <img src="uploads/images_13.jpeg" alt="Mtendele Baptist Church Logo">
+      Mtendele Baptist Church
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/ministries">Ministries</a></li>
+        <li class="nav-item"><a class="nav-link" href="/sermons">Sermons</a></li>
+        <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="/program">Programs</a></li>
+        <li class="nav-item"><a class="nav-link" href="/church_articles">Articles</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- White Divider Line -->
+<div class="nav-divider"></div>
+
+<!-- Home Page -->
+<!-- Home Page -->
+<div class="header-hero-container">
+  <div class="hero-slideshow">
+    <!-- Updated image path - added leading slash -->
+    <img src="/uploads/church one hero 1.jpg" alt="Church worship" class="header-image active">
+    <!--img src="https://images.unsplash.com/photo-1542272201-b1ca555f8505?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="People worshiping in church" class="header-image"-->
+  </div>
+  <div class="hero-overlay"></div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="display-5 fw-bold">United in Christ, Transforming Lives</h1>
+      <p class="lead">A vibrant Baptist community in Lilongwe where faith comes alive through worship, discipleship, and service.</p>
+      <div class="d-flex gap-3 justify-content-center">
+        <a href="/program" class="btn btn-custom">Our Programs</a>
+        <a href="/contact" class="btn btn-outline-light">Join Us</a>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- Who We Are Section -->
+<section class="about-section stripe-bg-section">
+  <!-- Curved stripes -->
+  <div class="curve-stripe stripe1"></div>
+  <div class="curve-stripe stripe2"></div>
+  <div class="curve-stripe stripe3"></div>
+  
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0 animate-on-scroll">
+        <h2 class="section-title">Who We Are</h2>
+        <p class="lead mb-4">Mtendele Baptist Church is a Christ-centered community in Lilongwe, Malawi, committed to biblical truth, spiritual growth, and serving our neighbors with Christ's love.</p>
+        
+        <div class="value-item">
+          <i class="fas fa-medal value-icon"></i>
+          <div class="value-content">
+            <h4>Quality Ministry</h4>
+            <p>We strive for excellence in all we do, ensuring our worship, teaching, and service meet the highest standards to honor God.</p>
+          </div>
+        </div>
+        
+        <div class="value-item">
+          <i class="fas fa-users value-icon"></i>
+          <div class="value-content">
+            <h4>Democratic Leadership</h4>
+            <p>Our church operates with congregational governance, where members prayerfully make decisions together under Christ's lordship.</p>
+          </div>
+        </div>
+        
+        <div class="value-item">
+          <i class="fas fa-hand-holding-heart value-icon"></i>
+          <div class="value-content">
+            <h4>Transparent Service</h4>
+            <p>We maintain open communication and accountability in all our ministries and financial matters as we serve God and our community.</p>
+          </div>
+        </div>
+        
+        <div class="mt-4">
+          <a href="/about" class="btn btn-custom">Learn More About Us</a>
+        </div>
+      </div>
+      <div class="col-lg-6 animate-on-scroll">
+        <img src="/uploads/church who we are.jpg" alt="Mtendele Baptist Church Community" class="img-fluid about-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why You Should Join Us Section -->
+<section class="why-join-section stripe-bg-section">
+  <!-- Curved stripes -->
+  <div class="curve-stripe stripe1"></div>
+  <div class="curve-stripe stripe2"></div>
+  <div class="curve-stripe stripe3"></div>
+  
+  <!-- Wave divider at bottom -->
+  <div class="wave-container">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 animate-on-scroll">
+        <div class="box-style">
+          <h3><i class="fas fa-hands-helping me-2"></i> Why You Should Join Us</h3>
+          <p>At Mtendele Baptist Church, we offer a welcoming community where you can grow in your faith, build meaningful relationships, and serve others with purpose. Here's why you should consider joining our church family:</p>
+          <ul class="list-unstyled">
+            <li class="mb-3"><i class="fas fa-bible text-primary me-2"></i> <strong>Biblical Teaching</strong> - Experience sound, expositional preaching that faithfully communicates God's Word and applies it to daily life.</li>
+            <li class="mb-3"><i class="fas fa-pray text-primary me-2"></i> <strong>Authentic Worship</strong> - Engage in heartfelt worship that honors God and draws you closer to Him.</li>
+            <li class="mb-3"><i class="fas fa-user-friends text-primary me-2"></i> <strong>Supportive Community</strong> - Find genuine fellowship and support through our small groups and ministries.</li>
+            <li class="mb-3"><i class="fas fa-hands text-primary me-2"></i> <strong>Opportunities to Serve</strong> - Discover your gifts and use them to serve others in meaningful ways.</li>
+            <li><i class="fas fa-home text-primary me-2"></i> <strong>Family Focus</strong> - We provide programs and ministries for all ages to grow spiritually together.</li>
+          </ul>
+          <div class="scripture-reference">
+            <p>"Let us consider how to stir up one another to love and good works, not neglecting to meet together..." (Hebrews 10:24-25, ESV)</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 animate-on-scroll">
+        <img src="uploads/IMG_20240921_144312_916.jpg" alt="Church members worshiping" class="img-fluid rounded shadow-lg">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How Great is to be in the House of God Section -->
+<section class="house-of-god-section stripe-bg-section">
+  <!-- Curved stripes on bottom right -->
+  <div class="curve-stripe-right stripe4"></div>
+  <div class="curve-stripe-right stripe5"></div>
+  
+  <!-- Wave divider at top -->
+  <div class="wave-top">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+  </div>
+  
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0 animate-on-scroll">
+        <img src="uploads/chibavi 2.jpg" alt="Worship service at Mtendele Baptist" class="img-fluid rounded shadow-lg">
+      </div>
+      <div class="col-lg-6 animate-on-scroll">
+        <div class="box-style">
+          <h3><i class="fas fa-church me-2"></i> How Great is to be in the House of God</h3>
+          <p class="lead">Aaha! Then you are at the right place! Come worship with us in spirit and truth as we exalt the name of Jesus together.</p>
+          <p>There's nothing like gathering with God's people to worship, pray, and study His Word. When we come together as the body of Christ, we experience:</p>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fas fa-star text-warning me-2"></i> The presence of God in a special way</li>
+            <li class="mb-2"><i class="fas fa-heart text-danger me-2"></i> Encouragement from fellow believers</li>
+            <li class="mb-2"><i class="fas fa-seedling text-success me-2"></i> Spiritual growth through biblical teaching</li>
+            <li class="mb-2"><i class="fas fa-gift text-primary me-2"></i> Opportunities to use your gifts for God's glory</li>
+            <li><i class="fas fa-laugh-beam text-info me-2"></i> Joyful fellowship that strengthens your faith</li>
+          </ul>
+          <p class="mt-3">We maintain the highest standards of quality in our worship services, ensuring everything we do honors God and edifies believers.</p>
+          <div class="scripture-reference">
+            <p>"I was glad when they said to me, 'Let us go to the house of the LORD!'" (Psalm 122:1, ESV)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- We are Mtendele Baptist Section -->
+<section class="mtendele-intro-section stripe-bg-section">
+  <!-- Curved stripes on both corners -->
+  <div class="curve-stripe stripe1"></div>
+  <div class="curve-stripe stripe2"></div>
+  <div class="curve-stripe-right stripe4"></div>
+  <div class="curve-stripe-right stripe5"></div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 animate-on-scroll">
+        <div class="box-style">
+          <h3><i class="fas fa-cross me-2"></i> We are Mtendele Baptist</h3>
+          <p class="lead">As the name suggests itself - "Kwanthu ndi kumwamba indeee! Koma timasonkhana pa mtendlepo."</p>
+          <p>We are a community of believers who gather at Mtendele to worship, grow, and serve together. Our church is:</p>
+          <ul class="list-unstyled">
+            <li class="mb-3"><i class="fas fa-book-bible text-primary me-2"></i> <strong>Bible-based</strong> - We stand firmly on the Word of God as our foundation for faith and practice, with transparent teaching you can trust.</li>
+            <li class="mb-3"><i class="fas fa-dove text-primary me-2"></i> <strong>Christ-centered</strong> - Everything we do is focused on glorifying Jesus Christ through democratic processes that value each member's voice.</li>
+            <li class="mb-3"><i class="fas fa-wind text-primary me-2"></i> <strong>Spirit-led</strong> - We depend on the Holy Spirit to guide and empower our ministry while maintaining accountability to one another.</li>
+            <li><i class="fas fa-globe-africa text-primary me-2"></i> <strong>Mission-minded</strong> - We're committed to sharing the Gospel in our community and beyond with excellence and integrity.</li>
+          </ul>
+          <div class="scripture-reference">
+            <p>"For where two or three are gathered in my name, there am I among them." (Matthew 18:20, ESV)</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 animate-on-scroll">
+        <div class="ratio ratio-16x9 mb-4">
+          <iframe src="https://www.youtube.com/embed/aCnRg0MJlUY" title="Mtendele Baptist Church" allowfullscreen></iframe>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <img src="uploads/IMG_20241026_113247_834.jpg" alt="Church members fellowship" class="img-fluid rounded shadow-lg">
+          </div>
+          <div class="col-md-6">
+            <img src="uploads/IMG_20241026_122024_474.jpg" alt="Church service" class="img-fluid rounded shadow-lg">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Approach Section -->
+<section class="about-section stripe-bg-section">
+  <!-- Curved stripes -->
+  <div class="curve-stripe stripe1"></div>
+  <div class="curve-stripe stripe2"></div>
+  <div class="curve-stripe stripe3"></div>
+  
+  <div class="container">
+    <div class="text-center mb-5 animate-on-scroll">
+      <h2 class="section-title">Our Core Values</h2>
+      <p class="lead">Foundational principles that guide our ministry with quality, democracy, and transparency</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4 animate-on-scroll">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-bible"></i>
+          </div>
+          <h3>Biblical Authority</h3>
+          <p>We uphold the Bible as God's inspired, inerrant Word and our final authority for faith and practice.</p>
+        </div>
+      </div>
+      <div class="col-md-4 animate-on-scroll">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-cross"></i>
+          </div>
+          <h3>Gospel-Centered</h3>
+          <p>We keep the person and work of Jesus Christ central in all our teaching and ministries.</p>
+        </div>
+      </div>
+      <div class="col-md-4 animate-on-scroll">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <h3>Compassionate Service</h3>
+          <p>We demonstrate Christ's love through practical ministry to those in need.</p>
+        </div>
+      </div>
+      <div class="col-md-4 animate-on-scroll">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-church"></i>
+          </div>
+          <h3>Authentic Community</h3>
+          <p>We cultivate meaningful relationships that foster spiritual growth and accountability.</p>
+        </div>
+      </div>
+      <div class="col-md-4 animate-on-scroll">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-praying-hands"></i>
+          </div>
+          <h3>Prayerful Dependence</h3>
+          <p>We rely on God through prayer in all aspects of church life and ministry.</p>
+        </div>
+      </div>
+      <div class="col-md-4 animate-on-scroll">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-globe-africa"></i>
+          </div>
+          <h3>Local & Global Mission</h3>
+          <p>We are committed to sharing the Gospel in our community and supporting missions worldwide.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Baptist Distinctives Section -->
+<section class="pillars-section stripe-bg-section">
+  <!-- Curved stripes on bottom right -->
+  <div class="curve-stripe-right stripe4"></div>
+  <div class="curve-stripe-right stripe5"></div>
+  
+  <!-- Wave divider at top -->
+  <div class="wave-top">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+  </div>
+  
+  <div class="container">
+    <div class="text-center mb-5 animate-on-scroll">
+      <h2 class="section-title">Our Baptist Distinctives</h2>
+      <p class="lead">Biblical principles that define our church's democratic governance and transparent operations</p>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-4 animate-on-scroll">
+        <div class="pillar-card">
+          <div class="pillar-number">1</div>
+          <h3>Biblical Authority</h3>
+          <p>The Bible is our sole authority for faith and practice, containing all truth necessary for salvation and Christian living.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 animate-on-scroll">
+        <div class="pillar-card">
+          <div class="pillar-number">2</div>
+          <h3>Autonomy of the Local Church</h3>
+          <p>Each local church is self-governing under Christ's lordship, free from external hierarchy or control.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 animate-on-scroll">
+        <div class="pillar-card">
+          <div class="pillar-number">3</div>
+          <h3>Priesthood of All Believers</h3>
+          <p>Every Christian has direct access to God through Christ and shares in the ministry of reconciliation.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 animate-on-scroll">
+        <div class="pillar-card">
+          <div class="pillar-number">4</div>
+          <h3>Two Ordinances</h3>
+          <p>We practice believer's baptism by immersion and the Lord's Supper as symbolic acts of obedience.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 animate-on-scroll">
+        <div class="pillar-card">
+          <div class="pillar-number">5</div>
+          <h3>Individual Soul Liberty</h3>
+          <p>Every person has the right and responsibility to approach God directly and interpret Scripture for themselves.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 animate-on-scroll">
+        <div class="pillar-card">
+          <div class="pillar-number">6</div>
+          <h3>Saved, Baptized Membership</h3>
+          <p>Church membership is for those who have personally trusted Christ and followed in believer's baptism.</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4 animate-on-scroll">
+      <a href="/about#pillars" class="btn btn-custom">View All Our Beliefs</a>
+    </div>
+  </div>
+</section>
+
+<!-- Trending News Section -->
+<div class="container py-5">
+  <h2 class="text-center fw-bold mb-5 animate-on-scroll">Church News</h2>
+  <div class="row" id="newsContainer">
+    <!-- Loading spinner will be shown while fetching data -->
+    <div class="col-12 text-center">
+      <div class="spinner-border" role="status" id="newsSpinner">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <!-- News cards will be inserted here by JS -->
+  </div>
+</div>
+
+<!-- Recent Activities Section -->
+<div class="container py-5">
+  <h2 class="text-center fw-bold mb-5 animate-on-scroll">Upcoming Events</h2>
+  <div class="row" id="activityContainer">
+    <!-- Loading spinner will be shown while fetching data -->
+    <div class="col-12 text-center">
+      <div class="spinner-border" role="status" id="activitySpinner">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <!-- Activities cards will be inserted here by JS -->
+  </div>
+</div>
+
+<!-- UPDATED Gallery Section with Carousel -->
+<section class="gallery-section">
+  <div class="container">
+    <h2 class="gallery-title animate-on-scroll">Church Gallery</h2>
+    
+    <div id="multiImageCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner" id="carousel-content">
+        <!-- Slides will be injected by JS -->
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#multiImageCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#multiImageCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-5" style="background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%); color: white;">
+  <div class="container text-center py-4">
+    <h2 class="mb-4 animate-on-scroll">Join Our Church Family</h2>
+    <p class="lead mb-4 animate-on-scroll">Experience authentic Christian community and grow in your faith with us.</p>
+    <div class="d-flex gap-3 justify-content-center">
+      <a href="/contact" class="btn btn-light btn-lg animate-on-scroll">Plan Your Visit</a>
+      <a href="/program" class="btn btn-outline-light btn-lg animate-on-scroll">View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- Enhanced Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-5 mb-lg-0 animate-on-scroll">
+        <div class="footer-logo">
+          <img src="uploads/images_13.jpeg" alt="Mtendele Baptist Church Logo" id="footerLogo">
+        </div>
+        <p class="mt-3">A vibrant Baptist church in Lilongwe, Malawi, committed to biblical truth, spiritual growth, and serving our community with Christ's love.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4 mb-md-0 animate-on-scroll">
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="/ministries"><i class="fas fa-chevron-right"></i> Ministries</a></li>
+            <li><a href="/sermons"><i class="fas fa-chevron-right"></i> Sermons</a></li>
+            <li><a href="/about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="/contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+            <li><a href="/news"><i class="fas fa-chevron-right"></i> News</a></li>
+            <li><a href="/programs"><i class="fas fa-chevron-right"></i> programs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4 mb-md-0 animate-on-scroll">
+        <div class="footer-links">
+          <h4>Ministries</h4>
+          <ul>
+            <li><a href="/ministries#children"><i class="fas fa-chevron-right"></i> Children</a></li>
+            <li><a href="/ministries#youth"><i class="fas fa-chevron-right"></i> Youth</a></li>
+            <li><a href="/ministries#women"><i class="fas fa-chevron-right"></i> Women</a></li>
+            <li><a href="/ministries#men"><i class="fas fa-chevron-right"></i> Men</a></li>
+            <li><a href="/ministries#missions"><i class="fas fa-chevron-right"></i> Missions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 animate-on-scroll">
+        <div class="footer-links">
+          <h4>Contact Us</h4>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Box 4000, Lilongwe, Malawi</li>
+            <li><i class="fas fa-phone"></i> 0995128815</li>
+            <li><i class="fas fa-envelope"></i> info@mtendelebaptist.church</li>
+            <li><i class="fas fa-clock"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright text-center animate-on-scroll">
+      <p class="mb-0">&copy; 2025 Mtendele Baptist Church. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+<!-- Glightbox JS -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+<script>
+  // Back to Top Button
+  window.addEventListener('scroll', function() {
+    var backToTop = document.querySelector('.back-to-top');
+    if (window.pageYOffset > 300) {
+      backToTop.classList.add('active');
+    } else {
+      backToTop.classList.remove('active');
+    }
+    
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Smooth scrolling for back to top
+  document.querySelector('.back-to-top').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+
+  // Hero image slideshow
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.header-image');
+  
+  function showSlide(n) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }
+  
+  function nextSlide() {
+    showSlide(currentSlide + 1);
+  }
+  
+  // Change slide every 5 seconds
+  setInterval(nextSlide, 5000);
+
+  // Show loading spinners
+  document.getElementById('newsSpinner').style.display = 'block';
+  document.getElementById('activitySpinner').style.display = 'block';
+
+  // Load News from Flask endpoint
+  fetch('/load_news_full')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('newsSpinner').style.display = 'none';
+      
+      if (data.status === 'success') {
+        const container = document.getElementById('newsContainer');
+        container.innerHTML = ''; // Clear loading spinner
+        
+        if (data.news.length === 0) {
+          container.innerHTML = '<div class="col-12 text-center"><p>No news available at this time. Please check back later.</p></div>';
+          return;
+        }
+        
+        data.news.slice(0, 3).forEach(item => {
+          container.innerHTML += `
+            <div class="col-md-4 mb-4 animate-on-scroll">
+              <div class="card h-100 shadow-sm">
+                <img src="${item.image_path || 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'}" class="card-img-top" alt="${item.title}">
+                <div class="card-body">
+                  <h5 class="card-title">${item.title}</h5>
+                  <p class="card-text">${item.content.substring(0, 100)}...</p>
+                  <a href="/news?id=${item.id}" class="btn btn-sm btn-custom">Read More</a>
+                </div>
+                <div class="card-footer bg-transparent">
+                  <small class="text-muted">Posted on ${new Date(item.date_posted).toLocaleDateString()}</small>
+                </div>
+              </div>
+            </div>`;
+        });
+      } else {
+        container.innerHTML = '<div class="col-12 text-center"><p>Error loading news. Please try again later.</p></div>';
+      }
+    })
+    .catch(error => {
+      document.getElementById('newsSpinner').style.display = 'none';
+      document.getElementById('newsContainer').innerHTML = '<div class="col-12 text-center"><p>Error loading news. Please try again later.</p></div>';
+      console.error('Error loading news:', error);
+    });
+
+  // Load Activities from Flask endpoint
+  fetch('/load_activity_full')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('activitySpinner').style.display = 'none';
+      
+      if (data.status === 'success') {
+        const container = document.getElementById('activityContainer');
+        container.innerHTML = ''; // Clear loading spinner
+        
+        if (data.activities.length === 0) {
+          container.innerHTML = '<div class="col-12 text-center"><p>No upcoming events scheduled. Please check back later.</p></div>';
+          return;
+        }
+        
+        data.activities.slice(0, 3).forEach(item => {
+          container.innerHTML += `
+            <div class="col-md-4 mb-4 animate-on-scroll">
+              <div class="card h-100 shadow">
+                <img src="${item.image_path || 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'}" class="card-img-top" alt="${item.title}">
+                <div class="card-body">
+                  <h5 class="card-title">${item.title}</h5>
+                  <p class="card-text">${item.content.substring(0, 100)}...</p>
+                  <span class="badge bg-${item.is_recent ? 'primary' : 'secondary'}">${new Date(item.date).toLocaleDateString()}</span>
+                </div>
+                <div class="card-footer bg-transparent">
+                  <a href="/program#${item.id}" class="btn btn-sm btn-custom">Details</a>
+                </div>
+              </div>
+            </div>`;
+        });
+      } else {
+        container.innerHTML = '<div class="col-12 text-center"><p>Error loading events. Please try again later.</p></div>';
+      }
+    })
+    .catch(error => {
+      document.getElementById('activitySpinner').style.display = 'none';
+      document.getElementById('activityContainer').innerHTML = '<div class="col-12 text-center"><p>Error loading events. Please try again later.</p></div>';
+      console.error('Error loading activities:', error);
+    });
+
+  // Handle logo error fallback
+  document.querySelectorAll('img[alt="Mtendele Baptist Church Logo"]').forEach(img => {
+    img.onerror = function() {
+      this.onerror = null;
+      this.src = 'https://i.ibb.co/0jQJ9yJ/church-logo.png';
+    };
+  });
+
+  // Double click footer logo to redirect to login
+  document.getElementById('footerLogo').addEventListener('dblclick', function() {
+    window.location.href = '/login';
+  });
+  
+  // Scroll animation
+  function animateOnScroll() {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    elements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      
+      if (elementPosition < windowHeight - 100) {
+        element.classList.add('animated');
+      }
+    });
+  }
+  
+  // Initial check
+  animateOnScroll();
+  
+  // Check on scroll
+  window.addEventListener('scroll', animateOnScroll);
+  
+  // Initialize Gallery Carousel
+  const imageNames = [
+    'chibavi 1.jpg',
+    'chibavi 2.jpg',
+    'chibavi 3.jpg',
+    'chibavi 9.jpg',
+    'FB_IMG_1747569071165.jpg',
+    'IMG_20240921_144312_916.jpg',
+    'IMG_20241026_113247_834.jpg',
+    'IMG_20241026_122024_474.jpg',
+    'church who we are.jpg',
+    'church one hero 1.jpg'
+  ];
+  
+  const itemsPerSlide = 3;
+  const carouselContent = document.getElementById('carousel-content');
+  
+  for (let i = 0; i < imageNames.length; i += itemsPerSlide) {
+    const slide = document.createElement('div');
+    slide.className = 'carousel-item' + (i === 0 ? ' active' : '');
+    
+    const row = document.createElement('div');
+    row.className = 'row';
+    
+    for (let j = i; j < i + itemsPerSlide && j < imageNames.length; j++) {
+      const col = document.createElement('div');
+      col.className = 'col-md-4';
+      const imagePath = 'uploads/' + imageNames[j];
+      
+      col.innerHTML = `
+        <a href="${imagePath}" class="glightbox" data-gallery="gallery1" data-title="Image ${j + 1}">
+          <img src="${imagePath}" class="d-block w-100 shadow-sm mb-3" alt="Gallery Image ${j + 1}">
+        </a>
+      `;
+      row.appendChild(col);
+    }
+    
+    slide.appendChild(row);
+    carouselContent.appendChild(slide);
+  }
+  
+  // Initialize GLightbox
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    touchNavigation: true,
+    loop: true,
+    zoomable: true,
+    autoplayVideos: false,
+    moreText: 'More',
+    thumbnails: true,
+    height: '90%',
+    width: '100%',
+    slideEffect: 'fade',
+    closeButton: true,
+    plyr: {
+      css: '',
+      js: ''
+    }
+  });
+</script>
+
+</body>
+</html>

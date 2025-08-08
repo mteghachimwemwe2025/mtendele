@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mtendele Baptist Church News</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+  :root {
+    --primary-purple: #6A0DAD;
+    --secondary-navy: #000066;
+    --accent-gold: #FFD700;
+    --light-purple: #F5F0FF;
+    --dark-purple: #4B0082;
+    --white: #FFFFFF;
+    --light-gray: #F8F9FA;
+    --dark-gray: #343A40;
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-purple);
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+/* Header and Navbar Styles */
+.social-bar {
+  background: linear-gradient(135deg, 
+    rgba(180, 140, 255, 0.9) 0%, 
+    rgba(106, 13, 173, 0.8) 30%, 
+    rgba(70, 30, 180, 0.8) 60%, 
+    rgba(0, 0, 102, 0.7) 100%);
+  padding: 5px 0;
+  height: 40px;
+  border-bottom: 1px solid rgba(106,13,173,0.2);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 15px rgba(106,13,173,0.15);
+  position: relative;
+  z-index: 1000;
+}
+
+.social-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255,255,255,0.4) 50%, 
+    transparent 100%);
+}
+
+.social-icons-top {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.social-icon-top {
+  color: var(--white);
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.15);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.social-icon-top::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(255,255,255,0.2) 0%, 
+    rgba(255,255,255,0.1) 100%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.social-icon-top:hover {
+  color: var(--accent-gold);
+  transform: translateY(-2px) scale(1.1);
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 4px 12px rgba(106,13,173,0.3);
+}
+
+.social-icon-top:hover::after {
+  opacity: 1;
+}
+
+/* Updated Navbar - More Compact */
+.navbar {
+  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+  padding: 5px 0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  height: 50px;
+  margin-right: 12px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.navbar-brand:hover img {
+  transform: scale(1.05);
+}
+
+.nav-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  padding: 6px 12px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--white);
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-gold);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover:after, .nav-link.active:after {
+  width: calc(100% - 24px);
+}
+
+/* Main Content Container */
+.news-container {
+  max-width: 1300px;
+  margin: 40px auto;
+  padding: 0 30px;
+}
+
+/* Search Box - More Elegant */
+.search-box {
+  margin-bottom: 30px;
+  position: relative;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-box input {
+  padding: 12px 50px 12px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(0,0,0,0.1);
+  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  transition: var(--transition);
+  background-color: var(--white);
+}
+
+.search-box input:focus {
+  border-color: var(--primary-purple);
+  box-shadow: 0 5px 20px rgba(106, 13, 173, 0.1);
+  outline: none;
+}
+
+.search-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dark-gray);
+  pointer-events: none;
+}
+
+/* News Grid Layout - More Organized */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* News Card - More Professional */
+.news-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: var(--transition);
+  background: white;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-top: 4px solid var(--primary-purple);
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  border-top-color: var(--accent-gold);
+}
+
+.news-card-img-container {
+  overflow: hidden;
+  height: 220px;
+  position: relative;
+}
+
+.news-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.news-card:hover .news-card-img {
+  transform: scale(1.05);
+}
+
+.news-card-body {
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card-date {
+  color: var(--accent-gold);
+  font-weight: 500;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.news-card-date i {
+  margin-right: 8px;
+}
+
+.news-card-title {
+  color: var(--secondary-navy);
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  transition: var(--transition);
+  flex-grow: 1;
+}
+
+.news-card:hover .news-card-title {
+  color: var(--primary-purple);
+}
+
+.news-card-excerpt {
+  color: var(--dark-gray);
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.news-card-category {
+  display: inline-block;
+  background-color: var(--primary-purple);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  align-self: flex-start;
+}
+
+.news-card:hover .news-card-category {
+  background-color: var(--accent-gold);
+  color: var(--secondary-navy);
+}
+
+.read-more-btn {
+  color: var(--primary-purple);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  margin-top: auto;
+}
+
+.read-more-btn i {
+  margin-left: 8px;
+  transition: var(--transition);
+}
+
+.read-more-btn:hover {
+  color: var(--accent-gold);
+}
+
+.read-more-btn:hover i {
+  transform: translateX(5px);
+}
+
+/* Featured News */
+.news-featured {
+  grid-column: span 2;
+  border-top-width: 6px;
+}
+
+.news-featured .news-card-img-container {
+  height: 400px;
+}
+
+.news-featured .news-card-title {
+  font-size: 1.8rem;
+}
+
+.news-featured .news-card-excerpt {
+  font-size: 1.05rem;
+}
+
+/* Sidebar - More Elegant */
+.news-sidebar {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 100px;
+  margin-left: 20px;
+  border-top: 4px solid var(--primary-purple);
+}
+
+.sidebar-title {
+  color: var(--primary-purple);
+  border-bottom: 3px solid var(--accent-gold);
+  padding-bottom: 12px;
+  margin-bottom: 25px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  position: relative;
+}
+
+.sidebar-title::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-gold);
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list li {
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 8px 15px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.category-list li::before {
+  content: '•';
+  color: var(--accent-gold);
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.category-list li:hover {
+  color: var(--primary-purple);
+  background-color: rgba(106, 13, 173, 0.05);
+  transform: translateX(5px);
+}
+
+.category-list .active {
+  font-weight: 600;
+  color: var(--primary-purple);
+  background-color: rgba(106, 13, 173, 0.1);
+}
+
+/* Recent News Items in Sidebar */
+.recent-news-item {
+  display: flex;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.recent-news-item:hover {
+  transform: translateX(5px);
+}
+
+.recent-news-img-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-right: 15px;
+}
+
+.recent-news-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.recent-news-item:hover .recent-news-img {
+  transform: scale(1.1);
+}
+
+.recent-news-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  transition: var(--transition);
+}
+
+.recent-news-item:hover .recent-news-title {
+  color: var(--primary-purple);
+}
+
+.recent-news-date {
+  font-size: 0.8rem;
+  color: var(--dark-gray);
+}
+
+/* Badges */
+.recent-badge {
+  background-color: var(--primary-purple);
+  color: white;
+  font-weight: 600;
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.trending-badge {
+  background-color: var(--accent-gold);
+  color: var(--secondary-navy);
+  font-weight: 600;
+  margin-left: 10px;
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Load More Button */
+#loadMoreBtn {
+  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  box-shadow: 0 5px 15px rgba(106, 13, 173, 0.2);
+  margin-top: 40px;
+  display: inline-flex;
+  align-items: center;
+  color: white;
+}
+
+#loadMoreBtn:hover {
+  background: linear-gradient(135deg, var(--secondary-navy) 0%, var(--dark-purple) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(106, 13, 173, 0.3);
+}
+
+#loadMoreBtn i {
+  margin-left: 8px;
+  transition: var(--transition);
+}
+
+#loadMoreBtn:hover i {
+  transform: translateY(2px);
+}
+
+/* Modals - More Professional */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 60px auto;
+  padding: 40px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 900px;
+  position: relative;
+  animation: modalFadeIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  border: none;
+  border-top: 6px solid var(--primary-purple);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--dark-gray);
+  cursor: pointer;
+  transition: var(--transition);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-btn:hover {
+  color: var(--accent-gold);
+  background-color: rgba(0,0,0,0.05);
+  transform: rotate(90deg);
+}
+
+#modalTitle {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--secondary-navy);
+  margin-bottom: 15px;
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+#modalMeta {
+  color: var(--dark-gray);
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+#modalMeta span {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+#modalMeta i {
+  margin-right: 8px;
+  color: var(--accent-gold);
+}
+
+#modalContent {
+  line-height: 1.8;
+  color: var(--dark-gray);
+}
+
+#modalContent p {
+  margin-bottom: 20px;
+}
+
+#modalContent img {
+  max-height: 400px;
+  margin: 20px 0;
+}
+
+/* Footer Styles */
+footer {
+  background: linear-gradient(135deg, var(--secondary-navy) 0%, var(--dark-purple) 100%);
+  color: var(--white);
+  padding: 80px 0 20px;
+  position: relative;
+  overflow: hidden;
+  background-image: url('uploads/bible opened.jpg');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 102, 0.9);
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(90deg, var(--primary-purple) 0%, var(--accent-gold) 50%, var(--primary-purple) 100%);
+}
+
+.footer-logo {
+  margin-bottom: 25px;
+}
+
+.footer-logo img {
+  height: 80px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+
+.footer-logo:hover img {
+  transform: scale(1.05);
+}
+
+footer p {
+  color: #bbb;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.footer-links h4 {
+  color: var(--accent-gold);
+  margin-bottom: 25px;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-links h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-gold);
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+  transition: var(--transition);
+}
+
+.footer-links a {
+  color: #bbb;
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+.footer-links a i {
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+  color: var(--accent-gold);
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+  color: var(--accent-gold);
+  padding-left: 5px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.1);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.footer-social a:hover {
+  background-color: var(--accent-gold);
+  color: var(--secondary-navy);
+  transform: translateY(-5px);
+}
+
+.copyright {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 25px;
+  margin-top: 60px;
+  text-align: center;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 5px 20px rgba(106, 13, 173, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 999;
+  border: none;
+}
+
+.back-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: var(--accent-gold);
+  color: var(--secondary-navy);
+  transform: translateY(-5px) scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 1199px) {
+  .news-grid {
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 25px;
+  }
+  .news-featured .news-card-img-container {
+    height: 350px;
+  }
+}
+
+@media (max-width: 991px) {
+  .news-featured {
+    grid-column: span 1;
+  }
+  .news-featured .news-card-img-container {
+    height: 250px;
+  }
+  .news-featured .news-card-title {
+    font-size: 1.6rem;
+  }
+  .news-sidebar {
+    margin-left: 0;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .news-container {
+    padding: 0 20px;
+  }
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .social-bar {
+    display: none;
+  }
+  .modal-content {
+    padding: 30px 20px;
+  }
+  #modalTitle {
+    font-size: 1.8rem;
+  }
+  .navbar {
+    padding: 5px 0;
+  }
+  .nav-link {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  .news-container {
+    padding: 0 15px;
+  }
+  .news-card-body {
+    padding: 20px;
+  }
+  .news-card-title {
+    font-size: 1.3rem;
+  }
+  .news-sidebar {
+    padding: 20px;
+  }
+  footer {
+    padding: 60px 0 20px;
+  }
+  .footer-logo img {
+    height: 60px;
+  }
+  .navbar-brand {
+    font-size: 18px;
+  }
+  .navbar-brand img {
+    height: 40px;
+  }
+}
+  </style>
+</head>
+<body>
+
+<!-- Social Media Bar -->
+<div class="social-bar">
+  <div class="container">
+    <div class="social-icons-top">
+      <a href="#" class="social-icon-top"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <img src="uploads\images_13.jpeg" alt="Mtendele Baptist Church Logo">
+      Mtendele Baptist Church
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+       <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/ministries">Ministries</a></li>
+        <li class="nav-item"><a class="nav-link" href="/sermons">Sermons</a></li>
+        <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="/program">Programs</a></li>
+        <li class="nav-item"><a class="nav-link" href="/church_articles">Articles</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- White Divider Line -->
+<div class="nav-divider"></div>
+
+<!-- Main News Content -->
+<div class="news-container">
+  <div class="row">
+    <div class="col-lg-8">
+      <!-- Search Box -->
+      <div class="search-box">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search news...">
+        <i class="fas fa-search"></i>
+      </div>
+      
+      <!-- News Grid -->
+      <div class="news-grid" id="newsContainer"></div>
+      
+      <!-- Load More Button -->
+      <div style="text-align:center;">
+        <button id="loadMoreBtn" class="btn btn-primary">Load More News <i class="fas fa-arrow-down"></i></button>
+      </div>
+    </div>
+    
+    <!-- News Sidebar -->
+    <div class="col-lg-4">
+      <div class="news-sidebar">
+        <h3 class="sidebar-title">Categories</h3>
+        <ul class="category-list" id="categoryTabs">
+          <li class="active" onclick="selectCategory('')">All</li>
+          <!-- Categories will be loaded dynamically -->
+        </ul>
+        
+        <h3 class="sidebar-title mt-5">Recent News</h3>
+        <div id="recentNewsContainer">
+          <!-- Recent news will be loaded dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="newsModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h3 id="modalTitle"></h3>
+    <p id="modalMeta"></p>
+    <img id="modalImage" src="" alt="News Image">
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="footer-logo">
+          <img src="uploads\images_13.jpeg" alt="Mtendele Baptist Church Logo" id="footerLogo">
+        </div>
+        <p>A vibrant Baptist church in Lilongwe, Malawi, committed to biblical truth, spiritual growth, and serving our community with Christ's love.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="/about"><i class="fas fa-chevron-right"></i> About</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Programs</a></li>
+            <li><a href="/ministries"><i class="fas fa-chevron-right"></i> Ministries</a></li>
+            <li><a href="/news"><i class="fas fa-chevron-right"></i> News</a></li>
+            <li><a href="/sermons"><i class="fas fa-chevron-right"></i> Sermons</a></li>
+            <li><a href="/contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+        <div class="footer-links">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Sunday Worship</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Bible Study</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Youth Ministry</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Prayer Meetings</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Mission Outreach</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <div class="footer-links">
+          <h4>Contact Info</h4>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Box 4000, Lilongwe, Malawi</li>
+            <li><i class="fas fa-phone"></i> 0995128815</li>
+            <li><i class="fas fa-envelope"></i> info@mtendelebaptist.church</li>
+            <li><i class="fas fa-clock"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright text-center">
+      <p class="mb-0">&copy; 2025 Mtendele Baptist Church. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  let newsData = [], currentOffset = 0, batchSize = 3, currentCategory = '', recentCount = 3;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchCategories();
+    fetchNews();
+    document.getElementById("searchInput").addEventListener("input", filterNews);
+    document.getElementById("loadMoreBtn").addEventListener("click", () => {
+      currentOffset += batchSize;
+      fetchNews();
+    });
+    
+    // Back to Top Button
+    window.addEventListener('scroll', function() {
+      var backToTop = document.querySelector('.back-to-top');
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('active');
+      } else {
+        backToTop.classList.remove('active');
+      }
+    });
+
+    // Smooth scrolling for back to top
+    document.querySelector('.back-to-top').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  });
+
+  function fetchCategories() {
+    fetch("/fetch_categories")
+      .then(res => res.json())
+      .then(data => {
+        const tabs = document.getElementById("categoryTabs");
+        data.forEach(cat => {
+          const tab = document.createElement("li");
+          tab.textContent = cat.name;
+          tab.onclick = () => selectCategory(cat.name);
+          tabs.appendChild(tab);
+        });
+      });
+  }
+
+  function selectCategory(category) {
+    currentCategory = category;
+    currentOffset = 0;
+    newsData = [];
+    document.querySelectorAll("#categoryTabs li").forEach(t => t.classList.remove("active"));
+    [...document.querySelectorAll("#categoryTabs li")].find(t => t.textContent === category || (category === '' && t.textContent === 'All')).classList.add("active");
+    fetchNews();
+  }
+
+  function fetchNews() {
+    fetch(`/load_news_full?offset=${currentOffset}&limit=${batchSize}&category=${encodeURIComponent(currentCategory)}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === "success") {
+          newsData = [...newsData, ...data.news];
+          renderNews(newsData);
+          renderRecentNews(newsData.slice(0, recentCount));
+        }
+      });
+  }
+
+  function renderNews(newsArray) {
+    const container = document.getElementById("newsContainer");
+    if (currentOffset === 0) container.innerHTML = "";
+    const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+
+    newsArray.forEach((news, index) => {
+      if (searchTerm && !news.title.toLowerCase().includes(searchTerm) && 
+          !news.content.toLowerCase().includes(searchTerm) && 
+          !news.category_name.toLowerCase().includes(searchTerm)) return;
+
+      let badges = "";
+      if (index < recentCount) badges += `<span class="recent-badge">NEW</span>`;
+      if (index === 0) badges += `<span class="trending-badge">TRENDING</span>`;
+
+      const card = document.createElement("div");
+      card.className = "news-card" + (index === 0 && currentOffset === 0 ? " news-featured" : "");
+      card.onclick = () => openModal(news);
+
+      const image = news.image_path ? 
+        `<div class="news-card-img-container"><img src="${news.image_path}" class="news-card-img" alt="${news.title}"></div>` : 
+        `<div class="news-card-img-container" style="background-color: #e0e0e0;"></div>`;
+
+      card.innerHTML = `
+        ${image}
+        <div class="news-card-body">
+          <span class="news-card-category">${news.category_name}</span>
+          <div class="news-card-date"><i class="far fa-calendar-alt"></i> Posted on ${news.date_posted}</div>
+          <h3 class="news-card-title">${news.title}${badges}</h3>
+          <p class="news-card-excerpt">${stripHTML(news.content).substring(0, 150)}...</p>
+          <a href="#" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>`;
+
+      if (index === 0 && currentOffset === 0) {
+        container.prepend(card);
+      } else {
+        container.appendChild(card);
+      }
+    });
+  }
+
+  function renderRecentNews(recentNews) {
+    const container = document.getElementById("recentNewsContainer");
+    container.innerHTML = "";
+
+    recentNews.forEach(news => {
+      const item = document.createElement("div");
+      item.className = "recent-news-item";
+      item.onclick = () => openModal(news);
+
+      const image = news.image_path ? 
+        `<div class="recent-news-img-container"><img src="${news.image_path}" class="recent-news-img" alt="${news.title}"></div>` : 
+        `<div class="recent-news-img-container" style="background-color: #e0e0e0;"></div>`;
+
+      item.innerHTML = `
+        ${image}
+        <div>
+          <h4 class="recent-news-title">${news.title}</h4>
+          <div class="recent-news-date">Posted on ${news.date_posted}</div>
+        </div>`;
+
+      container.appendChild(item);
+    });
+  }
+
+  function filterNews() {
+    renderNews(newsData);
+  }
+
+  function openModal(news) {
+    document.getElementById("modalTitle").textContent = news.title;
+    document.getElementById("modalMeta").innerHTML = `
+      <span><i class="fas fa-tag"></i> ${news.category_name}</span>
+      <span><i class="far fa-calendar-alt"></i> ${news.date_posted}</span>
+    `;
+    document.getElementById("modalImage").src = news.image_path || '';
+    document.getElementById("modalContent").innerHTML = news.content;
+    document.getElementById("newsModal").style.display = "block";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    document.getElementById("newsModal").style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+
+  function stripHTML(html) {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    return div.textContent || div.innerText || "";
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("newsModal");
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+  
+  // Handle logo error fallback
+  document.querySelectorAll('img[alt="Mtendele Baptist Church Logo"]').forEach(img => {
+    img.onerror = function() {
+      this.onerror = null;
+      this.src = 'https://i.ibb.co/0jQJ9yJ/church-logo.png';
+    };
+  });
+
+  // Double click footer logo to redirect to login
+  document.getElementById('footerLogo').addEventListener('dblclick', function() {
+    window.location.href = '/login';
+  });
+</script>
+</body>
+</html>

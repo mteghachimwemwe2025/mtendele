@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us | Mtendele Baptist Church</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-purple: #6A0DAD; /* Deep purple */
+      --secondary-navy: #000066; /* Dark navy */
+      --accent-gold: #FFD700;
+      --light-purple: #F5F0FF;
+      --dark-purple: #4B0082;
+      --white: #FFFFFF;
+      --light-gray: #F8F9FA;
+      --dark-gray: #343A40;
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    /* Logo styling */
+    .navbar-brand img {
+      height: 50px;
+      margin-right: 12px;
+      background-color: white;
+      padding: 5px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    .navbar-brand:hover img {
+      transform: scale(1.05);
+    }
+    .footer-logo img {
+      height: 80px;
+      background-color: white;
+      padding: 5px;
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+    .footer-logo:hover img {
+      transform: scale(1.05);
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background-color: var(--light-purple);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+    
+    .social-bar {
+      background: linear-gradient(135deg, 
+        rgba(180, 140, 255, 0.9) 0%, 
+        rgba(106, 13, 173, 0.8) 30%, 
+        rgba(70, 30, 180, 0.8) 60%, 
+        rgba(0, 0, 102, 0.7) 100%);
+      padding: 5px 0;
+      height: 40px;
+      border-bottom: 1px solid rgba(106,13,173,0.2);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 15px rgba(106,13,173,0.15);
+      position: relative;
+      z-index: 1000;
+    }
+
+    .social-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255,255,255,0.4) 50%, 
+        transparent 100%);
+    }
+
+    .social-icons-top {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+    }
+
+    .social-icon-top {
+      color: var(--white);
+      font-size: 14px;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.15);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .social-icon-top::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(255,255,255,0.1) 100%);
+      border-radius: 50%;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .social-icon-top:hover {
+      color: var(--accent-gold);
+      transform: translateY(-2px) scale(1.1);
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 4px 12px rgba(106,13,173,0.3);
+    }
+
+    .social-icon-top:hover::after {
+      opacity: 1;
+    }
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      padding: 5px 0;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      padding: 6px 12px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: var(--white);
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 12px;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-gold);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover:after, .nav-link.active:after {
+      width: calc(100% - 24px);
+    }
+    
+    .nav-divider {
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Contact Page Specific Styles */
+    .contact-card {
+      background-color: var(--white);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border-left: 5px solid var(--primary-purple);
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+      border-left: 5px solid var(--accent-gold);
+    }
+    
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-title {
+      font-weight: 600;
+      color: var(--primary-purple);
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .contact-title:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--accent-gold);
+    }
+    
+    .map-container {
+      margin-top: 30px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      display: block;
+    }
+    
+    .contact-form {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+    
+    .form-control {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary-purple);
+      box-shadow: 0 0 0 0.2rem rgba(106, 13, 173, 0.15);
+    }
+    
+    .btn-custom {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      border: none;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-custom:hover {
+      background-color: #FFC107;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    #charCount {
+      font-size: 0.9rem;
+      text-align: right;
+      color: var(--dark-gray);
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .social-icon:hover {
+      background: var(--accent-gold);
+      color: var(--secondary-navy);
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .toast-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+    
+    /* Page Header */
+    .page-header {
+      padding: 60px 0 30px;
+      text-align: center;
+      background-color: var(--light-purple);
+    }
+    
+    .page-header h1 {
+      font-size: 2.5rem;
+      color: var(--primary-purple);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .page-header h1:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent-gold);
+    }
+    
+    .page-header p {
+      font-size: 1.1rem;
+      color: var(--dark-gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--secondary-navy) 0%, var(--dark-purple) 100%);
+      color: var(--white);
+      padding: 60px 0 20px;
+      position: relative;
+      overflow: hidden;
+      background-image: url('uploads/bible opened.jpg');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      background-color: rgba(0, 0, 102, 0.9);
+    }
+    
+    footer:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--primary-purple) 0%, var(--accent-gold) 50%, var(--primary-purple) 100%);
+    }
+    
+    .footer-links h4 {
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-links h4:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--accent-gold);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      padding-left: 5px;
+    }
+    
+    .footer-links i {
+      margin-right: 8px;
+      color: var(--accent-gold);
+      font-size: 0.8rem;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .footer-social a {
+      color: var(--white);
+      background-color: rgba(255, 255, 255, 0.15);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-social a:hover {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      transform: translateY(-3px);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .navbar-brand img {
+        height: 45px;
+        width: 45px;
+      }
+      
+      .nav-link {
+        padding: 6px 10px;
+        font-size: 13px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-header {
+        padding: 40px 0 20px;
+      }
+      
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      
+      .navbar-brand {
+        font-size: 18px;
+      }
+      
+      .navbar-brand img {
+        height: 40px;
+        width: 40px;
+      }
+      
+      .navbar {
+        padding: 5px 0;
+      }
+      
+      .nav-link {
+        padding: 5px 8px;
+        font-size: 12px;
+      }
+      
+      .footer-logo img {
+        height: 80px;
+        width: 80px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .navbar-brand {
+        font-size: 16px;
+      }
+      
+      .navbar-brand img {
+        height: 35px;
+        width: 35px;
+        margin-right: 8px;
+      }
+      
+      .nav-link {
+        padding: 4px 6px;
+        font-size: 11px;
+      }
+      
+      .footer-logo img {
+        height: 70px;
+        width: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Social Media Bar -->
+<div class="social-bar">
+  <div class="container">
+    <div class="social-icons-top">
+      <a href="#" class="social-icon-top"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+     <img src="uploads\images (13).jpeg" alt="Mtendele Baptist Church Logo">
+      Mtendele Baptist Church
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/ministries">Ministries</a></li>
+        <li class="nav-item"><a class="nav-link" href="/sermons">Sermons</a></li>
+        <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="/program">Programs</a></li>
+        <li class="nav-item"><a class="nav-link" href="/church_articles">Articles</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- White Divider Line -->
+<div class="nav-divider"></div>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <h1>Contact Mtendele Baptist Church</h1>
+    <p>We'd love to hear from you! Reach out with questions, prayer requests, or to learn more about our ministry.</p>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-lg-5 mb-5 mb-lg-0">
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <h3 class="contact-title">Our Location</h3>
+        <p>Mtendele Baptist Church<br>
+        Area 25,Lilongwe<br>
+        Malawi</p>
+        
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30985.399215713558!2d33.7680094!3d-13.88848795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1921d5fbd22d8a5d%3A0x866f258eb3373fc9!2sMtendere%20Baptist%20Church!5e0!3m2!1sen!2smw!4v1754081457204!5m2!1sen!2smw" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+      
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h3 class="contact-title">Email Us</h3>
+        <p>info@mtendelebaptist.church<br>
+        contact@mtendelebaptist.church</p>
+      </div>
+      
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-phone-alt"></i>
+        </div>
+        <h3 class="contact-title">Call Us</h3>
+        <p>+265 995 128 815</p>
+        
+        <div class="social-icons">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-7">
+      <div class="contact-form">
+        <h2 class="mb-4">Send Us a Message</h2>
+        <form id="contactForm" action="/send_message" method="POST" novalidate>
+          <div class="mb-3">
+            <label for="full_name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="full_name" name="full_name" required />
+            <div class="invalid-feedback">Please enter your full name.</div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Your Email</label>
+            <input type="email" class="form-control" id="email" name="email" required />
+            <div class="invalid-feedback">Enter a valid email address.</div>
+          </div>
+          <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" class="form-control" id="subject" name="subject" required />
+            <div class="invalid-feedback">Subject cannot be empty.</div>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="5" maxlength="500" required></textarea>
+            <div id="charCount">0 / 500 characters</div>
+            <div class="invalid-feedback">Please write your message.</div>
+          </div>
+
+          <!-- Google reCAPTCHA -->
+          <div class="mb-3">
+            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-custom" id="submitBtn">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast for success message -->
+<div class="toast-container">
+  <div class="toast align-items-center text-white bg-success border-0" id="successToast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">Your message has been successfully sent. Thank you for contacting Mtendele Baptist Church. Our team will respond to you soon.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="footer-logo">
+          <img src="uploads\images (13).jpeg" alt="Mtendele Baptist Church Logo" id="footerLogo">
+        </div>
+        <p class="mt-3">A vibrant Baptist church in Lilongwe, Malawi, committed to biblical truth, spiritual growth, and serving our community with Christ's love.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="/about"><i class="fas fa-chevron-right"></i> About</a></li>
+            <li><a href="/sermons"><i class="fas fa-chevron-right"></i> Sermons</a></li>
+            <li><a href="/ministries"><i class="fas fa-chevron-right"></i> Ministries</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Programs</a></li>
+            <li><a href="/church_articles"><i class="fas fa-chevron-right"></i> Articles</a></li>
+            <li><a href="/news"><i class="fas fa-chevron-right"></i> News</a></li>
+            <li><a href="/contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+        <div class="footer-links">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Sunday Worship</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Bible Study</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Youth Ministry</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Prayer Meetings</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Mission Outreach</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <div class="footer-links">
+          <h4>Contact Info</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> AREA 25, Lilongwe, Malawi</a></li>
+            <li><a href="mailto:info@mtendelebaptist.church"><i class="fas fa-envelope"></i> info@mtendelebaptist.church</a></li>
+            <li><a href="mailto:contact@mtendelebaptist.church"><i class="fas fa-envelope"></i> contact@mtendelebaptist.church</a></li>
+            <li><a href="tel:+265995128815"><i class="fas fa-phone-alt"></i> +265 995 128 815</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright text-center">
+      <p class="mb-0">&copy; 2025 Mtendele Baptist Church. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+  // Back to Top Button
+  window.addEventListener('scroll', function() {
+    var backToTop = document.querySelector('.back-to-top');
+    if (window.pageYOffset > 300) {
+      backToTop.classList.add('active');
+    } else {
+      backToTop.classList.remove('active');
+    }
+  });
+
+  // Smooth scrolling for back to top
+  document.querySelector('.back-to-top').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+
+  // Handle logo error fallback
+  document.querySelectorAll('img[alt="Mtendele Baptist Church Logo"]').forEach(img => {
+    img.onerror = function() {
+      this.onerror = null;
+      this.src = 'https://i.ibb.co/0jQJ9yJ/church-logo.png';
+    };
+  });
+
+  // Double click footer logo to redirect to login
+  document.getElementById('footerLogo').addEventListener('dblclick', function() {
+    window.location.href = '/login';
+  });
+
+  // Form validation and character count
+  const form = document.getElementById('contactForm');
+  const message = document.getElementById('message');
+  const charCount = document.getElementById('charCount');
+  const toastEl = document.getElementById('successToast');
+  const toast = new bootstrap.Toast(toastEl);
+
+  // Update character count
+  message.addEventListener('input', function() {
+    charCount.textContent = `${message.value.length} / 500 characters`;
+  });
+
+  // Form submission
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Validate form
+    if (form.checkValidity()) {
+      // Here you would typically send the form data to your server
+      // For demonstration, we'll just show the success toast
+      toast.show();
+      form.reset();
+      charCount.textContent = '0 / 500 characters';
+      grecaptcha.reset();
+    } else {
+      // Mark invalid fields
+      Array.from(form.elements).forEach(element => {
+        if (element.checkValidity) {
+          element.classList.toggle('is-invalid', !element.checkValidity());
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mtendele Baptist Church | Lilongwe, Malawi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-purple: #6A0DAD; /* Deep purple */
+      --secondary-navy: #000066; /* Dark navy */
+      --accent-gold: #FFD700;
+      --light-purple: #F5F0FF;
+      --dark-purple: #4B0082;
+      --white: #FFFFFF;
+      --light-gray: #F8F9FA;
+      --dark-gray: #343A40;
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    /* Enhanced Social Bar with Professional Gradient Blend */
+    .social-bar {
+      background: linear-gradient(135deg, 
+        rgba(180, 140, 255, 0.9) 0%, 
+        rgba(106, 13, 173, 0.8) 30%, 
+        rgba(70, 30, 180, 0.8) 60%, 
+        rgba(0, 0, 102, 0.7) 100%);
+      padding: 5px 0;
+      height: 40px;
+      border-bottom: 1px solid rgba(106,13,173,0.2);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 15px rgba(106,13,173,0.15);
+      position: relative;
+      z-index: 1000;
+    }
+
+    .social-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255,255,255,0.4) 50%, 
+        transparent 100%);
+    }
+
+    .social-icons-top {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+    }
+
+    .social-icon-top {
+      color: var(--white);
+      font-size: 14px;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.15);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .social-icon-top::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(255,255,255,0.1) 100%);
+      border-radius: 50%;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .social-icon-top:hover {
+      color: var(--accent-gold);
+      transform: translateY(-2px) scale(1.1);
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 4px 12px rgba(106,13,173,0.3);
+    }
+
+    .social-icon-top:hover::after {
+      opacity: 1;
+    }
+    
+    /* Logo styling */
+    .navbar-brand img {
+      height: 50px;
+      margin-right: 12px;
+      background-color: white;
+      padding: 5px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    .navbar-brand:hover img {
+      transform: scale(1.05);
+    }
+    .footer-logo img {
+      height: 80px;
+      background-color: white;
+      padding: 5px;
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+    .footer-logo:hover img {
+      transform: scale(1.05);
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background-color: var(--light-purple);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+    
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      padding: 5px 0;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      padding: 6px 12px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: var(--white);
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 12px;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-gold);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover:after, .nav-link.active:after {
+      width: calc(100% - 24px);
+    }
+    
+    .nav-divider {
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Hero Section */
+    .header-hero-container {
+      position: relative;
+      height: 80vh;
+      min-height: 500px;
+      overflow: hidden;
+    }
+    
+    .header-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      animation: zoomInOut 15s infinite alternate;
+    }
+    
+    @keyframes zoomInOut {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.1);
+      }
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(106, 13, 173, 0.85) 0%, rgba(0, 0, 102, 0.9) 100%);
+    }
+    
+    .hero {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      padding: 0 20px;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      z-index: 1;
+      animation: fadeInUp 1.5s ease;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    .btn-custom {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      border: none;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-custom:hover {
+      background-color: #FFC107;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .btn-outline-light {
+      border: 2px solid var(--white);
+      color: var(--white);
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline-light:hover {
+      background-color: var(--white);
+      color: var(--primary-purple);
+      transform: translateY(-3px);
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 30px;
+      color: var(--primary-purple);
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent-gold);
+    }
+    
+    /* Sermons Section Styles */
+    .sermon-card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .sermon-card:hover {
+      transform: translateY(-5px);
+    }
+    .sermon-card .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+    .sermon-card .card-body {
+      padding: 1.5rem;
+    }
+    .sermon-card .card-title {
+      color: var(--primary-purple);
+      font-weight: 600;
+    }
+    .sermon-card .card-text {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .sermon-card .badge {
+      background-color: var(--light-purple);
+    }
+
+    /* Series styles */
+    .series-item {
+      cursor: pointer;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--light-purple);
+    }
+    .series-item:hover {
+      background-color: #f8f5ff;
+      transform: translateX(5px);
+    }
+    .series-item.active {
+      background-color: var(--primary-purple);
+      color: white;
+    }
+    .series-item h5 {
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .series-item .badge {
+      background-color: white;
+      color: var(--primary-purple);
+    }
+
+    /* Resource styles */
+    .resource-card {
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+    .resource-card:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .resource-card .card-header {
+      background-color: var(--primary-purple);
+      color: white;
+      font-weight: 600;
+      border-radius: 8px 8px 0 0 !important;
+    }
+    .resource-card .card-body {
+      padding: 1.25rem;
+    }
+    .resource-card .resource-icon {
+      font-size: 1.5rem;
+      color: var(--primary-purple);
+      margin-right: 10px;
+    }
+
+    /* YouTube embed responsive */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Loading spinner */
+    .loading-spinner {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      border: 0.25em solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: spinner-border 0.75s linear infinite;
+    }
+    @keyframes spinner-border {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Series detail styles */
+    .series-header {
+      background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .series-header h1 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+    .series-header p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+    }
+    .series-sermon-item {
+      border-left: 3px solid var(--light-purple);
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .series-sermon-item:hover {
+      border-left-color: var(--primary-purple);
+      padding-left: 1.5rem;
+    }
+
+    /* Sermon Series Viewer Styles - Updated for more professional look */
+    .series-list-viewer {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .series-item-viewer {
+      background: #fff;
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      border-left: 3px solid var(--light-purple);
+    }
+
+    .series-item-viewer:hover {
+      background: #f8f5ff;
+      transform: translateX(2px);
+    }
+
+    .series-details-viewer {
+      margin-bottom: 20px;
+    }
+
+    .series-details-viewer img {
+      max-width: 120px;
+      height: auto;
+      border-radius: 6px;
+      margin-top: 8px;
+      float: right;
+      margin-left: 15px;
+      margin-bottom: 10px;
+    }
+
+    .sermon-viewer {
+      background: #fff;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      font-size: 0.9rem;
+    }
+
+    .sermon-viewer h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .sermon-viewer p {
+      margin-bottom: 6px;
+      font-size: 0.85rem;
+    }
+
+    .media-container-viewer {
+      margin-top: 8px;
+    }
+
+    .media-container-viewer iframe, 
+    .media-container-viewer video {
+      max-width: 100%;
+      height: 180px;
+      border-radius: 6px;
+    }
+
+    /* Tab styles */
+    .nav-tabs .nav-link {
+      color: var(--primary-purple);
+      border: none;
+      padding: 10px 20px;
+      font-weight: 500;
+    }
+    .nav-tabs .nav-link.active {
+      color: white;
+      background-color: var(--primary-purple);
+      border: none;
+      border-radius: 5px 5px 0 0;
+    }
+    .nav-tabs .nav-link:not(.active):hover {
+      color: var(--dark-purple);
+      background-color: rgba(123, 90, 194, 0.1);
+    }
+    .tab-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 0 5px 5px 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    /* Enhanced Footer Styles */
+    footer {
+      background: linear-gradient(135deg, var(--secondary-navy) 0%, var(--dark-purple) 100%);
+      color: var(--white);
+      padding: 60px 0 20px;
+      position: relative;
+      overflow: hidden;
+      background-image: url('uploads/bible opened.jpg');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      background-color: rgba(0, 0, 102, 0.9);
+    }
+    
+    footer:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--primary-purple) 0%, var(--accent-gold) 50%, var(--primary-purple) 100%);
+    }
+    
+    .footer-links h4 {
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-links h4:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--accent-gold);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      padding-left: 5px;
+    }
+    
+    .footer-links i {
+      margin-right: 8px;
+      color: var(--accent-gold);
+      font-size: 0.8rem;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .footer-social a {
+      color: var(--white);
+      background-color: rgba(255, 255, 255, 0.15);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-social a:hover {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .navbar-brand img {
+        height: 40px;
+        width: 40px;
+      }
+      .church-name {
+        font-size: 1rem;
+      }
+      .nav-tabs .nav-link {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+      .sermon-card .card-img-top {
+        height: 150px;
+      }
+      .series-header {
+        padding: 1rem;
+      }
+      .series-header h1 {
+        font-size: 1.3rem;
+      }
+      
+      /* Mobile adjustments for sermon viewer */
+      .series-details-viewer img {
+        max-width: 80px;
+        float: none;
+        display: block;
+        margin: 8px auto;
+      }
+      
+      .media-container-viewer iframe,
+      .media-container-viewer video {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Enhanced Social Media Bar with Professional Gradient -->
+<div class="social-bar">
+  <div class="container">
+    <div class="social-icons-top">
+      <a href="#" class="social-icon-top"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+     <img src="uploads\images (13).jpeg" alt="Mtendele Baptist Church Logo">
+      Mtendele Baptist Church
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/ministries">Ministries</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/sermons">Sermons</a></li>
+        <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="/program">Programs</a></li>
+        <li class="nav-item"><a class="nav-link" href="/church_articles">Articles</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- White Divider Line -->
+<div class="nav-divider"></div>
+
+<!-- Hero Section -->
+<div class="header-hero-container">
+  <div class="hero-slideshow">
+    <img src="uploads\church one hero 1.jpg" alt="Church worship" class="header-image active">
+    <img src="https://images.unsplash.com/photo-1542272201-b1ca555f8505?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="People worshiping in church" class="header-image">
+  </div>
+  <div class="hero-overlay"></div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="display-5 fw-bold">Sermons & Resources</h1>
+      <p class="lead">Grow in faith through biblical teaching from Mtendele Baptist Church</p>
+      <div class="d-flex gap-3 justify-content-center">
+        <a href="#sermons" class="btn btn-custom">Explore Sermons</a>
+        <a href="#resources" class="btn btn-outline-light">View Resources</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Sermons Section -->
+<section id="sermons" class="page-section py-5"> 
+  <div class="container py-5">
+    <h2 class="section-title text-center">Sermons & Resources</h2>
+    
+    <!-- Tab Navigation -->
+    <ul class="nav nav-tabs mb-4" id="sermonsTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="all-sermons-tab" data-bs-toggle="tab" data-bs-target="#all-sermons" type="button" role="tab" aria-controls="all-sermons" aria-selected="true">
+          <i class="fas fa-list me-2"></i>All Sermons
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="series-tab" data-bs-toggle="tab" data-bs-target="#series" type="button" role="tab" aria-controls="series" aria-selected="false">
+          <i class="fas fa-layer-group me-2"></i>Sermon Series
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="resources-tab" data-bs-toggle="tab" data-bs-target="#resources" type="button" role="tab" aria-controls="resources" aria-selected="false">
+          <i class="fas fa-book me-2"></i>Resources
+        </button>
+      </li>
+    </ul>
+    
+    <!-- Tab Content -->
+    <div class="tab-content" id="sermonsTabContent">
+      <!-- All Sermons Tab -->
+      <div class="tab-pane fade show active" id="all-sermons" role="tabpanel" aria-labelledby="all-sermons-tab">
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <div class="input-group">
+              <span class="input-group-text bg-white"><i class="fas fa-search"></i></span>
+              <input type="text" class="form-control" id="sermonSearch" placeholder="Search sermons...">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <select class="form-select" id="sermonFilter">
+              <option value="all">All Speakers</option>
+              <!-- Will be populated dynamically -->
+            </select>
+          </div>
+        </div>
+
+        <div id="sermonContainer" class="row">
+          <!-- Sermons will be loaded here dynamically -->
+          <div class="col-12 text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3">Loading sermons...</p>
+          </div>
+        </div>
+
+        <nav aria-label="Sermon pagination" class="mt-4">
+          <ul class="pagination justify-content-center" id="sermonPagination">
+            <!-- Pagination will be added here -->
+          </ul>
+        </nav>
+      </div>
+      
+      <!-- Sermon Series Tab -->
+      <div class="tab-pane fade" id="series" role="tabpanel" aria-labelledby="series-tab">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card mb-4">
+              <div class="card-header bg-purple text-white">
+                <h5 class="mb-0"><i class="fas fa-layer-group me-2"></i>Sermon Series</h5>
+              </div>
+              <div class="card-body p-0">
+                <div class="series-list-viewer" id="seriesList">
+                  <!-- Series will be loaded here -->
+                  <div class="text-center py-4">
+                    <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div id="seriesDetailContainer">
+              <div class="series-details-viewer" id="seriesDetails"></div>
+              <div class="sermons-viewer" id="sermonsContainer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Resources Tab -->
+      <div class="tab-pane fade" id="resources" role="tabpanel" aria-labelledby="resources-tab">
+        <div class="container mt-5">
+          <h2 class="text-center mb-4">Resources by Category</h2>
+          
+          <div class="mb-3">
+            <label for="categorySelect" class="form-label">Select Category:</label>
+            <select class="form-select" id="categorySelect" onchange="loadResources()">
+              <option value="">-- Choose a Category --</option>
+            </select>
+          </div>
+
+          <div id="resourceTableContainer" class="mt-4 text-center">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-5" style="background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%); color: white;">
+  <div class="container text-center py-4">
+    <h2 class="mb-4">Need More Spiritual Resources?</h2>
+    <p class="lead mb-4">Explore our library of sermons, Bible studies, and devotionals to grow in your faith.</p>
+    <div class="d-flex gap-3 justify-content-center">
+      <a href="/contact" class="btn btn-light btn-lg">Request Prayer</a>
+      <a href="/program" class="btn btn-outline-light btn-lg">Join Bible Study</a>
+    </div>
+  </div>
+</section>
+
+<!-- Enhanced Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="footer-logo">
+          <img src="uploads\images (13).jpeg" alt="Mtendele Baptist Church Logo" id="footerLogo">
+        </div>
+        <p class="mt-3">A vibrant Baptist church in Lilongwe, Malawi, committed to biblical truth, spiritual growth, and serving our community with Christ's love.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="/ministries"><i class="fas fa-chevron-right"></i> Ministries</a></li>
+            <li><a href="/sermons"><i class="fas fa-chevron-right"></i> Sermons</a></li>
+            <li><a href="/about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="/contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+            <li><a href="/news"><i class="fas fa-chevron-right"></i> News</a></li>
+            <li><a href="/programs"><i class="fas fa-chevron-right"></i> programs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+        <div class="footer-links">
+          <h4>Ministries</h4>
+          <ul>
+            <li><a href="/ministries#children"><i class="fas fa-chevron-right"></i> Children</a></li>
+            <li><a href="/ministries#youth"><i class="fas fa-chevron-right"></i> Youth</a></li>
+            <li><a href="/ministries#women"><i class="fas fa-chevron-right"></i> Women</a></li>
+            <li><a href="/ministries#men"><i class="fas fa-chevron-right"></i> Men</a></li>
+            <li><a href="/ministries#missions"><i class="fas fa-chevron-right"></i> Missions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <div class="footer-links">
+          <h4>Contact Us</h4>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Box 4000, Lilongwe, Malawi</li>
+            <li><i class="fas fa-phone"></i> 0995128815</li>
+            <li><i class="fas fa-envelope"></i> info@mtendelebaptist.church</li>
+            <li><i class="fas fa-clock"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright text-center">
+      <p class="mb-0">&copy; 2025 Mtendele Baptist Church. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+<script>
+  // Global variables
+  let currentPage = 1;
+  const sermonsPerPage = 6;
+  let allSermons = [];
+  let filteredSermons = [];
+  let allSeries = [];
+  let currentSeriesId = null;
+  let allResources = [];
+  let resourceCategories = [];
+
+  // DOM Elements
+  const sermonContainer = document.getElementById('sermonContainer');
+  const seriesList = document.getElementById('seriesList');
+  const seriesDetails = document.getElementById('seriesDetails');
+  const sermonsContainer = document.getElementById('sermonsContainer');
+  const resourceContainer = document.getElementById('resourceContainer');
+  const resourceCategorySelect = document.getElementById('resourceCategory');
+  const sermonFilter = document.getElementById('sermonFilter');
+  const sermonSearch = document.getElementById('sermonSearch');
+  const resourceSearch = document.getElementById('resourceSearch');
+
+  // Utility functions
+  function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function formatDate(dateString) {
+    if (!dateString) return 'N/A';
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  }
+
+  function extractYoutubeId(url) {
+    if (!url || url === "N/A") return null;
+    
+    // Regular YouTube URL
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    
+    if (match && match[2].length === 11) {
+      return match[2];
+    }
+    
+    // Short YouTube URL
+    const shortRegExp = /youtu.be\/([^#\&\?]*)/;
+    const shortMatch = url.match(shortRegExp);
+    
+    if (shortMatch && shortMatch[1].length === 11) {
+      return shortMatch[1];
+    }
+    
+    return null;
+  }
+
+  // Sermon Series Viewer Functions
+  async function fetchSeriesList() {
+    try {
+      const response = await fetch('/view_new_series');
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      
+      const data = await response.json();
+      seriesList.innerHTML = '';
+      
+      if (data.series_list && data.series_list.length > 0) {
+        data.series_list.forEach(series => {
+          const item = document.createElement('div');
+          item.className = 'series-item-viewer';
+          item.textContent = series.title;
+          item.onclick = () => loadSeriesViewer(series.id);
+          seriesList.appendChild(item);
+        });
+      } else {
+        seriesList.innerHTML = '<div class="text-muted p-3">No sermon series available</div>';
+      }
+    } catch (error) {
+      console.error('Error fetching series list:', error);
+      seriesList.innerHTML = `
+        <div class="alert alert-danger">
+          Failed to load series: ${escapeHtml(error.message)}
+          <button onclick="fetchSeriesList()" class="btn btn-sm btn-warning mt-2">Try Again</button>
+        </div>
+      `;
+    }
+  }
+
+  async function loadSeriesViewer(seriesId) {
+    try {
+      seriesDetails.innerHTML = '<div class="text-center py-4"><div class="spinner-border text-primary"></div><p class="mt-2">Loading series...</p></div>';
+      sermonsContainer.innerHTML = '';
+      
+      const response = await fetch(`/view_new_series?series_id=${seriesId}`);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      
+      const data = await response.json();
+      
+      // Display Series Info
+      seriesDetails.innerHTML = `
+        <h2>${escapeHtml(data.series.title)}</h2>
+        <p>${escapeHtml(data.series.description || '')}</p>
+        ${data.series.image ? `<img src="${data.series.image}" alt="Series Image" class="img-fluid rounded">` : ''}
+      `;
+
+      // Display Sermons
+      if (data.sermons && data.sermons.length > 0) {
+        data.sermons.forEach(sermon => {
+          const div = document.createElement('div');
+          div.className = 'sermon-viewer';
+          div.innerHTML = `
+            <h3>${escapeHtml(sermon.title)}</h3>
+            <p><strong>Speaker:</strong> ${escapeHtml(sermon.speaker || 'N/A')}</p>
+            <p><strong>Date:</strong> ${formatDate(sermon.date || 'N/A')}</p>
+            <p><strong>Scripture:</strong> ${escapeHtml(sermon.scripture || 'N/A')}</p>
+            <p>${escapeHtml(sermon.description || '')}</p>
+            <div class="media-container-viewer">
+              ${!sermon.youtube_url || sermon.youtube_url === 'N/A' ? getMediaPlayerHTML(sermon.media) : ''}
+              ${getYouTubeEmbedHTML(sermon.youtube_url)}
+            </div>
+            ${sermon.notes ? `<a href="${sermon.notes}" target="_blank" class="btn btn-sm btn-purple mt-2">Download Notes</a>` : ''}
+          `;
+          sermonsContainer.appendChild(div);
+        });
+      } else {
+        sermonsContainer.innerHTML = '<div class="alert alert-info">No sermons available in this series</div>';
+      }
+    } catch (error) {
+      console.error('Error loading series:', error);
+      seriesDetails.innerHTML = `
+        <div class="alert alert-danger">
+          Failed to load series: ${escapeHtml(error.message)}
+          <button onclick="loadSeriesViewer(${seriesId})" class="btn btn-sm btn-warning mt-2">Try Again</button>
+        </div>
+      `;
+    }
+  }
+
+  function getYouTubeEmbedHTML(url) {
+    if (!url || url === 'N/A') return '';
+    const videoId = extractYoutubeId(url);
+    if (!videoId) return '';
+    return `
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/${videoId}" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+      </div>
+    `;
+  }
+
+  function getMediaPlayerHTML(media) {
+    if (!media) return '';
+    const ext = media.split('.').pop().toLowerCase();
+    if (['mp4', 'webm', 'ogg'].includes(ext)) {
+      return `<video controls src="${media}" class="w-100"></video>`;
+    } else if (['mp3', 'wav'].includes(ext)) {
+      return `<audio controls src="${media}" class="w-100"></audio>`;
+    }
+    return '';
+  }
+
+  // Fetch data functions
+  async function fetchSermons() {
+    try {
+      const response = await fetch('/get_sermons');
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      
+      const data = await response.json();
+      
+      // Handle different response formats
+      if (Array.isArray(data)) {
+        allSermons = data;
+      } else if (data.sermons) {
+        allSermons = data.sermons;
+      } else {
+        throw new Error('Invalid sermons data format');
+      }
+      
+      filteredSermons = [...allSermons];
+      
+      // Populate speaker filter
+      const speakers = [...new Set(allSermons.map(s => s.speaker || 'Unknown Speaker'))];
+      sermonFilter.innerHTML = '<option value="all">All Speakers</option>' + 
+        speakers.map(s => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join('');
+      
+      renderSermons();
+    } catch (error) {
+      console.error('Error fetching sermons:', error);
+      sermonContainer.innerHTML = `
+        <div class="col-12 text-center py-5">
+          <i class="fas fa-exclamation-triangle fa-3x text-danger mb-3"></i>
+          <h4>Failed to load sermons</h4>
+          <p class="text-muted">${escapeHtml(error.message)}</p>
+          <button onclick="fetchSermons()" class="btn btn-purple">Retry</button>
+        </div>
+      `;
+    }
+  }
+
+  async function fetchSeries() {
+    fetchSeriesList(); // Use the new series viewer function
+  }
+
+  async function fetchSeriesDetails(seriesId) {
+    loadSeriesViewer(seriesId); // Use the new series viewer function
+  }
+
+  function loadCategories() {
+    fetch('/get_categories')
+      .then(res => res.json())
+      .then(categories => {
+        const select = document.getElementById('categorySelect');
+        categories.forEach(cat => {
+          const option = document.createElement('option');
+          option.value = cat.id;
+          option.textContent = cat.name;
+          select.appendChild(option);
+        });
+      });
+  }
+
+  function loadResources() {
+    const categoryId = document.getElementById('categorySelect').value;
+    const container = document.getElementById('resourceTableContainer');
+
+    if (!categoryId) {
+      container.innerHTML = '<div class="alert alert-info">Please select a category.</div>';
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    `;
+
+    fetch(`/get_resources_by_category?category_id=${categoryId}`)
+      .then(res => res.json())
+      .then(resources => {
+        if (!resources.length) {
+          container.innerHTML = '<div class="alert alert-warning">No resources found for this category.</div>';
+          return;
+        }
+
+        let html = `<div class="table-responsive">
+          <table class="table table-bordered">
+            <thead><tr><th>Title</th><th>Description</th><th>Date</th><th>Download</th></tr></thead>
+            <tbody>`;
+
+        resources.forEach(r => {
+          html += `<tr>
+            <td>${r.title}</td>
+            <td>${r.description}</td>
+            <td>${r.date || 'N/A'}</td>
+            <td>
+              ${r.file ? `<a href="${r.file}" class="btn btn-sm btn-primary" download>Download</a>` : 'N/A'}
+            </td>
+          </tr>`;
+        });
+
+        html += '</tbody></table></div>';
+        container.innerHTML = html;
+      })
+      .catch(err => {
+        container.innerHTML = `<div class="alert alert-danger">Error: ${err.message}</div>`;
+      });
+  }
+
+  function loadDefaultRecentResources() {
+    const container = document.getElementById('resourceTableContainer');
+    container.innerHTML = `
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    `;
+
+    fetch('/get_recent_resources')
+      .then(res => res.json())
+      .then(resources => {
+        if (!resources.length) {
+          container.innerHTML = '<div class="alert alert-warning">No recent resources found.</div>';
+          return;
+        }
+
+        let html = `<h5 class="mb-3">Recent Resources</h5>
+          <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead><tr><th>Title</th><th>Description</th><th>Date</th><th>Download</th></tr></thead>
+            <tbody>`;
+
+        resources.forEach(r => {
+          html += `<tr>
+            <td>${r.title}</td>
+            <td>${r.description}</td>
+            <td>${r.date || 'N/A'}</td>
+            <td>
+              ${r.file ? `<a href="${r.file}" class="btn btn-sm btn-primary" download>Download</a>` : 'N/A'}
+            </td>
+          </tr>`;
+        });
+
+        html += '</tbody></table></div>';
+        container.innerHTML = html;
+      })
+      .catch(err => {
+        container.innerHTML = `<div class="alert alert-danger">Error loading recent resources: ${err.message}</div>`;
+      });
+  }
+
+  // Render functions
+  function renderSermons(page = 1) {
+    currentPage = page;
+    const startIdx = (page - 1) * sermonsPerPage;
+    const endIdx = startIdx + sermonsPerPage;
+    const paginatedSermons = filteredSermons.slice(startIdx, endIdx);
+    
+    if (paginatedSermons.length === 0) {
+      sermonContainer.innerHTML = `
+        <div class="col-12 text-center py-5">
+          <i class="fas fa-info-circle fa-3x text-muted mb-3"></i>
+          <h4>No sermons found</h4>
+          <p class="text-muted">Try adjusting your search or filter</p>
+        </div>
+      `;
+      document.getElementById('sermonPagination').innerHTML = '';
+      return;
+    }
+    
+    sermonContainer.innerHTML = paginatedSermons.map(sermon => `
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card sermon-card h-100">
+          ${sermon.youtube_url && extractYoutubeId(sermon.youtube_url) ? `
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/${extractYoutubeId(sermon.youtube_url)}" 
+                      frameborder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen>
+              </iframe>
+            </div>
+          ` : sermon.image ? `
+            <img src="${sermon.image}" class="card-img-top" alt="${escapeHtml(sermon.title)}">
+          ` : `
+            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+              <i class="fas fa-volume-up fa-3x text-muted"></i>
+            </div>
+          `}
+          <div class="card-body">
+            <h5 class="card-title">${escapeHtml(sermon.title)}</h5>
+            <p class="card-text text-muted small mb-2">
+              <i class="fas fa-user me-1"></i> ${escapeHtml(sermon.speaker || 'N/A')}
+            </p>
+            <p class="card-text text-muted small mb-2">
+              <i class="fas fa-calendar-alt me-1"></i> ${formatDate(sermon.date)}
+            </p>
+            <p class="card-text text-muted small mb-3">
+              <i class="fas fa-book me-1"></i> ${escapeHtml(sermon.scripture || 'N/A')}
+            </p>
+            <p class="card-text">${escapeHtml(sermon.description?.substring(0, 100) || '')}${sermon.description?.length > 100 ? '...' : ''}</p>
+          </div>
+          <div class="card-footer bg-white border-top-0">
+            <div class="d-flex justify-content-between">
+              ${sermon.media ? `
+                <a href="${sermon.media}" class="btn btn-sm btn-outline-purple" target="_blank">
+                  <i class="fas fa-headphones me-1"></i> Listen
+                </a>
+              ` : ''}
+              ${sermon.youtube_url && extractYoutubeId(sermon.youtube_url) ? `
+                <a href="${sermon.youtube_url}" class="btn btn-sm btn-outline-purple" target="_blank">
+                  <i class="fas fa-video me-1"></i> Watch
+                </a>
+              ` : ''}
+              ${sermon.notes ? `
+                <a href="${sermon.notes}" class="btn btn-sm btn-purple" download>
+                  <i class="fas fa-download me-1"></i> Notes
+                </a>
+              ` : ''}
+            </div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+    
+    // Render pagination
+    const totalPages = Math.ceil(filteredSermons.length / sermonsPerPage);
+    let paginationHtml = '';
+    
+    if (totalPages > 1) {
+      paginationHtml += `
+        <li class="page-item ${page === 1 ? 'disabled' : ''}">
+          <a class="page-link" href="#" onclick="renderSermons(${page - 1})" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+      `;
+      
+      for (let i = 1; i <= totalPages; i++) {
+        paginationHtml += `
+          <li class="page-item ${i === page ? 'active' : ''}">
+            <a class="page-link" href="#" onclick="renderSermons(${i})">${i}</a>
+          </li>
+        `;
+      }
+      
+      paginationHtml += `
+        <li class="page-item ${page === totalPages ? 'disabled' : ''}">
+          <a class="page-link" href="#" onclick="renderSermons(${page + 1})" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      `;
+    }
+    
+    document.getElementById('sermonPagination').innerHTML = paginationHtml;
+  }
+
+  function renderSeriesList() {
+    fetchSeriesList(); // Use the new series viewer function
+  }
+
+  function renderSeriesDetails(data) {
+    loadSeriesViewer(data.series.id); // Use the new series viewer function
+  }
+
+  // Event handlers
+  function loadSeries(seriesId) {
+    loadSeriesViewer(seriesId); // Use the new series viewer function
+  }
+
+  function filterSermons() {
+    const searchTerm = sermonSearch.value.toLowerCase();
+    const speakerFilter = sermonFilter.value;
+    
+    filteredSermons = allSermons.filter(sermon => {
+      const matchesSearch = sermon.title.toLowerCase().includes(searchTerm) || 
+                           (sermon.description && sermon.description.toLowerCase().includes(searchTerm)) || 
+                           (sermon.scripture && sermon.scripture.toLowerCase().includes(searchTerm));
+      
+      const matchesSpeaker = speakerFilter === 'all' || sermon.speaker === speakerFilter;
+      
+      return matchesSearch && matchesSpeaker;
+    });
+    
+    renderSermons(1);
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load content for the active tab
+    const activeTab = document.querySelector('#sermonsTab .nav-link.active');
+    if (activeTab) {
+      if (activeTab.id === 'all-sermons-tab') {
+        fetchSermons();
+      } else if (activeTab.id === 'series-tab') {
+        fetchSeries();
+      } else if (activeTab.id === 'resources-tab') {
+        loadCategories();
+        loadDefaultRecentResources();
+      }
+    }
+    
+    // Set up tab change listeners
+    document.querySelectorAll('#sermonsTab .nav-link').forEach(tab => {
+      tab.addEventListener('shown.bs.tab', function(event) {
+        if (event.target.id === 'all-sermons-tab') {
+          fetchSermons();
+        } else if (event.target.id === 'series-tab') {
+          fetchSeries();
+        } else if (event.target.id === 'resources-tab') {
+          loadCategories();
+          loadDefaultRecentResources();
+        }
+      });
+    });
+    
+    // Set up search/filter listeners
+    sermonSearch.addEventListener('input', filterSermons);
+    sermonFilter.addEventListener('change', filterSermons);
+
+    // Back to Top Button
+    window.addEventListener('scroll', function() {
+      var backToTop = document.querySelector('.back-to-top');
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('active');
+      } else {
+        backToTop.classList.remove('active');
+      }
+    });
+
+    // Smooth scrolling for back to top
+    document.querySelector('.back-to-top').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
+    // Hero image slideshow
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.header-image');
+    
+    function showSlide(n) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      currentSlide = (n + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+    
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+    
+    // Change slide every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Handle logo error fallback
+    document.querySelectorAll('img[alt="Mtendele Baptist Church Logo"]').forEach(img => {
+      img.onerror = function() {
+        this.onerror = null;
+        this.src = 'https://i.ibb.co/0jQJ9yJ/church-logo.png';
+      };
+    });
+
+    // Double click footer logo to redirect to login
+    document.getElementById('footerLogo').addEventListener('dblclick', function() {
+      window.location.href = '/login';
+    });
+  });
+</script>
+
+</body>
+</html>

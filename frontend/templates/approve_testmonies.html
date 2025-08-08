@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - Approve Testimonies</title>
+    <style>
+        .testimony {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        img {
+            max-width: 200px;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Pending Testimonies</h2>
+    <div id="testimonies-container">
+        <p>Loading testimonies...</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchTestimonies();
+        });
+
+        function fetchTestimonies() {
+            fetch('/get_testimonies')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('testimonies-container');
+                    
+                    if (data.length === 0) {
+                        container.innerHTML = "<p>No pending testimonies.</p>";
+                        return;
+                    }
+
+                    container.innerHTML = '';
+                    data.forEach(testimony => {
+                        const div = document.createElement('div');
+                        div.className = 'testimony';
+
+                        // Determine full image path
+                        const imagePath = testimony.image ? `/uploads/${escapeHtml(testimony.image.split('/').pop())}` : null;
+
+                        div.innerHTML = `
+                            <p><strong>Email:</strong> ${escapeHtml(testimony.email)}</p>
+                            <p><strong>Description:</strong> ${nl2br(escapeHtml(testimony.description))}</p>
+                            ${imagePath ? `<img src="${imagePath}" alt="Testimony Image">` : ''}
+                            <form onsubmit="handleApproval(event, ${testimony.id})">
+                                <button type="submit" name="approve" value="yes">Approve</button>
+                                <button type="submit" name="approve" value="no">Reject</button>
+                            </form>
+                        `;
+                        
+                        container.appendChild(div);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('testimonies-container').innerHTML = 
+                        "<p>Error loading testimonies. Please try again later.</p>";
+                });
+        }
+
+        function handleApproval(event, id) {
+            event.preventDefault();
+            const approve = event.submitter.value;
+
+            fetch('/approve_testimony', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id, approve })
+            })
+            .then(response => {
+                if (response.ok) {
+                    fetchTestimonies(); // Refresh the list
+                } else {
+                    alert('Error processing approval');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error processing approval');
+            });
+        }
+
+        // Helper functions
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function nl2br(text) {
+            return text.replace(/\n/g, '<br>');
+        }
+    </script>
+</body>
+</html>

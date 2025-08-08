@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Sermons</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .media-block { margin-top: 10px; }
+    audio, video {
+      max-width: 100%;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      background: #f5f5f5;
+    }
+    video { height: auto; outline: none; }
+    .loading-spinner {
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 0.25em solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: spinner-border 0.75s linear infinite;
+    }
+    @keyframes spinner-border { to { transform: rotate(360deg); } }
+    .download-btn:hover { transform: translateY(-2px); transition: 0.2s; }
+    .table { box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05); }
+    .table th { background-color: #f8f9fa; font-weight: 600; }
+    .error-message { color: #dc3545; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">All Sermons</h2>
+  <div id="sermonTableContainer" class="text-center">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100px;">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function debugLog(message) {
+  console.log('[DEBUG]', message);
+}
+
+function forceDownload(url, filename, element) {
+  if (!url) {
+    alert('Error: No file available for download');
+    return;
+  }
+
+  const originalHtml = element.innerHTML;
+  element.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Downloading...';
+  element.classList.add('disabled');
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename || url.split('/').pop() || 'document';
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => {
+    document.body.removeChild(a);
+    element.innerHTML = '<i class="fas fa-check"></i> Downloaded';
+    setTimeout(() => {
+      element.innerHTML = originalHtml;
+      element.classList.remove('disabled');
+    }, 1500);
+  }, 100);
+}
+
+function loadSermons() {
+  fetch('/get_all_sermons')
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      return res.json();
+    })
+    .then(data => {
+      if (!data || data.length === 0) {
+        document.getElementById('sermonTableContainer').innerHTML = 
+          '<div class="alert alert-info">No sermons found in the database.</div>';
+        return;
+      }
+
+      let html = `<div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>Title</th>
+              <th>Speaker</th>
+              <th>Date</th>
+              <th>Scripture</th>
+              <th>Media</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>`;
+
+      data.forEach(sermon => {
+        html += `<tr>
+          <td>${sermon.title || 'N/A'}</td>
+          <td>${sermon.speaker || 'N/A'}</td>
+          <td>${sermon.date || 'N/A'}</td>
+          <td>${sermon.scripture || 'N/A'}</td>
+          <td class="media-block">`;
+
+        if (sermon.media) {
+          const ext = sermon.media.split('.').pop().toLowerCase();
+          const encoded = encodeURI(sermon.media.trim());
+
+          if (['mp3', 'wav', 'ogg'].includes(ext)) {
+            html += `
+              <audio controls class="w-100">
+                <source src="${encoded}" type="audio/${ext === 'mp3' ? 'mpeg' : ext}">
+              </audio>`;
+          } else if (['mp4', 'webm', 'ogv'].includes(ext)) {
+            html += `
+              <video controls class="w-100">
+                <source src="${encoded}" type="video/${ext === 'ogv' ? 'ogg' : ext}">
+              </video>`;
+          } else {
+            html += `<a href="${encoded}" target="_blank" class="btn btn-sm btn-outline-primary">View Media</a>`;
+          }
+        } else {
+          html += '<span class="text-muted">No media</span>';
+        }
+
+        if (sermon.image) {
+          html += `<br><a href="${encodeURI(sermon.image.trim())}" target="_blank" class="btn btn-sm btn-outline-secondary mt-2">View Image</a>`;
+        }
+
+        const notesUrl = sermon.notes ? sermon.notes.trim() : null;
+        const notesFilename = sermon.notes ? sermon.notes.split('/').pop() : null;
+
+        html += `</td><td>${
+          notesUrl 
+            ? `<button onclick="forceDownload('${notesUrl.replace(/'/g, "\\'")}', '${(notesFilename || 'notes.pdf').replace(/'/g, "\\'")}', this)" 
+                 class="download-btn btn btn-primary btn-sm">
+                 <i class="fas fa-download"></i> Download Notes
+               </button>`
+            : '<span class="text-muted">N/A</span>'
+        }</td></tr>`;
+      });
+
+      html += `</tbody></table></div>`;
+      document.getElementById('sermonTableContainer').innerHTML = html;
+    })
+    .catch(err => {
+      document.getElementById('sermonTableContainer').innerHTML = 
+        `<div class="alert alert-danger">
+          <h4>Failed to load sermons</h4>
+          <p class="error-message">${err.message}</p>
+          <button onclick="location.reload()" class="btn btn-warning">Try Again</button>
+        </div>`;
+    });
+}
+
+document.addEventListener('DOMContentLoaded', loadSermons);
+</script>
+</body>
+</html>

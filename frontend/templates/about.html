@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us | Mtendele Baptist Church</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-purple: #6A0DAD; /* Deep purple */
+      --secondary-navy: #000066; /* Dark navy */
+      --accent-gold: #FFD700;
+      --light-purple: #F5F0FF;
+      --dark-purple: #4B0082;
+      --white: #FFFFFF;
+      --light-gray: #F8F9FA;
+      --dark-gray: #343A40;
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    /* Enhanced Social Bar with Professional Gradient Blend */
+    .social-bar {
+      background: linear-gradient(135deg, 
+        rgba(180, 140, 255, 0.9) 0%, 
+        rgba(106, 13, 173, 0.8) 30%, 
+        rgba(70, 30, 180, 0.8) 60%, 
+        rgba(0, 0, 102, 0.7) 100%);
+      padding: 5px 0;
+      height: 40px;
+      border-bottom: 1px solid rgba(106,13,173,0.2);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 15px rgba(106,13,173,0.15);
+      position: relative;
+      z-index: 1000;
+    }
+
+    .social-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255,255,255,0.4) 50%, 
+        transparent 100%);
+    }
+
+    .social-icons-top {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+    }
+
+    .social-icon-top {
+      color: var(--white);
+      font-size: 14px;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.15);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .social-icon-top::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(255,255,255,0.1) 100%);
+      border-radius: 50%;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .social-icon-top:hover {
+      color: var(--accent-gold);
+      transform: translateY(-2px) scale(1.1);
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 4px 12px rgba(106,13,173,0.3);
+    }
+
+    .social-icon-top:hover::after {
+      opacity: 1;
+    }
+    
+    /* Logo styling */
+    .navbar-brand img {
+      height: 50px;
+      margin-right: 12px;
+      background-color: white;
+      padding: 5px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    .navbar-brand:hover img {
+      transform: scale(1.05);
+    }
+    .footer-logo img {
+      height: 80px;
+      background-color: white;
+      padding: 5px;
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+    .footer-logo:hover img {
+      transform: scale(1.05);
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background-color: var(--light-purple);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+    
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      padding: 5px 0;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      padding: 6px 12px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: var(--white);
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 12px;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-gold);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover:after, .nav-link.active:after {
+      width: calc(100% - 24px);
+    }
+    
+    .nav-divider {
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* About Page Specific Styles */
+    .about-header {
+      background-image: url('/uploads/church who we are.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0;
+      position: relative;
+      margin-bottom: 50px;
+    }
+    
+    .about-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(106, 13, 173, 0.85) 0%, rgba(0, 0, 102, 0.9) 100%);
+    }
+    
+    .about-header-content {
+      position: relative;
+      color: white;
+      text-align: center;
+    }
+    
+    .about-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      border-left: 5px solid var(--primary-purple);
+    }
+    
+    .about-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-left: 5px solid var(--accent-gold);
+    }
+    
+    .scripture-box {
+      background-color: var(--light-purple);
+      border-left: 4px solid var(--accent-gold);
+      padding: 15px;
+      margin: 20px 0;
+      font-style: italic;
+      border-radius: 5px;
+    }
+    
+    .mission-vision-section {
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      color: white;
+      padding: 60px 0;
+      margin: 50px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .mission-vision-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      opacity: 0.05;
+      z-index: 0;
+    }
+    
+    .mv-card {
+      background-color: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .mv-card:hover {
+      transform: translateY(-5px);
+      background-color: rgba(255,255,255,0.15);
+    }
+    
+    .belief-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    
+    .belief-icon {
+      font-size: 1.5rem;
+      color: var(--accent-gold);
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    
+    .ministry-card {
+      background-color: var(--white);
+      border-radius: 8px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+      border-top: 4px solid var(--primary-purple);
+    }
+    
+    .ministry-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border-top: 4px solid var(--accent-gold);
+    }
+    
+    .ministry-icon {
+      font-size: 2.5rem;
+      color: var(--primary-purple);
+      margin-bottom: 15px;
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: var(--primary-purple);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 10px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -12px;
+      background-color: var(--accent-gold);
+      border: 4px solid var(--primary-purple);
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .left {
+      left: 0;
+    }
+    
+    .right {
+      left: 50%;
+    }
+    
+    .left::before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      right: 30px;
+      border: medium solid var(--primary-purple);
+      border-width: 10px 0 10px 10px;
+      border-color: transparent transparent transparent white;
+    }
+    
+    .right::before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      left: 30px;
+      border: medium solid var(--primary-purple);
+      border-width: 10px 10px 10px 0;
+      border-color: transparent white transparent transparent;
+    }
+    
+    .right::after {
+      left: -12px;
+    }
+    
+    .timeline-content {
+      padding: 20px;
+      background-color: white;
+      position: relative;
+      border-radius: 6px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    /* Enhanced Footer Styles */
+    footer {
+      background: linear-gradient(135deg, var(--secondary-navy) 0%, var(--dark-purple) 100%);
+      color: var(--white);
+      padding: 60px 0 20px;
+      position: relative;
+      overflow: hidden;
+      background-image: url('uploads/bible opened.jpg');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      background-color: rgba(0, 0, 102, 0.9);
+    }
+    
+    footer:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--primary-purple) 0%, var(--accent-gold) 50%, var(--primary-purple) 100%);
+    }
+    
+    .footer-links h4 {
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-links h4:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--accent-gold);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      padding-left: 5px;
+    }
+    
+    .footer-links i {
+      margin-right: 8px;
+      color: var(--accent-gold);
+      font-size: 0.8rem;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .footer-social a {
+      color: var(--white);
+      background-color: rgba(255, 255, 255, 0.15);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-social a:hover {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-navy) 100%);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background-color: var(--accent-gold);
+      color: var(--secondary-navy);
+      transform: translateY(-3px);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .navbar-brand img {
+        height: 45px;
+        width: 45px;
+      }
+      
+      .nav-link {
+        padding: 6px 10px;
+        font-size: 13px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .about-header {
+        padding: 80px 0;
+      }
+      
+      .navbar-brand {
+        font-size: 18px;
+      }
+      
+      .navbar-brand img {
+        height: 40px;
+        width: 40px;
+      }
+      
+      .navbar {
+        padding: 5px 0;
+      }
+      
+      .nav-link {
+        padding: 5px 8px;
+        font-size: 12px;
+      }
+      
+      .footer-logo img {
+        height: 80px;
+        width: 80px;
+      }
+      
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item::before {
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+      }
+      
+      .left::after, .right::after {
+        left: 18px;
+      }
+      
+      .right {
+        left: 0%;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .navbar-brand {
+        font-size: 16px;
+      }
+      
+      .navbar-brand img {
+        height: 35px;
+        width: 35px;
+        margin-right: 8px;
+      }
+      
+      .nav-link {
+        padding: 4px 6px;
+        font-size: 11px;
+      }
+      
+      .footer-logo img {
+        height: 70px;
+        width: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Enhanced Social Media Bar with Professional Gradient -->
+<div class="social-bar">
+  <div class="container">
+    <div class="social-icons-top">
+      <a href="#" class="social-icon-top"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon-top"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+     <img src="uploads/images_13.jpeg" alt="Christian Universal Church Logo">
+      Mtendele Baptist Church
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        
+        <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/ministries">Ministries</a></li>
+        <li class="nav-item"><a class="nav-link" href="/sermons">Sermons</a></li>
+        <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="/program">Programs</a></li>
+        <li class="nav-item"><a class="nav-link" href="/church_articles">Articles</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- White Divider Line -->
+<div class="nav-divider"></div>
+
+<!-- About Header -->
+<div class="about-header">
+  <div class="container">
+    <div class="about-header-content">
+      <h1>About Christian Universal Church</h1>
+      <p class="lead">A beacon of faith, hope, and transformation since 2021</p>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="container mb-5">
+  <!-- Our Foundation Section -->
+  <section class="mb-5">
+    <div class="row">
+      <div class="col-lg-6 mb-4">
+        <div class="about-card">
+          <h2>Our Foundation</h2>
+          <p>The Christian Universal Church (CUC) is a dynamic, Christ-centered ministry founded in 2021 under the divine guidance of Evangelist Elias Austin Shellah. Established in Ishalikira Village, Chitipa District (Malawi), the church has since expanded to Zolozolo, Mzuzu City, where it continues to grow as a beacon of faith, hope, and transformation.</p>
+          <p>The birth of CUC was divinely inspired by the vision of universal salvation—the conviction that Jesus Christ's redemptive power transcends all barriers of tribe, nationality, or social status. As a Spirit-led and Bible-based church, we are committed to proclaiming the full Gospel, fostering spiritual growth, and preparing believers for the Second Coming of Christ.</p>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <div class="about-card">
+          <h2>Our Aim</h2>
+          <p>To preach salvation, disciple believers, and serve communities with compassion, integrity, and excellence.</p>
+          <p>To be a global ministry that transforms lives spiritually, socially, and economically through the power of the Gospel.</p>
+          <div class="scripture-box">
+            <p>"And this gospel of the kingdom will be preached in the whole world as a testimony to all nations, and then the end will come." (Matthew 24:14, NIV)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Core Beliefs -->
+  <section class="mb-5">
+    <h2 class="text-center mb-4">Our Core Beliefs</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="about-card">
+          <div class="belief-item">
+            <div class="belief-icon"><i class="fas fa-cross"></i></div>
+            <div>
+              <h4>Salvation by Grace through Jesus Christ</h4>
+              <p>We believe in the free gift of salvation through Jesus Christ. (Ephesians 2:8-9)</p>
+            </div>
+          </div>
+          
+          <div class="belief-item">
+            <div class="belief-icon"><i class="fas fa-bible"></i></div>
+            <div>
+              <h4>The Authority of Scripture</h4>
+              <p>The Bible is our ultimate guide for faith and practice. (2 Timothy 3:16)</p>
+            </div>
+          </div>
+          
+          <div class="belief-item">
+            <div class="belief-icon"><i class="fas fa-hands-praying"></i></div>
+            <div>
+              <h4>Holiness & Righteous Living</h4>
+              <p>We emphasize purity and obedience to God's Word. (1 Peter 1:15-16)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="about-card">
+          <div class="belief-item">
+            <div class="belief-icon"><i class="fas fa-globe"></i></div>
+            <div>
+              <h4>The Great Commission</h4>
+              <p>We are called to evangelize and disciple all nations. (Matthew 28:19-20)</p>
+            </div>
+          </div>
+          
+          <div class="belief-item">
+            <div class="belief-icon"><i class="fas fa-fire"></i></div>
+            <div>
+              <h4>The Power of the Holy Spirit</h4>
+              <p>We rely on the Spirit for empowerment, miracles, and spiritual gifts. (Acts 1:8)</p>
+            </div>
+          </div>
+          
+          <div class="belief-item">
+            <div class="belief-icon"><i class="fas fa-church"></i></div>
+            <div>
+              <h4>The Unity of Believers</h4>
+              <p>We embrace all believers as one body in Christ. (John 17:21)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Ministry in Action -->
+  <section class="mb-5">
+    <h2 class="text-center mb-4">Our Ministry in Action</h2>
+    <p class="text-center lead mb-5">Beyond spiritual nourishment, CUC is practically engaged in uplifting communities through various initiatives:</p>
+    
+    <div class="row">
+      <div class="col-md-6 col-lg-3">
+        <div class="ministry-card">
+          <div class="ministry-icon"><i class="fas fa-cross"></i></div>
+          <h3>Evangelism & Discipleship</h3>
+          <p>Regular crusades, Bible studies, and leadership training to spread the Gospel and nurture believers.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3">
+        <div class="ministry-card">
+          <div class="ministry-icon"><i class="fas fa-hands-helping"></i></div>
+          <h3>Charity & Outreach</h3>
+          <p>Supporting the needy, orphans, widows, and vulnerable groups with practical assistance and love.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3">
+        <div class="ministry-card">
+          <div class="ministry-icon"><i class="fas fa-business-time"></i></div>
+          <h3>Economic Empowerment</h3>
+          <p>Providing business training, startup capital, and skills development to foster self-reliance.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3">
+        <div class="ministry-card">
+          <div class="ministry-icon"><i class="fas fa-people-group"></i></div>
+          <h3>Community Development</h3>
+          <p>Promoting education, health awareness, and sustainable livelihoods for community transformation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why We Exist -->
+  <section class="mb-5">
+    <div class="about-card">
+      <h2 class="text-center mb-4">Why We Exist</h2>
+      <p class="text-center lead">The Christian Universal Church is more than a place of worship—it is a family of believers dedicated to spiritual growth, social impact, and global evangelism.</p>
+      <p>We believe in holistic ministry, addressing both eternal salvation and earthly needs to reflect Christ's love in action. As we advance, we remain steadfast in our mission to "Reach, Teach, and Lift"—bringing heaven's hope to earth's despair.</p>
+      <div class="scripture-box">
+        <p>"By this all people will know that you are my disciples, if you have love for one another." (John 13:35, ESV)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision & Mission Section -->
+  <section class="mission-vision-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="mv-card">
+            <h2><i class="fas fa-eye me-2"></i> Our Vision</h2>
+            <p>To see every nation, tribe, and tongue united in Christ, transformed by His love, and empowered to fulfill God's eternal purpose.</p>
+            <p>We envision a global body of believers—diverse yet unified—where the Gospel of Jesus Christ is proclaimed without barriers, where lives are restored through grace, and where God's Kingdom is advanced in every sphere of society.</p>
+            <div class="scripture-box">
+              <p>"After this I looked, and behold, a great multitude that no one could number, from every nation, from all tribes and peoples and languages, standing before the throne and before the Lamb..." (Revelation 7:9, ESV)</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 mb-4">
+          <div class="mv-card">
+            <h2><i class="fas fa-bullseye me-2"></i> Our Mission</h2>
+            <p>To make disciples of all nations, nurture spiritual growth, and demonstrate God's love through service, unity, and truth.</p>
+            <ol class="mt-3">
+              <li class="mb-2">Evangelism & Discipleship – Spreading the Gospel and teaching Christ's commands</li>
+              <li class="mb-2">Worship & Spiritual Growth – Cultivating deep relationship with God</li>
+              <li class="mb-2">Love in Action – Serving communities with compassion and justice</li>
+              <li class="mb-2">Unity in Diversity – Embracing believers from every background</li>
+              <li>Empowerment for Ministry – Equipping members to use their God-given gifts</li>
+            </ol>
+            <div class="scripture-box">
+              <p>"Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all that I have commanded you." (Matthew 28:19-20, ESV)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our History Timeline -->
+  <section class="mb-5">
+    <h2 class="text-center mb-4">Our Journey</h2>
+    <div class="timeline">
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h3>2021</h3>
+          <p>Christian Universal Church was founded in Ishalikira Village, Chitipa District under the divine guidance of Evangelist Elias Austin Shellah.</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="timeline-content">
+          <h3>2022</h3>
+          <p>Expanded to Zolozolo, Mzuzu City, establishing a new center for ministry and community outreach.</p>
+        </div>
+      </div>
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h3>2023</h3>
+          <p>Launched comprehensive community development programs including economic empowerment initiatives.</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="timeline-content">
+          <h3>Present</h3>
+          <p>Continuing to grow as a beacon of faith, hope, and transformation with a vision for global impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join Us CTA -->
+  <section class="text-center mb-5">
+    <div class="about-card">
+      <h2 class="mb-3">Join Us As We Fulfill God's Divine Mandate!</h2>
+      <p class="lead mb-4">Be part of this movement of faith, love, and transformation.</p>
+      <a href="/contact" class="btn btn-custom btn-lg px-4">Connect With Us</a>
+    </div>
+  </section>
+</div>
+
+<!-- Enhanced Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="footer-logo">
+          <img src="uploads/images_13.jpeg" alt="Christian Universal Church Logo" id="footerLogo">
+        </div>
+        <p class="mt-3">A global body of believers—diverse yet unified—where the Gospel of Jesus Christ is proclaimed without barriers and lives are restored through grace.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="/ministries"><i class="fas fa-chevron-right"></i> Ministries</a></li>
+            <li><a href="/sermons"><i class="fas fa-chevron-right"></i> Sermons</a></li>
+            <li><a href="/about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="/contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+            <li><a href="/news"><i class="fas fa-chevron-right"></i> News</a></li>
+            <li><a href="/programs"><i class="fas fa-chevron-right"></i> programs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+        <div class="footer-links">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Sunday Worship</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Bible Study</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Youth Ministry</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Prayer Meetings</a></li>
+            <li><a href="/program"><i class="fas fa-chevron-right"></i> Mission Outreach</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <div class="footer-links">
+          <h4>Contact Info</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Zolozolo Township, Mzuzu, Malawi</a></li>
+            <li><a href="mailto:austinshellah8@gmail.com"><i class="fas fa-envelope"></i> austinshellah8@gmail.com</a></li>
+            <li><a href="mailto:info@christianuniversalchurch.church"><i class="fas fa-envelope"></i> info@christianuniversalchurch.church</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright text-center">
+      <p class="mb-0">&copy; 2025 Christian Universal Church. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+<script>
+  // Back to Top Button
+  window.addEventListener('scroll', function() {
+    var backToTop = document.querySelector('.back-to-top');
+    if (window.pageYOffset > 300) {
+      backToTop.classList.add('active');
+    } else {
+      backToTop.classList.remove('active');
+    }
+  });
+
+  // Smooth scrolling for back to top
+  document.querySelector('.back-to-top').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+
+  // Handle logo error fallback
+  document.querySelectorAll('img[alt="Christian Universal Church Logo"]').forEach(img => {
+    img.onerror = function() {
+      this.onerror = null;
+      this.src = 'https://i.ibb.co/0jQJ9yJ/church-logo.png';
+    };
+  });
+
+  // Double click footer logo to redirect to login
+  document.getElementById('footerLogo').addEventListener('dblclick', function() {
+    window.location.href = '/login';
+  });
+</script>
+
+</body>
+</html>
