@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Manage Programs & Activities | Christian Universal Church Admin</title>
+  <title>Manage Programs & Activities | Mtendle Baptist Church Admin</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
   <style>
     :root {
-      --primary-color: #1a3a6e;  /* Professional dark blue */
-      --secondary-color: #d4af37; /* Muted gold accent */
-      --accent-color: #c8102e;   /* Deep red accent */
+      --primary-color: #4b0082;  /* Purple */
+      --secondary-color: #1e90ff; /* Blue accent */
+      --accent-color: #ffffff;   /* White accent */
       --white: #FFFFFF;
       --black: #222222;
       --gray-light: #f8f9fa;
@@ -19,7 +19,7 @@
       --sidebar-width: 250px;
       --sidebar-collapsed-width: 70px;
       --transition-speed: 0.3s;
-      --sidebar-bg: #0d2b4e; /* Dark sidebar background */
+      --sidebar-bg: linear-gradient(135deg, #4b0082 0%, #1e90ff 100%);
     }
     
     * {
@@ -39,7 +39,7 @@
     
     /* Header */
     .top-header {
-      background-color: var(--sidebar-bg);
+      background: linear-gradient(to right, #4b0082, #1e90ff);
       color: var(--white);
       padding: 10px 0;
       text-align: center;
@@ -50,9 +50,10 @@
       z-index: 1000;
       height: 60px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0 20px;
     }
     
     .top-header h1 {
@@ -60,6 +61,69 @@
       font-weight: 500;
       line-height: 40px;
       letter-spacing: 0.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 70%;
+    }
+    
+    /* User Profile */
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .profile-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--white);
+    }
+    
+    .profile-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-color);
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: var(--white);
+      min-width: 140px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      z-index: 1;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    .dropdown-content a {
+      color: var(--black);
+      padding: 10px 12px;
+      text-decoration: none;
+      display: block;
+      font-size: 13px;
+      transition: background-color 0.3s;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: var(--gray-light);
+    }
+    
+    .profile-dropdown:hover .dropdown-content {
+      display: block;
     }
     
     /* Dashboard Container */
@@ -74,7 +138,7 @@
     /* Sidebar Styles */
     .sidebar {
       width: var(--sidebar-width);
-      background-color: var(--sidebar-bg);
+      background: var(--sidebar-bg);
       box-shadow: 2px 0 15px rgba(0, 0, 0, 0.15);
       padding: 20px 0;
       position: fixed;
@@ -95,6 +159,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
     }
     
     .logo-container img {
@@ -102,6 +167,8 @@
       width: auto;
       object-fit: contain;
       transition: all var(--transition-speed) ease;
+      border-radius: 50%;
+      border: 2px solid var(--accent-color);
     }
     
     .logo-container.collapsed img {
@@ -127,16 +194,17 @@
       transition: all var(--transition-speed) ease;
       font-weight: 500;
       border-radius: 6px;
+      background: linear-gradient(to right, transparent 0%, transparent 100%);
     }
     
     .nav-link:hover, .nav-link.active {
-      background-color: rgba(255, 255, 255, 0.1);
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
       color: var(--white);
     }
     
     .nav-link.active {
-      background-color: rgba(255, 255, 255, 0.15);
-      border-left: 4px solid var(--secondary-color);
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
+      border-left: 4px solid var(--accent-color);
     }
     
     .nav-link i {
@@ -144,7 +212,7 @@
       font-size: 16px;
       min-width: 24px;
       text-align: center;
-      color: var(--secondary-color);
+      color: var(--accent-color);
     }
     
     .nav-text {
@@ -167,7 +235,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       z-index: 101;
       border: none;
-      color: var(--sidebar-bg);
+      color: var(--primary-color);
       transition: transform var(--transition-speed) ease;
     }
     
@@ -228,11 +296,13 @@
       border: none;
       border-radius: 10px;
       height: 100%;
+      background: linear-gradient(to bottom right, var(--white) 0%, #f0f8ff 100%);
     }
     
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      border-left: 3px solid var(--secondary-color);
     }
     
     .card-title {
@@ -246,7 +316,7 @@
     }
     
     .btn-custom {
-      background-color: var(--primary-color);
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
       color: white;
       border-radius: 8px;
       font-weight: 600;
@@ -254,13 +324,13 @@
     }
     
     .btn-custom:hover {
-      background-color: #122a52;
+      background: linear-gradient(to right, #3a0068, #1873cc);
       color: white;
     }
     
     /* Footer Styles */
     .footer {
-      background-color: var(--sidebar-bg);
+      background: linear-gradient(to right, #4b0082, #1e90ff);
       color: rgba(255, 255, 255, 0.8);
       text-align: center;
       padding: 15px;
@@ -269,6 +339,95 @@
       bottom: 0;
       z-index: 1000;
       font-size: 14px;
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(to right, #4b0082, #1e90ff);
+      border-radius: 50%;
+      z-index: 1001;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border: none;
+      color: white;
+      padding: 0;
+    }
+    
+    .mobile-menu-toggle .hamburger {
+      width: 24px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: auto;
+    }
+    
+    .mobile-menu-toggle .hamburger span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-toggle.active .hamburger span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    
+    .mobile-menu-toggle.active .hamburger span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active .hamburger span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Mobile Dropdown Menu */
+    .mobile-dropdown-menu {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background-color: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      z-index: 1002;
+      overflow: hidden;
+      width: 200px;
+    }
+    
+    .mobile-dropdown-menu.active {
+      display: block;
+    }
+    
+    .mobile-dropdown-item {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--gray-medium);
+    }
+    
+    .mobile-dropdown-item:last-child {
+      border-bottom: none;
+    }
+    
+    .mobile-dropdown-link {
+      display: flex;
+      align-items: center;
+      color: var(--black);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+    .mobile-dropdown-link i {
+      margin-right: 10px;
+      color: var(--secondary-color);
+      width: 20px;
+      text-align: center;
     }
     
     /* Responsive Styles */
@@ -298,13 +457,64 @@
       .content-wrapper {
         padding: 20px;
       }
+
+      .top-header h1 {
+        font-size: 1.2rem;
+        max-width: 60%;
+      }
+
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      
+      .sidebar {
+        display: none;
+      }
+      
+      .main-content {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .top-header h1 {
+        font-size: 1rem;
+        max-width: 50%;
+      }
+      
+      .mobile-menu-toggle {
+        width: 45px;
+        height: 45px;
+      }
+      
+      .mobile-menu-toggle .hamburger {
+        width: 20px;
+      }
+      
+      .mobile-dropdown-menu {
+        width: 180px;
+        bottom: 70px;
+        right: 15px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- Header with Profile -->
   <header class="top-header">
-    <h1>CHRISTIAN UNIVERSAL CHURCH ADMIN</h1>
+    <h1>MTENDLE BAPTIST CHURCH ADMIN</h1>
+    <div class="user-profile">
+      <div class="profile-dropdown">
+        <button class="profile-btn">
+          <img src="/uploads/images_13.jpeg" alt="Profile" class="profile-img">
+          <i class="fas fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#"><i class="fas fa-user me-2"></i>Profile</a>
+          <a href="/logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+        </div>
+      </div>
+    </div>
   </header>
 
   <div class="dashboard-container">
@@ -314,7 +524,7 @@
         <i class="fas fa-chevron-left"></i>
       </button>
       <div class="logo-container" id="logoContainer">
-        <img src="/uploads/church logo.jpg" alt="Christian Universal Church Logo">
+        <img src="/uploads/images_13.jpeg" alt="Mtendle Baptist Church Logo">
       </div>
       <ul class="nav-menu">
         <li class="nav-item">
@@ -333,6 +543,18 @@
           <a href="/manage_programs" class="nav-link active">
             <i class="fas fa-project-diagram"></i>
             <span class="nav-text">Programs</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/manage_series_sermons_resource" class="nav-link">
+            <i class="fas fa-bible"></i>
+            <span class="nav-text">Sermons</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/manage_minitries" class="nav-link">
+            <i class="fas fa-hands-praying"></i>
+            <span class="nav-text">Ministries</span>
           </a>
         </li>
         <li class="nav-item">
@@ -369,7 +591,7 @@
             <div class="card shadow-sm">
               <div class="card-body text-center">
                 <div class="mb-3">
-                  <i class="fas fa-tasks fa-3x" style="color: var(--accent-color)"></i>
+                  <i class="fas fa-tasks fa-3x" style="color: var(--secondary-color)"></i>
                 </div>
                 <h5 class="card-title">Add Activity</h5>
                 <p class="card-text">Click below to record a new activity under a program.</p>
@@ -389,10 +611,59 @@
     <div class="footer-content">
       <div class="copyright">
         <i class="far fa-copyright"></i>
-        <span>2024 Christian Universal Church. All rights reserved.</span>
+        <span>2024 Mtendle Baptist Church. All rights reserved.</span>
       </div>
     </div>
   </footer>
+
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <!-- Mobile Dropdown Menu -->
+  <div class="mobile-dropdown-menu" id="mobileDropdownMenu">
+    <div class="mobile-dropdown-item">
+      <a href="/admin_dashboard" class="mobile-dropdown-link">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/manage_news" class="mobile-dropdown-link">
+        <i class="fas fa-newspaper"></i>
+        <span>News</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/manage_programs" class="mobile-dropdown-link">
+        <i class="fas fa-project-diagram"></i>
+        <span>Programs</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/manage_series_sermons_resource" class="mobile-dropdown-link">
+        <i class="fas fa-bible"></i>
+        <span>Sermons</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/manage_minitries" class="mobile-dropdown-link">
+        <i class="fas fa-hands-praying"></i>
+        <span>Ministries</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/view_message_handle" class="mobile-dropdown-link">
+        <i class="fas fa-envelope"></i>
+        <span>Messages</span>
+      </a>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
@@ -400,35 +671,73 @@
     document.addEventListener('DOMContentLoaded', function() {
       const sidebar = document.getElementById('sidebar');
       const sidebarToggle = document.getElementById('sidebarToggle');
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const mobileDropdownMenu = document.getElementById('mobileDropdownMenu');
       const mainContent = document.getElementById('mainContent');
       const logoContainer = document.getElementById('logoContainer');
 
-      sidebarToggle.addEventListener('click', () => {
+      // Toggle sidebar
+      function toggleSidebar() {
         sidebar.classList.toggle('collapsed');
         mainContent.classList.toggle('expanded');
         logoContainer.classList.toggle('collapsed');
         sidebarToggle.innerHTML = sidebar.classList.contains('collapsed')
           ? '<i class="fas fa-chevron-right"></i>'
           : '<i class="fas fa-chevron-left"></i>';
+      }
+
+      sidebarToggle.addEventListener('click', toggleSidebar);
+      
+      // Toggle mobile dropdown menu
+      mobileMenuToggle.addEventListener('click', function() {
+        mobileMenuToggle.classList.toggle('active');
+        mobileDropdownMenu.classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!mobileMenuToggle.contains(event.target)) {
+          mobileMenuToggle.classList.remove('active');
+          mobileDropdownMenu.classList.remove('active');
+        }
       });
 
       // Handle responsive behavior
       function handleResize() {
-        if (window.innerWidth <= 992) {
-          sidebar.classList.add('collapsed');
-          mainContent.classList.add('expanded');
-          logoContainer.classList.add('collapsed');
-          sidebarToggle.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        if (window.innerWidth <= 768) {
+          sidebar.style.display = 'none';
+          mainContent.style.marginLeft = '0';
+          mobileMenuToggle.style.display = 'flex';
         } else {
-          sidebar.classList.remove('collapsed');
-          mainContent.classList.remove('expanded');
-          logoContainer.classList.remove('collapsed');
-          sidebarToggle.innerHTML = '<i class="fas fa-chevron-left"></i>';
+          sidebar.style.display = 'block';
+          mobileMenuToggle.style.display = 'none';
+          mobileMenuToggle.classList.remove('active');
+          mobileDropdownMenu.classList.remove('active');
+          
+          if (window.innerWidth <= 992) {
+            sidebar.classList.add('collapsed');
+            mainContent.classList.add('expanded');
+            logoContainer.classList.add('collapsed');
+            sidebarToggle.innerHTML = '<i class="fas fa-chevron-right"></i>';
+          } else {
+            sidebar.classList.remove('collapsed');
+            mainContent.classList.remove('expanded');
+            logoContainer.classList.remove('collapsed');
+            sidebarToggle.innerHTML = '<i class="fas fa-chevron-left"></i>';
+          }
         }
       }
 
       window.addEventListener('resize', handleResize);
       handleResize(); // Initialize
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.mobile-dropdown-link').forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenuToggle.classList.remove('active');
+          mobileDropdownMenu.classList.remove('active');
+        });
+      });
     });
   </script>
 </body>
