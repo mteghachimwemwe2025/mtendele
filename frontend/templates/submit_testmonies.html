@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Testimony</title>
+</head>
+<body>
+    <h2>Submit Your Testimony</h2>
+    <form action="{{ url_for('testimony_bp.submit_testimony') }}" method="POST" enctype="multipart/form-data">
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <label>Description:</label><br>
+        <textarea name="description" required></textarea><br><br>
+
+        <label>Image:</label><br>
+        <input type="file" name="image"><br><br>
+
+        <input type="submit" value="Submit Testimony">
+    </form>
+</body>
+</html>

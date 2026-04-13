@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Message Center | Mtendle Baptist Church Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4b0082; /* Purple */
+      --secondary-color: #1e90ff; /* Blue */
+      --accent-color: #ffffff; /* White */
+      --white: #FFFFFF;
+      --black: #222222;
+      --gray-light: #f5f7fa;
+      --gray-medium: #e9ecef;
+      --gray-dark: #6c757d;
+      --sidebar-width: 220px;
+      --sidebar-collapsed-width: 60px;
+      --transition-speed: 0.3s;
+      --sidebar-bg: linear-gradient(135deg, #4b0082 0%, #1e90ff 100%);
+      --success-color: #28a745;
+      --info-color: #17a2b8;
+      --warning-color: #ffc107;
+      --danger-color: #dc3545;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--gray-light);
+      color: var(--black);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Header */
+    .top-header {
+      background: linear-gradient(to right, #4b0082, #1e90ff);
+      color: var(--white);
+      padding: 10px 0;
+      text-align: center;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.15);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .top-header h1 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 40px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 70%;
+    }
+    
+    /* Dashboard Container */
+    .dashboard-container {
+      display: flex;
+      flex: 1;
+      position: relative;
+      margin-top: 60px;
+      min-height: calc(100vh - 120px);
+    }
+    
+    /* Sidebar Styles */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--sidebar-bg);
+      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.15);
+      padding: 15px 0;
+      position: fixed;
+      height: calc(100% - 120px);
+      z-index: 100;
+      transition: width var(--transition-speed) ease;
+      overflow: hidden;
+      top: 60px;
+    }
+    
+    .logo-container {
+      text-align: center;
+      padding: 10px 10px 5px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 15px;
+      transition: all var(--transition-speed) ease;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .logo-container img {
+      max-height: 40px;
+      width: auto;
+      object-fit: contain;
+      transition: all var(--transition-speed) ease;
+      border-radius: 50%;
+      border: 2px solid var(--accent-color);
+    }
+    
+    .logo-container.collapsed img {
+      max-height: 30px;
+    }
+    
+    .nav-menu {
+      list-style: none;
+      padding: 0 8px;
+    }
+    
+    .nav-item {
+      margin-bottom: 4px;
+      white-space: nowrap;
+    }
+    
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 10px 12px;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: all var(--transition-speed) ease;
+      font-weight: 500;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      background: linear-gradient(to right, transparent 0%, transparent 100%);
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+      color: var(--white);
+    }
+    
+    .nav-link.active {
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
+      border-left: 3px solid var(--accent-color);
+    }
+    
+    .nav-link i {
+      margin-right: 10px;
+      font-size: 15px;
+      min-width: 20px;
+      text-align: center;
+      color: var(--accent-color);
+    }
+    
+    .nav-text {
+      transition: opacity var(--transition-speed) ease;
+    }
+    
+    /* Toggle Button */
+    .sidebar-toggle {
+      position: absolute;
+      top: 15px;
+      right: -15px;
+      width: 30px;
+      height: 30px;
+      background-color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 101;
+      border: none;
+      color: var(--primary-color);
+      transition: transform var(--transition-speed) ease;
+      padding: 0;
+    }
+    
+    .sidebar-toggle i {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .sidebar-toggle:hover {
+      transform: scale(1.1);
+    }
+    
+    /* Collapsed Sidebar */
+    .sidebar.collapsed {
+      width: var(--sidebar-collapsed-width);
+    }
+    
+    .sidebar.collapsed .logo-container {
+      padding: 15px 5px;
+      height: 60px;
+    }
+    
+    .sidebar.collapsed .nav-text {
+      opacity: 0;
+      width: 0;
+    }
+    
+    .sidebar.collapsed .nav-link {
+      justify-content: center;
+      padding: 10px 5px;
+    }
+    
+    .sidebar.collapsed .nav-link i {
+      margin-right: 0;
+    }
+    
+    /* Main Content Styles */
+    .main-content {
+      flex: 1;
+      margin-left: var(--sidebar-width);
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 120px);
+      transition: margin-left var(--transition-speed) ease;
+      background-color: var(--gray-light);
+    }
+    
+    .main-content.expanded {
+      margin-left: var(--sidebar-collapsed-width);
+    }
+    
+    .content-wrapper {
+      flex: 1;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    /* Message Center Styles */
+    .message-center-container {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    
+    .message-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--gray-medium);
+      background-color: var(--white);
+    }
+    
+    .message-actions {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .btn-outline-secondary {
+      border-color: var(--gray-medium);
+      color: var(--gray-dark);
+    }
+    
+    .btn-outline-secondary:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+    }
+    
+    .btn-outline-danger:hover {
+      background-color: var(--danger-color);
+      color: white;
+    }
+    
+    .message-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--gray-medium);
+      background-color: var(--white);
+    }
+    
+    .message-tab {
+      padding: 12px 20px;
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--gray-dark);
+      position: relative;
+      transition: all 0.2s;
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+    }
+    
+    .message-tab.active {
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+      background-color: rgba(75, 0, 130, 0.05);
+    }
+    
+    .message-tab:hover:not(.active) {
+      color: var(--black);
+      background-color: rgba(75, 0, 130, 0.03);
+    }
+    
+    .message-tab .badge {
+      margin-left: 5px;
+      font-size: 10px;
+      padding: 3px 6px;
+    }
+    
+    .message-list {
+      height: calc(100vh - 300px);
+      overflow-y: auto;
+    }
+    
+    .message-item {
+      display: flex;
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--gray-medium);
+      transition: all 0.2s;
+      cursor: pointer;
+      background-color: var(--white);
+    }
+    
+    .message-item:hover {
+      background-color: rgba(75, 0, 130, 0.03);
+    }
+    
+    .message-item.unread {
+      background-color: rgba(220, 53, 69, 0.05);
+    }
+    
+    .message-item.selected {
+      background-color: rgba(75, 0, 130, 0.08);
+    }
+    
+    .message-checkbox {
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .message-checkbox input {
+      cursor: pointer;
+    }
+    
+    .message-content {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .message-sender {
+      font-weight: 600;
+      margin-bottom: 3px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--primary-color);
+      font-size: 0.95rem;
+    }
+    
+    .message-subject {
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 3px;
+      font-size: 0.9rem;
+    }
+    
+    .message-preview {
+      color: var(--gray-dark);
+      font-size: 0.85rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .message-time {
+      color: var(--gray-dark);
+      font-size: 0.8rem;
+      text-align: right;
+      min-width: 70px;
+      margin-left: 10px;
+    }
+    
+    .message-status {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-left: 8px;
+    }
+    
+    .status-unread {
+      background-color: var(--danger-color);
+    }
+    
+    .status-read {
+      background-color: var(--success-color);
+    }
+    
+    .status-replied {
+      background-color: var(--info-color);
+    }
+    
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      text-align: center;
+      color: var(--gray-dark);
+    }
+    
+    .empty-state i {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: var(--gray-medium);
+    }
+    
+    .empty-state h4 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+    
+    .empty-state p {
+      font-size: 0.9rem;
+    }
+    
+    /* Modal Styles */
+    .modal-header {
+      background: linear-gradient(to right, #4b0082, #1e90ff);
+      color: white;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .modal-title {
+      font-weight: 500;
+    }
+    
+    /* Loading Animation */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .loading-spinner {
+      border: 3px solid rgba(75, 0, 130, 0.2);
+      border-top: 3px solid var(--primary-color);
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    
+    /* User Profile */
+    .user-profile {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .profile-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--white);
+    }
+    
+    .profile-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-color);
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: var(--white);
+      min-width: 140px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      z-index: 1;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    .dropdown-content a {
+      color: var(--black);
+      padding: 10px 12px;
+      text-decoration: none;
+      display: block;
+      font-size: 13px;
+      transition: background-color 0.3s;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: var(--gray-light);
+    }
+    
+    .profile-dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    /* Footer Styles */
+    .footer {
+      background: linear-gradient(to right, #4b0082, #1e90ff);
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 12px;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      z-index: 1000;
+      font-size: 13px;
+    }
+    
+    /* Mobile menu toggle */
+    .mobile-menu-toggle {
+      display: none;
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(to right, #4b0082, #1e90ff);
+      border-radius: 50%;
+      z-index: 1001;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border: none;
+      color: white;
+      padding: 0;
+    }
+    
+    .mobile-menu-toggle .hamburger {
+      width: 24px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: auto;
+    }
+    
+    .mobile-menu-toggle .hamburger span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-toggle.active .hamburger span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    
+    .mobile-menu-toggle.active .hamburger span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active .hamburger span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Mobile dropdown menu */
+    .mobile-dropdown-menu {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background-color: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      z-index: 1002;
+      overflow: hidden;
+      width: 200px;
+    }
+    
+    .mobile-dropdown-menu.active {
+      display: block;
+    }
+    
+    .mobile-dropdown-item {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--gray-medium);
+    }
+    
+    .mobile-dropdown-item:last-child {
+      border-bottom: none;
+    }
+    
+    .mobile-dropdown-link {
+      display: flex;
+      align-items: center;
+      color: var(--black);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+    .mobile-dropdown-link i {
+      margin-right: 10px;
+      color: var(--secondary-color);
+      width: 20px;
+      text-align: center;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .sidebar {
+        width: var(--sidebar-collapsed-width);
+      }
+      
+      .sidebar.collapsed {
+        width: 0;
+      }
+      
+      .main-content {
+        margin-left: var(--sidebar-collapsed-width);
+      }
+      
+      .main-content.expanded {
+        margin-left: 0;
+      }
+      
+      .logo-container img {
+        max-height: 30px;
+      }
+      
+      .message-tabs {
+        overflow-x: auto;
+      }
+      
+      .message-tab {
+        padding: 12px 15px;
+        font-size: 0.85rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .content-wrapper {
+        padding: 15px;
+      }
+      
+      .top-header h1 {
+        font-size: 1rem;
+        max-width: 60%;
+      }
+      
+      .user-profile {
+        right: 10px;
+      }
+      
+      .message-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      
+      .message-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      
+      .sidebar {
+        display: none;
+      }
+      
+      .main-content {
+        margin-left: 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      :root {
+        --sidebar-collapsed-width: 50px;
+      }
+      
+      .top-header h1 {
+        font-size: 0.9rem;
+        max-width: 50%;
+      }
+      
+      .profile-img {
+        width: 28px;
+        height: 28px;
+      }
+      
+      .logo-container {
+        height: 60px;
+        padding: 10px 5px;
+      }
+      
+      .logo-container img {
+        max-height: 25px;
+      }
+      
+      .message-tab {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+      }
+      
+      .content-wrapper {
+        padding: 12px;
+      }
+      
+      .sidebar-toggle {
+        width: 26px;
+        height: 26px;
+        top: 12px;
+        right: -13px;
+      }
+      
+      .sidebar-toggle i {
+        font-size: 12px;
+      }
+      
+      .mobile-menu-toggle {
+        width: 45px;
+        height: 45px;
+      }
+      
+      .mobile-menu-toggle .hamburger {
+        width: 20px;
+      }
+      
+      .mobile-dropdown-menu {
+        width: 180px;
+        bottom: 70px;
+        right: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Profile -->
+  <header class="top-header">
+    <h1>MTENDLE BAPTIST CHURCH ADMIN</h1>
+    <div class="user-profile">
+      <div class="profile-dropdown">
+        <button class="profile-btn">
+          <img src="/uploads/images_13.jpeg" alt="Profile" class="profile-img">
+          <i class="fas fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#"><i class="fas fa-user me-2"></i>Profile</a>
+          <a href="/logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="logo-container" id="logoContainer">
+        <img src="/uploads/images_13.jpeg" alt="Mtendle Baptist Church Logo">
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="/admin_dashboard" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span class="nav-text">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/manage_news" class="nav-link">
+            <i class="fas fa-newspaper"></i>
+            <span class="nav-text">News</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/manage_programs" class="nav-link">
+            <i class="fas fa-project-diagram"></i>
+            <span class="nav-text">Programs</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="/manage_series_sermons_resource" class="nav-link">
+            <i class="fas fa-bible"></i>
+            <span class="nav-text">Sermons</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/manage_minitries" class="nav-link">
+            <i class="fas fa-hands-praying"></i>
+            <span class="nav-text">Ministries</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/view_email" class="nav-link active">
+            <i class="fas fa-envelope"></i>
+            <span class="nav-text">Messages</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+      <div class="content-wrapper">
+        <div class="message-center-container">
+          <div class="message-header">
+            <div class="message-actions">
+              <button class="btn btn-outline-secondary btn-sm" id="refreshBtn">
+                <i class="fas fa-sync-alt"></i> Refresh
+              </button>
+              <button class="btn btn-outline-secondary btn-sm" id="markAsReadBtn">
+                <i class="fas fa-envelope-open"></i> Mark as Read
+              </button>
+              <button class="btn btn-outline-danger btn-sm" id="deleteBtn">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+            </div>
+            <div class="search-box">
+              <div class="input-group">
+                <input type="text" class="form-control form-control-sm" placeholder="Search messages..." id="searchInput">
+                <button class="btn btn-outline-secondary" type="button">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="message-tabs">
+            <div class="message-tab active" data-tab="all">
+              <i class="fas fa-inbox"></i> All Messages
+              <span class="badge bg-secondary" id="all-count">0</span>
+            </div>
+            <div class="message-tab" data-tab="unread">
+              <i class="fas fa-envelope"></i> Unread
+              <span class="badge bg-danger" id="unread-count">0</span>
+            </div>
+            <div class="message-tab" data-tab="read">
+              <i class="fas fa-envelope-open"></i> Read
+              <span class="badge bg-success" id="read-count">0</span>
+            </div>
+            <div class="message-tab" data-tab="replied">
+              <i class="fas fa-reply"></i> Replied
+              <span class="badge bg-primary" id="replied-count">0</span>
+            </div>
+          </div>
+          
+          <div class="message-list" id="messageList">
+            <!-- Messages will be loaded here by JavaScript -->
+            <div class="empty-state">
+              <div class="loading-spinner"></div>
+              <h4>Loading messages...</h4>
+              <p>Please wait while we load your messages</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Message Detail Modal -->
+  <div class="modal fade" id="messageDetailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Message Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="messageDetailContent">
+          <!-- Message details will be loaded here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="replyBtn">
+            <i class="fas fa-reply"></i> Reply
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reply Modal -->
+  <div class="modal fade" id="replyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Reply to Message</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="replyForm">
+            <input type="hidden" id="replyToId">
+            <input type="hidden" id="replyToEmail">
+            <input type="hidden" id="replyToName">
+            <div class="mb-3">
+              <label for="replySubject" class="form-label">Subject</label>
+              <input type="text" class="form-control" id="replySubject" required>
+            </div>
+            <div class="mb-3">
+              <label for="replyMessage" class="form-label">Message</label>
+              <textarea class="form-control" id="replyMessage" rows="6" required></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="sendReplyBtn">
+            <i class="fas fa-paper-plane"></i> Send Reply
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="copyright">
+        <i class="far fa-copyright"></i>
+        <span>2024 Mtendle Baptist Church. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <!-- Mobile Dropdown Menu -->
+  <div class="mobile-dropdown-menu" id="mobileDropdownMenu">
+    <div class="mobile-dropdown-item">
+      <a href="/admin_dashboard" class="mobile-dropdown-link">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/manage_news" class="mobile-dropdown-link">
+        <i class="fas fa-newspaper"></i>
+        <span>News</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/manage_programs" class="mobile-dropdown-link">
+        <i class="fas fa-project-diagram"></i>
+        <span>Programs</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/view_email" class="mobile-dropdown-link">
+        <i class="fas fa-envelope"></i>
+        <span>Messages</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/manage_series_sermons_resource" class="mobile-dropdown-link">
+        <i class="fas fa-bible"></i>
+        <span>Sermons</span>
+      </a>
+    </div>
+    <div class="mobile-dropdown-item">
+      <a href="/manage_minitries" class="mobile-dropdown-link">
+        <i class="fas fa-hands-praying"></i>
+        <span>Ministries</span>
+      </a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  // DOM Elements
+  const messageList = document.getElementById('messageList');
+  const messageTabs = document.querySelectorAll('.message-tab');
+  const refreshBtn = document.getElementById('refreshBtn');
+  const markAsReadBtn = document.getElementById('markAsReadBtn');
+  const deleteBtn = document.getElementById('deleteBtn');
+  const searchInput = document.getElementById('searchInput');
+  const messageDetailModal = new bootstrap.Modal(document.getElementById('messageDetailModal'));
+  const replyModal = new bootstrap.Modal(document.getElementById('replyModal'));
+  const replyBtn = document.getElementById('replyBtn');
+  const sendReplyBtn = document.getElementById('sendReplyBtn');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const mainContent = document.getElementById('mainContent');
+  const logoContainer = document.getElementById('logoContainer');
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const mobileDropdownMenu = document.getElementById('mobileDropdownMenu');
+
+  let currentTab = 'all';
+  let messages = [];
+  let selectedMessages = [];
+  let currentMessageDetail = null;
+
+  // Sidebar Toggle
+  sidebarToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+    mainContent.classList.toggle('expanded');
+    logoContainer.classList.toggle('collapsed');
+    sidebarToggle.innerHTML = sidebar.classList.contains('collapsed')
+      ? '<i class="fas fa-chevron-right"></i>'
+      : '<i class="fas fa-chevron-left"></i>';
+  });
+
+  // Mobile Menu Toggle
+  mobileMenuToggle.addEventListener('click', function() {
+    mobileMenuToggle.classList.toggle('active');
+    mobileDropdownMenu.classList.toggle('active');
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!mobileMenuToggle.contains(event.target) && !mobileDropdownMenu.contains(event.target)) {
+      mobileMenuToggle.classList.remove('active');
+      mobileDropdownMenu.classList.remove('active');
+    }
+  });
+
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll('.mobile-dropdown-link').forEach(link => {
+    link.addEventListener('click', function() {
+      mobileMenuToggle.classList.remove('active');
+      mobileDropdownMenu.classList.remove('active');
+    });
+  });
+
+  window.addEventListener('resize', handleResize);
+  function handleResize() {
+    if (window.innerWidth <= 992) {
+      sidebar.classList.add('collapsed');
+      mainContent.classList.add('expanded');
+      logoContainer.classList.add('collapsed');
+      sidebarToggle.innerHTML = '<i class="fas fa-chevron-right"></i>';
+    } else {
+      sidebar.classList.remove('collapsed');
+      mainContent.classList.remove('expanded');
+      logoContainer.classList.remove('collapsed');
+      sidebarToggle.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    }
+  }
+  handleResize();
+
+  messageTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      messageTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentTab = tab.dataset.tab;
+      renderMessages();
+    });
+  });
+
+  refreshBtn.addEventListener('click', loadMessages);
+  markAsReadBtn.addEventListener('click', markSelectedAsRead);
+  deleteBtn.addEventListener('click', deleteSelectedMessages);
+  searchInput.addEventListener('input', renderMessages);
+  replyBtn.addEventListener('click', () => {
+    if (currentMessageDetail) openReplyModal(currentMessageDetail);
+  });
+  sendReplyBtn.addEventListener('click', sendReply);
+
+  function initMessageCenter() {
+    loadMessages();
+    setInterval(loadMessages, 30000);
+  }
+
+  function loadMessages() {
+    fetch('/view_email?action=get_messages')
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          messages = data.messages.map(msg => ({
+            id: msg.id,
+            sender: msg.full_name,
+            email: msg.email,
+            subject: msg.subject,
+            body: msg.message,
+            status: msg.status || 'unread',
+            time: new Date(msg.created_at),
+            selected: false
+          }));
+          updateMessageCounts();
+          renderMessages();
+        }
+      }).catch(console.error);
+  }
+
+  function updateMessageCounts() {
+    document.getElementById('all-count').textContent = messages.length;
+    document.getElementById('unread-count').textContent = messages.filter(m => m.status === 'unread').length;
+    document.getElementById('read-count').textContent = messages.filter(m => m.status === 'read').length;
+    document.getElementById('replied-count').textContent = messages.filter(m => m.status === 'replied').length;
+  }
+
+  function renderMessages() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const filtered = messages.filter(m =>
+      (currentTab === 'all' || m.status === currentTab) &&
+      (m.sender.toLowerCase().includes(searchTerm) || m.subject.toLowerCase().includes(searchTerm) || m.body.toLowerCase().includes(searchTerm))
+    );
+
+    if (!filtered.length) {
+      messageList.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-envelope-open-text"></i>
+          <h4>No messages found</h4>
+          <p>Try changing your search or filter criteria</p>
+        </div>`;
+      return;
+    }
+
+    messageList.innerHTML = filtered.map(m => `
+      <div class="message-item ${m.status === 'unread' ? 'unread' : ''} ${m.selected ? 'selected' : ''}"
+           data-id="${m.id}" onclick="messageCenter.showMessageDetail('${m.id}')">
+        <div class="message-checkbox" onclick="event.stopPropagation(); messageCenter.toggleSelectMessage('${m.id}')">
+          <input type="checkbox" ${m.selected ? 'checked' : ''}>
+        </div>
+        <div class="message-content">
+          <div class="message-sender">
+            <span>${m.sender}</span>
+            <span class="message-status status-${m.status}"></span>
+          </div>
+          <div class="message-subject">${m.subject}</div>
+          <div class="message-preview">${m.body.substring(0, 80)}...</div>
+        </div>
+        <div class="message-time">${formatTime(m.time)}</div>
+      </div>`).join('');
+  }
+
+  function formatTime(date) {
+    const now = new Date(), diff = now - date;
+    if (diff < 86400000) return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    if (diff < 604800000) return date.toLocaleDateString([], { weekday: 'short' });
+    return date.toLocaleDateString([], { month: 'short', day: 'numeric' });
+  }
+
+  function toggleSelectMessage(id) {
+    const msg = messages.find(m => m.id === id);
+    if (msg) {
+      msg.selected = !msg.selected;
+      renderMessages();
+    }
+  }
+
+  function markSelectedAsRead() {
+    const selected = messages.filter(m => m.selected).map(m => m.id);
+    if (!selected.length) return alert('No messages selected');
+    fetch('/view_email?action=mark_as_read', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messageIds: selected })
+    }).then(r => r.json()).then(data => {
+      if (data.success) {
+        messages.forEach(m => { if (selected.includes(m.id)) { m.status = 'read'; m.selected = false; } });
+        updateMessageCounts();
+        renderMessages();
+      }
+    });
+  }
+
+  function deleteSelectedMessages() {
+    const selected = messages.filter(m => m.selected).map(m => m.id);
+    if (!selected.length) return alert('No messages selected');
+    if (!confirm(`Are you sure to delete ${selected.length} message(s)?`)) return;
+    fetch('/view_email?action=delete_messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messageIds: selected })
+    }).then(r => r.json()).then(data => {
+      if (data.success) {
+        messages = messages.filter(m => !selected.includes(m.id));
+        updateMessageCounts();
+        renderMessages();
+      }
+    });
+  }
+
+  function showMessageDetail(id) {
+    const m = messages.find(m => m.id === id);
+    if (!m) return;
+    currentMessageDetail = m;
+    if (m.status === 'unread') {
+      fetch('/view_email?action=mark_as_read', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messageIds: [m.id] })
+      }).then(r => r.json()).then(data => {
+        if (data.success) {
+          m.status = 'read';
+          updateMessageCounts();
+          renderMessages();
+        }
+      });
+    }
+    document.getElementById('messageDetailContent').innerHTML = `
+      <div class="message-detail-header">
+        <div><div class="message-detail-subject">${m.subject}</div>
+        <div class="text-muted">Received: ${m.time.toLocaleString()}</div></div>
+      </div>
+      <div class="message-detail-sender">
+        <div class="sender-avatar">${m.sender.charAt(0)}</div>
+        <div class="sender-info">
+          <div class="sender-name">${m.sender}</div>
+          <div class="sender-email">${m.email}</div>
+        </div>
+      </div>
+      <div class="message-detail-body">${m.body.replace(/\n/g, '<br>')}</div>
+      <div class="message-actions-bottom">
+        <button class="btn btn-primary" onclick="messageCenter.openReplyModal(messageCenter.currentMessageDetail)">
+          <i class="fas fa-reply"></i> Reply
+        </button>
+        <button class="btn btn-danger" onclick="messageCenter.deleteMessage('${m.id}')">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+      </div>`;
+    messageDetailModal.show();
+  }
+
+  function openReplyModal(m) {
+    document.getElementById('replyToId').value = m.id;
+    document.getElementById('replyToEmail').value = m.email;
+    document.getElementById('replyToName').value = m.sender;
+    document.getElementById('replySubject').value = `Re: ${m.subject}`;
+    document.getElementById('replyMessage').value = '';
+    replyModal.show();
+  }
+
+  function sendReply() {
+    const subject = document.getElementById('replySubject').value;
+    const messageText = document.getElementById('replyMessage').value;
+    const toEmail = document.getElementById('replyToEmail').value;
+    const toName = document.getElementById('replyToName').value;
+    const messageId = document.getElementById('replyToId').value;
+
+    if (!subject || !messageText) return alert('Please fill in all fields');
+
+    const sendBtn = document.getElementById('sendReplyBtn');
+    sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    sendBtn.disabled = true;
+
+    const formData = new FormData();
+    formData.append('to_email', toEmail);
+    formData.append('to_name', toName);
+    formData.append('subject', subject);
+    formData.append('message', messageText);
+    formData.append('message_id', messageId);
+
+    fetch('/send_reply', {
+      method: 'POST',
+      body: formData
+    })
+      .then(r => r.json())
+      .then(data => {
+        if (data.success) {
+          const original = messages.find(m => m.id === messageId);
+          if (original) original.status = 'replied';
+          updateMessageCounts();
+          renderMessages();
+          replyModal.hide();
+          alert('Reply sent successfully!');
+        } else {
+          throw new Error(data.error || 'Unknown error');
+        }
+      })
+      .catch(e => alert('Error sending reply: ' + e.message))
+      .finally(() => {
+        sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Reply';
+        sendBtn.disabled = false;
+      });
+  }
+
+  function deleteMessage(id) {
+    if (!confirm('Are you sure you want to delete this message?')) return;
+    fetch('/view_email?action=delete_messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messageIds: [id] })
+    }).then(r => r.json()).then(data => {
+      if (data.success) {
+        messages = messages.filter(m => m.id !== id);
+        messageDetailModal.hide();
+        updateMessageCounts();
+        renderMessages();
+      }
+    });
+  }
+
+  // Global access
+  window.messageCenter = {
+    showMessageDetail,
+    toggleSelectMessage,
+    openReplyModal,
+    deleteMessage,
+    currentMessageDetail
+  };
+
+  initMessageCenter();
+});
+</script>
+</body>
+</html>
